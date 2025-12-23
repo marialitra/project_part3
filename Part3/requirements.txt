@@ -1,7 +1,0 @@
-# To download the esm library we run this command:
-# pip install esm
-pip install fair-esm
-
-
-# To download the ESM2 model we run this command:
-#wget https://huggingface.co/facebook/esm2_t6_8M_UR50D/blob/main/model.safetensors
