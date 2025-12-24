@@ -334,10 +334,10 @@ def run_protein_search(
 
 def main():
 	parser = argparse.ArgumentParser("Protein ANN search wrapper")
-	parser.add_argument("--base-dat", required=True, help="Path to base protein vectors .dat (float32 N x 320)")
-	parser.add_argument("--query-fasta", required=True, help="Path to FASTA with query sequences")
+	parser.add_argument("-d", required=True, help="Path to base protein vectors .dat (float32 N x 320)")
+	parser.add_argument("-q", required=True, help="Path to FASTA with query sequences")
 	parser.add_argument("-o", "--output", required=True, help="Output neighbors file (text)")
-	parser.add_argument("--method", type=str, default="ivfflat", choices=["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh", "all"],
+	parser.add_argument("-method", type=str, default="ivfflat", choices=["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh", "all"],
 						help="ANN algorithm to use (or 'all' to run all methods)")
 	parser.add_argument("-N", type=int, default=10, help="Number of nearest neighbors")
 	parser.add_argument("-R", type=float, default=0.5, help="Range search radius (for range search mode)")
@@ -374,8 +374,8 @@ def main():
 
 	args = parser.parse_args()
 	run_protein_search(
-		base_dat=args.base_dat,
-		query_fasta=args.query_fasta,
+		base_dat=args.d,
+		query_fasta=args.q,
 		output_txt=args.output,
 		method=args.method,
 		N=args.N,
@@ -401,6 +401,20 @@ def main():
 		nlsh_batch_size=args.nlsh_batch_size,
 		nlsh_lr=args.nlsh_lr,
 	)
+	
+	method = args.method
+	
+	if method.lower() == "all":
+		all_methods = ["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh"]
+		base_output = os.path.splitext(args.output)[0]
+		
+		for algo in all_methods:
+			os.remove(f"{base_output}_{algo}.queries_ids.txt")
+			os.remove(f"{base_output}_{algo}.queries.dat")
+	else:
+		os.remove(os.path.splitext(args.output)[0] + ".queries.dat")
+		os.remove(os.path.splitext(args.output)[0] + ".queries_ids.txt")
+	
 
 
 if __name__ == "__main__":

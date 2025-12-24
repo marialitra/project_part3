@@ -1,0 +1,109 @@
+Hypercube
+
+Query: A0A009HN45
+Nearest neighbor-1: Q21MG1
+Nearest neighbor-2: Q580X6
+Nearest neighbor-3: A1KS62
+Nearest neighbor-4: Q9EQY0
+Nearest neighbor-5: Q5R922
+Nearest neighbor-6: Q96EK7
+Nearest neighbor-7: Q57JQ8
+
+Query: A0A009HLV9
+Nearest neighbor-1: Q21MG1
+Nearest neighbor-2: Q580X6
+Nearest neighbor-3: Q9EQY0
+Nearest neighbor-4: Q57JQ8
+Nearest neighbor-5: Q5R922
+Nearest neighbor-6: A1KS62
+Nearest neighbor-7: Q96EK7
+
+Query: A0A009HL96
+Nearest neighbor-1: Q5R922
+Nearest neighbor-2: Q9EQY0
+Nearest neighbor-3: Q21MG1
+Nearest neighbor-4: Q580X6
+Nearest neighbor-5: Q96EK7
+Nearest neighbor-6: Q57JQ8
+Nearest neighbor-7: A1KS62
+
+Query: A0A009I3Y5
+Nearest neighbor-1: Q9EQY0
+Nearest neighbor-2: Q21MG1
+Nearest neighbor-3: Q5R922
+Nearest neighbor-4: A1KS62
+Nearest neighbor-5: Q96EK7
+Nearest neighbor-6: Q580X6
+Nearest neighbor-7: Q57JQ8
+
+Query: A0A009PCK4
+Nearest neighbor-1: Q9EQY0
+Nearest neighbor-2: Q21MG1
+Nearest neighbor-3: Q5R922
+Nearest neighbor-4: A1KS62
+Nearest neighbor-5: Q96EK7
+Nearest neighbor-6: Q580X6
+Nearest neighbor-7: Q57JQ8
+
+Query: A0A009HQC9
+Nearest neighbor-1: Q21MG1
+Nearest neighbor-2: Q580X6
+Nearest neighbor-3: A1KS62
+Nearest neighbor-4: Q9EQY0
+Nearest neighbor-5: Q5R922
+Nearest neighbor-6: Q96EK7
+Nearest neighbor-7: Q57JQ8
+
+Query: A0A010Q8R4
+Nearest neighbor-1: Q580X6
+Nearest neighbor-2: Q9EQY0
+Nearest neighbor-3: Q5R922
+Nearest neighbor-4: A1KS62
+Nearest neighbor-5: Q21MG1
+Nearest neighbor-6: Q96EK7
+Nearest neighbor-7: Q57JQ8
+
+Query: A0A009IB02
+Nearest neighbor-1: Q580X6
+Nearest neighbor-2: Q21MG1
+Nearest neighbor-3: Q5R922
+Nearest neighbor-4: A1KS62
+Nearest neighbor-5: Q9EQY0
+Nearest neighbor-6: Q57JQ8
+Nearest neighbor-7: Q96EK7
+
+Query: A0A009HPM0
+Nearest neighbor-1: Q21MG1
+Nearest neighbor-2: A1KS62
+Nearest neighbor-3: Q5R922
+Nearest neighbor-4: Q9EQY0
+Nearest neighbor-5: Q580X6
+Nearest neighbor-6: Q96EK7
+Nearest neighbor-7: Q57JQ8
+
+Query: A0A010Q3W2
+Nearest neighbor-1: Q9EQY0
+Nearest neighbor-2: Q580X6
+Nearest neighbor-3: Q5R922
+Nearest neighbor-4: A1KS62
+Nearest neighbor-5: Q21MG1
+Nearest neighbor-6: Q96EK7
+Nearest neighbor-7: Q57JQ8
+
+Query: A0A001
+Nearest neighbor-1: Q580X6
+Nearest neighbor-2: Q21MG1
+Nearest neighbor-3: Q57JQ8
+Nearest neighbor-4: A1KS62
+Nearest neighbor-5: Q9EQY0
+Nearest neighbor-6: Q5R922
+Nearest neighbor-7: Q96EK7
+
+Query: A0A002
+Nearest neighbor-1: Q580X6
+Nearest neighbor-2: Q57JQ8
+Nearest neighbor-3: Q9EQY0
+Nearest neighbor-4: Q21MG1
+Nearest neighbor-5: A1KS62
+Nearest neighbor-6: Q5R922
+Nearest neighbor-7: Q96EK7

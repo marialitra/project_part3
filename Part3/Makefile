@@ -12,10 +12,12 @@ emb_50k:
 	-model esm2_t6_8M_UR50D
 
 search:
-	python src/protein_search.py \
+	python3 src/protein_search.py \
 	-d output/vectors.dat -q Data/targets.fasta \
 	-o output/results.txt \
-	-method ivfflat
+	-method all
+# Possible Inputs:
+# -method <all|lsh|hypercube|ivfflat|ivfpq>
 
 # BLAST: build SwissProt DB and run blastp on targets
 blast_db:
@@ -37,6 +39,3 @@ blast_filter: blast_search
 	python3 src/filter_blast.py -i output/blast/blast_results.tsv -o output/blast/blast_results_top${N}.tsv -n ${N} --max-evalue ${EVALUE}
 
 .PHONY: blast_filter
-
-# Possible Inputs:
-# -method <all|lsh|hypercube|ivfflat|ivfpq>
