@@ -5,8 +5,8 @@ import sys
 from typing import Optional
 
 # Local imports
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "Algorithms", "src"))
-from runSearchExe import build_executable, run_algorithm
+# sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "Algorithms", "src"))
+from Algorithms.src.runSearchExe import build_executable, run_algorithm
 
 
 def blast_executable(neighbors: int, output: str):
