@@ -10,9 +10,8 @@ def neural_lsh(args, model: nn.Module, inverted: Dict[int, List[int]],  X: np.nd
     results = []
     all_lsh_neighbors = []
 
-    # --- Minimal containers (no brute-force metrics) ---
-    all_lsh_neighbors: List[np.ndarray] = []
     all_t_approx = []
+
     # Skip true neighbor computation to keep output format consistent
     n_queries = Q.shape[0]
     true_neighbors_array = []
@@ -204,16 +203,31 @@ def neural_lsh(args, model: nn.Module, inverted: Dict[int, List[int]],  X: np.nd
         print("Skipping LSH search due to missing model or inverted file.")
         all_lsh_neighbors = [np.array([], dtype=int)] * len(Q)
 
-    compute_metrics_produce_output(args, results)
+    compute_metrics_produce_output(args, results, all_t_approx, Q)
 
     return
 
-def compute_metrics_produce_output(args, results: List[str]):
-    # Write output file with same format as other methods (no metrics)
+def compute_metrics_produce_output(args, results: List[str], all_t_approx: List[float], Q: np.ndarray):
+    # Compute QPS
+    
+    if all_t_approx:
+        total_approx_time = float(np.sum(all_t_approx))
+    else:
+        total_approx_time = 1e-9
+
+    QPS = (len(Q) / total_approx_time) if total_approx_time > 0 else 0.0
+
+
+
+    # Write output file with same format as other methods
     output_path = libraries.os.path.abspath(args.output)
+
     with open(output_path, "w") as f:
         f.write("Neural LSH\n\n")
         for blk in results:
             f.write(blk + "\n\n")
+
+        f.write(f"QPS: {QPS:.8f}\n")
+
     print(f"Wrote output file to {args.output}")
     return

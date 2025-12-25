@@ -9,6 +9,27 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "Algorithms"
 from runSearchExe import build_executable, run_algorithm
 
 
+def blast_executable(neighbors: int, output: str):
+    """
+        Runs 'make blast' to run the BLAST method and its filtering.
+    """
+
+    try:
+        build_process = subprocess.run(["make", "blast", f"N={neighbors}", f"out={output}"], capture_output=True, text=True, check=True)
+        print("\n\nBuild complete: BLAST results are ready.")
+        return True
+    except subprocess.CalledProcessError as e:
+        print("\n\n--- ERROR: Build failed. ---")
+        print("STDOUT:", e.stdout)
+        print("STDERR:", e.stderr)
+        return False
+    except FileNotFoundError:
+         print("\n\n--- ERROR: 'make' command not found. Is it installed? ---")
+         return False
+
+# def compute_recall():
+
+
 def remap_output_ids(output_txt: str, base_ids_txt: str, query_ids_txt: str):
 	"""Remap numeric indices in output to actual protein IDs."""
 	if not os.path.exists(output_txt):
@@ -62,7 +83,6 @@ def remap_output_ids(output_txt: str, base_ids_txt: str, query_ids_txt: str):
 		f.writelines(remapped_lines)
 	
 	print(f"[protein_search] Remapped indices to protein IDs in {output_txt}")
-
 
 def run_nlsh_pipeline(
 	base_dat: str,
@@ -136,15 +156,30 @@ def run_nlsh_pipeline(
 	subprocess.run(search_cmd, check=True, cwd=alg_root)
 	
 	# Remap output IDs
-	# Try .txt file first (e.g., vectors_50k_opt.txt), fallback to _ids.txt
-	base_ids_txt = base_dat.replace(".dat", ".txt")
+	base_ids_txt = base_dat.replace(".dat", "_ids.txt")
 	if not os.path.exists(base_ids_txt):
-		base_ids_txt = base_dat.replace(".dat", "_ids.txt")
-	query_ids_txt = query_dat.replace(".dat", "_ids.txt")
-	remap_output_ids(output_txt, base_ids_txt, query_ids_txt)
-	
-	return index_dir
+		raise RuntimeError("Failed to find the base ids text")
 
+	query_ids_txt = query_dat.replace(".dat", "_ids.txt")
+	if not os.path.exists(query_ids_txt):
+		raise RuntimeError("Failed to find the queries ids text")
+	
+	remap_output_ids(output_txt, base_ids_txt, query_ids_txt)
+
+	qps = None
+	output_lines = []
+
+	with open(output_txt, "r") as f:
+		for line in f:
+			if line.startswith("QPS:"):
+				qps = float(line.split(":", 1)[1].strip())
+			else:
+				output_lines.append(line)
+
+	with open(output_txt, "w") as f:
+		f.writelines(output_lines)
+
+	return qps
 
 def run_protein_search(
 	base_dat: str,
@@ -191,6 +226,7 @@ def run_protein_search(
 	# Handle 'all' method by recursively calling for each algorithm
 	if method.lower() == "all":
 		all_methods = ["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh"]
+		all_qps = {}
 		base_output = os.path.splitext(output_txt)[0]
 		
 		for algo in all_methods:
@@ -200,7 +236,7 @@ def run_protein_search(
 			print(f"{'='*60}")
 			
 			try:
-				run_protein_search(
+				qps = run_protein_search(
 					base_dat=base_dat,
 					query_fasta=query_fasta,
 					output_txt=algo_output,
@@ -228,14 +264,17 @@ def run_protein_search(
 					nlsh_batch_size=nlsh_batch_size,
 					nlsh_lr=nlsh_lr,
 				)
+				all_qps[algo] = qps
 			except Exception as e:
 				print(f"[protein_search] ERROR running {algo.upper()}: {e}")
+				all_qps[algo] = None
 				continue
 		
 		print(f"\n{'='*60}")
 		print(f"[protein_search] All methods complete!")
 		print(f"{'='*60}")
-		return
+
+		return all_qps
 	
 	# 1. Create query .dat using protein_embed
 	embed_py = os.path.join(os.path.dirname(__file__), "protein_embed.py")
@@ -272,7 +311,7 @@ def run_protein_search(
 	# 3. Run selected ANN algorithm (cosine) on protein data
 	method_lower = method.lower()
 	if method_lower == "nlsh":
-		run_nlsh_pipeline(
+		qps = run_nlsh_pipeline(
 			base_dat=base_dat,
 			query_dat=query_dat,
 			output_txt=output_txt,
@@ -290,8 +329,10 @@ def run_protein_search(
 			nlsh_batch_size=nlsh_batch_size,
 			nlsh_lr=nlsh_lr,
 		)
+
 		print(f"[protein_search] Done. Results at: {output_txt}")
-		return
+
+		return qps
 
 	# We invoke the C binary exactly like Part1 examples, but with -type protein
 	cmd = [
@@ -307,12 +348,16 @@ def run_protein_search(
 
 	if method_lower == "lsh":
 		cmd.extend(["-k", str(k), "-L", str(L), "-w", str(w), "-lsh"])
+		algo = "lsh"
 	elif method_lower == "hypercube":
 		cmd.extend(["-kproj", str(kproj), "-w", str(w), "-M", str(M), "-probes", str(probes), "-hypercube"])
+		algo = "hypercube"
 	elif method_lower == "ivfflat":
 		cmd.extend(["-kclusters", str(kclusters), "-nprobe", str(nprobe), "-ivfflat"])
+		algo = "ivfflat"
 	elif method_lower == "ivfpq":
 		cmd.extend(["-kclusters", str(kclusters), "-nprobe", str(nprobe), "-M", str(M), "-nbits", str(nbits), "-ivfpq"])
+		algo = "ivfpq"
 	else:
 		raise ValueError(f"Unknown method: {method}. Choose from: lsh, hypercube, ivfflat, ivfpq, nlsh")
 
@@ -330,7 +375,25 @@ def run_protein_search(
 		query_ids_txt = query_dat.replace(".dat", "_ids.txt")
 		remap_output_ids(output_txt, base_ids_txt, query_ids_txt)
 		
+		qps = None
+		output_lines = []
+
+		with open(output_txt, "r") as f:
+			for line in f:
+				if line.startswith("QPS:"):
+					qps = float(line.split(":", 1)[1].strip())
+				else:
+					output_lines.append(line)
+
+		with open(output_txt, "w") as f:
+			f.writelines(output_lines)
+			
 		print(f"[protein_search] Done. Results at: {output_txt}")
+
+		return qps
+	
+	if error_flag:
+		return None
 
 
 def main():
@@ -340,7 +403,7 @@ def main():
 	parser.add_argument("-o", "--output", required=True, help="Output neighbors file (text)")
 	parser.add_argument("-method", type=str, default="ivfflat", choices=["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh", "all"],
 						help="ANN algorithm to use (or 'all' to run all methods)")
-	parser.add_argument("-N", type=int, default=10, help="Number of nearest neighbors")
+	parser.add_argument("-N", type=int, default=5, help="Number of nearest neighbors")
 	parser.add_argument("-R", type=float, default=0.5, help="Range search radius (for range search mode)")
 	parser.add_argument("--seed", type=int, default=42, help="Random seed")
 	
@@ -355,8 +418,8 @@ def main():
 	
 	# Hypercube params
 	parser.add_argument("--kproj", type=int, default=12, help="Number of projections (hypercube)")
-	parser.add_argument("-M", type=int, default=8, help="Max candidates to check (hypercube) or subvectors (ivfpq)")
-	parser.add_argument("--probes", type=int, default=10, help="Vertices to examine (hypercube)")
+	parser.add_argument("-M", type=int, default=500, help="Max candidates to check (hypercube) or subvectors (ivfpq)")
+	parser.add_argument("--probes", type=int, default=2, help="Vertices to examine (hypercube)")
 	
 	# IVFPQ specific
 	parser.add_argument("--nbits", type=int, default=8, help="Bits per subspace (ivfpq)")
@@ -374,7 +437,7 @@ def main():
 	parser.add_argument("--nlsh-lr", type=float, default=1e-3, help="Learning rate (nlsh build)")
 
 	args = parser.parse_args()
-	run_protein_search(
+	all_qps = run_protein_search(
 		base_dat=args.d,
 		query_fasta=args.q,
 		output_txt=args.output,
@@ -402,7 +465,8 @@ def main():
 		nlsh_batch_size=args.nlsh_batch_size,
 		nlsh_lr=args.nlsh_lr,
 	)
-	
+
+	# Deleting unecessary files
 	method = args.method
 	
 	if method.lower() == "all":
@@ -416,6 +480,29 @@ def main():
 		os.remove(os.path.splitext(args.output)[0] + ".queries.dat")
 		os.remove(os.path.splitext(args.output)[0] + ".queries_ids.txt")
 	
+
+	# Print All QPS status
+	if isinstance(all_qps, dict):
+		if method.lower() == "all":
+			print("\nQPS results:")
+
+			for method, qps in all_qps.items():
+				print(f"  {method.upper():10s}: {qps}")
+	else:
+		print("\nQPS result:")
+		
+		method = method.capitalize()
+		print(f"{method}: {all_qps}")
+
+
+	# Running BLAST command
+	output = f"output/blast/topN/blast_results_top{args.N}.tsv"
+	blast_executable(args.N, output)
+
+	# Compute Recall against BLAST results (topN.tsv) vs the results.txt
+	# If method.lower == "all" then compare all the results_algo.txt vs the BLAST_results.tsv
+	
+	# compute_recall()
 
 
 if __name__ == "__main__":

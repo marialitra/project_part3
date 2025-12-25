@@ -12,18 +12,6 @@ Nearest neighbor-8: Q73UA5
 Nearest neighbor-9: B7GQ78
 Nearest neighbor-10: A4QEG8
 
-Query: A0A009HLV9
-Nearest neighbor-1: P0DF50
-Nearest neighbor-2: Q1CC21
-Nearest neighbor-3: A1UG51
-Nearest neighbor-4: P62193
-Nearest neighbor-5: B5FU18
-Nearest neighbor-6: Q88VS0
-Nearest neighbor-7: P74208
-Nearest neighbor-8: A3PL19
-Nearest neighbor-9: B7MRJ2
-Nearest neighbor-10: B5QUV5
-
 Query: A0A002
 Nearest neighbor-1: Q21BF6
 Nearest neighbor-2: A1UG51
@@ -36,41 +24,17 @@ Nearest neighbor-8: Q9HP72
 Nearest neighbor-9: Q7Z991
 Nearest neighbor-10: Q73UA5
 
-Query: A0A009I3Y5
-Nearest neighbor-1: Q6LN10
-Nearest neighbor-2: B9ITN8
-Nearest neighbor-3: B4LZW7
-Nearest neighbor-4: P45756
-Nearest neighbor-5: B7UNB1
-Nearest neighbor-6: Q3Z4Q0
-Nearest neighbor-7: Q0HNY3
-Nearest neighbor-8: Q6D012
-Nearest neighbor-9: Q9KNK2
-Nearest neighbor-10: Q46901
-
-Query: A0A010Q3W2
-Nearest neighbor-1: Q580X6
-Nearest neighbor-2: C5G7E1
-Nearest neighbor-3: Q4WE58
-Nearest neighbor-4: Q5SNT2
-Nearest neighbor-5: Q9F5P4
-Nearest neighbor-6: P26496
-Nearest neighbor-7: Q7RY68
-Nearest neighbor-8: A2XNK3
-Nearest neighbor-9: A2YGP6
-Nearest neighbor-10: P54283
-
-Query: A0A010Q8R4
-Nearest neighbor-1: Q4WE58
-Nearest neighbor-2: Q580X6
-Nearest neighbor-3: P54283
-Nearest neighbor-4: B5DDX6
-Nearest neighbor-5: C5G7E1
-Nearest neighbor-6: Q22812
-Nearest neighbor-7: Q13485
-Nearest neighbor-8: P0CO29
-Nearest neighbor-9: P0CV71
-Nearest neighbor-10: Q758L3
+Query: A0A009HL96
+Nearest neighbor-1: A5VUU3
+Nearest neighbor-2: Q6GK52
+Nearest neighbor-3: Q88VS0
+Nearest neighbor-4: Q5FJT7
+Nearest neighbor-5: P60843
+Nearest neighbor-6: Q5X5J5
+Nearest neighbor-7: P11076
+Nearest neighbor-8: Q1CC21
+Nearest neighbor-9: Q886S8
+Nearest neighbor-10: P0A6P7
 
 Query: A0A009HPM0
 Nearest neighbor-1: Q0HNY3
@@ -96,29 +60,41 @@ Nearest neighbor-8: Q9QZK5
 Nearest neighbor-9: Q7DDE8
 Nearest neighbor-10: P22774
 
-Query: A0A009HQC9
-Nearest neighbor-1: Q21MG1
-Nearest neighbor-2: B3W9W3
-Nearest neighbor-3: Q82S73
-Nearest neighbor-4: Q9KNK2
-Nearest neighbor-5: Q5X9H5
-Nearest neighbor-6: F4JMJ3
-Nearest neighbor-7: A3D786
-Nearest neighbor-8: B7N581
-Nearest neighbor-9: P12112
-Nearest neighbor-10: Q33C53
+Query: A0A010Q3W2
+Nearest neighbor-1: Q580X6
+Nearest neighbor-2: C5G7E1
+Nearest neighbor-3: Q4WE58
+Nearest neighbor-4: Q5SNT2
+Nearest neighbor-5: Q9F5P4
+Nearest neighbor-6: P26496
+Nearest neighbor-7: Q7RY68
+Nearest neighbor-8: A2XNK3
+Nearest neighbor-9: A2YGP6
+Nearest neighbor-10: P54283
 
-Query: A0A009HL96
-Nearest neighbor-1: A5VUU3
-Nearest neighbor-2: Q6GK52
-Nearest neighbor-3: Q88VS0
-Nearest neighbor-4: Q5FJT7
-Nearest neighbor-5: P60843
-Nearest neighbor-6: Q5X5J5
-Nearest neighbor-7: P11076
-Nearest neighbor-8: Q1CC21
-Nearest neighbor-9: Q886S8
-Nearest neighbor-10: P0A6P7
+Query: A0A010Q8R4
+Nearest neighbor-1: Q4WE58
+Nearest neighbor-2: Q580X6
+Nearest neighbor-3: P54283
+Nearest neighbor-4: B5DDX6
+Nearest neighbor-5: C5G7E1
+Nearest neighbor-6: Q22812
+Nearest neighbor-7: Q13485
+Nearest neighbor-8: P0CO29
+Nearest neighbor-9: P0CV71
+Nearest neighbor-10: Q758L3
+
+Query: A0A009HLV9
+Nearest neighbor-1: P0DF50
+Nearest neighbor-2: Q1CC21
+Nearest neighbor-3: A1UG51
+Nearest neighbor-4: P62193
+Nearest neighbor-5: B5FU18
+Nearest neighbor-6: Q88VS0
+Nearest neighbor-7: P74208
+Nearest neighbor-8: A3PL19
+Nearest neighbor-9: B7MRJ2
+Nearest neighbor-10: B5QUV5
 
 Query: A0A009HN45
 Nearest neighbor-1: Q21MG1
@@ -132,6 +108,30 @@ Nearest neighbor-8: Q94392
 Nearest neighbor-9: P12112
 Nearest neighbor-10: Q0BNA8
 
+Query: A0A009HQC9
+Nearest neighbor-1: Q21MG1
+Nearest neighbor-2: B3W9W3
+Nearest neighbor-3: Q82S73
+Nearest neighbor-4: Q9KNK2
+Nearest neighbor-5: Q5X9H5
+Nearest neighbor-6: F4JMJ3
+Nearest neighbor-7: A3D786
+Nearest neighbor-8: B7N581
+Nearest neighbor-9: P12112
+Nearest neighbor-10: Q33C53
+
+Query: A0A009I3Y5
+Nearest neighbor-1: Q6LN10
+Nearest neighbor-2: B9ITN8
+Nearest neighbor-3: B4LZW7
+Nearest neighbor-4: P45756
+Nearest neighbor-5: B7UNB1
+Nearest neighbor-6: Q3Z4Q0
+Nearest neighbor-7: Q0HNY3
+Nearest neighbor-8: Q6D012
+Nearest neighbor-9: Q9KNK2
+Nearest neighbor-10: Q46901
+
 Query: A0A009PCK4
 Nearest neighbor-1: Q6LN10
 Nearest neighbor-2: B9ITN8
@@ -143,3 +143,5 @@ Nearest neighbor-7: Q6D012
 Nearest neighbor-8: Q0HNY3
 Nearest neighbor-9: Q9KNK2
 Nearest neighbor-10: Q46901
+
+

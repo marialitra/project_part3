@@ -15,7 +15,7 @@ search:
 	python3 src/protein_search.py \
 	-d output/embeddings/vectors.dat -q Data/targets.fasta \
 	-o output/search/results.txt \
-	-method all
+	-method hypercube
 # Possible Inputs:
 # -method <all|lsh|hypercube|ivfflat|ivfpq>
 
@@ -34,9 +34,10 @@ blast_search: blast_db
 
 # Filter BLAST results (outfmt 6) to top N per query by bit score with E <= max-evalue
 N = 10
-EVALUE = 1e-3
+out = output/blast/topN/blast_results_top${N}.tsv
+EVALUE = 1e-3 # Hardcoded it is the filter we choose to reduce noise
 
 blast: blast_search
-	python3 src/filter_blast.py -i output/blast/search/blast_results.tsv -o output/blast/topN/blast_results_top${N}.tsv -n ${N} --max-evalue ${EVALUE}
+	python3 src/filter_blast.py -i output/blast/search/blast_results.tsv -o ${out} -n ${N} --max-evalue ${EVALUE}
 
 .PHONY: blast_filter

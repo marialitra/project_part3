@@ -18,6 +18,10 @@ void perform_query(const struct SearchParams* params, const struct Dataset* data
         exit(EXIT_FAILURE);
     }
 
+    // Metrics accumulators
+    double total_approx_time = 0.0;
+    int query_count = query_set->size;
+
     // ------------------------- Main query loop ------------------------------------
     // Iterate over each query in the query set
 
@@ -57,13 +61,17 @@ void perform_query(const struct SearchParams* params, const struct Dataset* data
             approx_dists[i] = INFINITY;
         }
 
+        clock_t start_approx = clock();
         // Algorithm-specific index lookup
         lookup_func(q, params, approx_neighbors, approx_dists, &approx_count, index_data);
+        clock_t end_approx = clock();
 
         // Algorithm-specific range search function
         if(params->range_search)
             range_fun(q, params, &range_neighbors, &range_count, index_data);
 
+        double approx_time = (double)(end_approx - start_approx) / CLOCKS_PER_SEC;
+        total_approx_time += approx_time;
         
         // Thread-local buffer for output
         char buffer[4096];
@@ -91,6 +99,16 @@ void perform_query(const struct SearchParams* params, const struct Dataset* data
         free(range_neighbors);
 
     }
+
+    // Final aggregated metrics over all queries
+    if (query_count > 0)
+    {
+        double qps_overall = (total_approx_time > 0.0) ? ((double)query_count / total_approx_time) : 0.0;
+
+        fprintf(output_file, "\n\nQPS: %f\n", qps_overall);
+    }
+
+    fclose(output_file);
 
     return;
 }
