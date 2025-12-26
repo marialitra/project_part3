@@ -3,6 +3,8 @@ import argparse
 import subprocess
 import sys
 from typing import Optional
+from collections import defaultdict
+
 
 # Local imports
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "Algorithms", "src"))
@@ -27,8 +29,78 @@ def blast_executable(neighbors: int, output: str):
          print("\n\n--- ERROR: 'make' command not found. Is it installed? ---")
          return False
 
-def compute_recall(blast_results: str):
-	print("calculate recall is being written...")
+
+def parse_blast_tsv(blast_tsv_path, topN):
+    """
+    Returns:
+        dict: {query_id: set(topN target_ids)}
+    """
+    gt = defaultdict(list)
+
+    with open(blast_tsv_path, "r") as f:
+        for line in f:
+            if not line.strip():
+                continue
+
+            cols = line.strip().split("\t")
+            query_id = cols[0]
+
+            # Extract protein ID from sp|ID|...
+            target_field = cols[1]
+            if target_field.startswith("sp|"):
+                target_id = target_field.split("|")[1]
+            else:
+                continue
+
+            if len(gt[query_id]) < topN:
+                gt[query_id].append(target_id)
+
+    # Convert lists to sets
+    return {q: set(v) for q, v in gt.items()}
+
+def parse_ann_txt(ann_txt_path, topN):
+    """
+    Returns:
+        dict: {query_id: list(topN neighbor_ids)}
+    """
+    results = defaultdict(list)
+    current_query = None
+
+    with open(ann_txt_path, "r") as f:
+        for line in f:
+            line = line.strip()
+
+            if line.startswith("Query:"):
+                current_query = line.split("Query:")[1].strip()
+            elif line.startswith("Nearest neighbor") and current_query:
+                neighbor_id = line.split(":")[1].strip()
+                if len(results[current_query]) < topN:
+                    results[current_query].append(neighbor_id)
+
+    return results
+
+def compute_recall(blast_tsv, ann_txt, topN):
+    blast_gt = parse_blast_tsv(blast_tsv, topN)
+    ann_res = parse_ann_txt(ann_txt, topN)
+
+    recalls = []
+    per_query = {}
+
+    for query, gt_neighbors in blast_gt.items():
+        ann_neighbors = set(ann_res.get(query, []))
+
+        if not gt_neighbors:
+            continue
+
+        intersection = gt_neighbors & ann_neighbors
+        recall = len(intersection) / len(gt_neighbors)
+
+        recalls.append(recall)
+        per_query[query] = recall
+
+    mean_recall = sum(recalls) / len(recalls) if recalls else 0.0
+    return mean_recall, per_query
+
 
 def remap_output_ids(output_txt: str, base_ids_txt: str, query_ids_txt: str):
 	"""Remap numeric indices in output to actual protein IDs."""
@@ -84,7 +156,7 @@ def remap_output_ids(output_txt: str, base_ids_txt: str, query_ids_txt: str):
 	
 	print(f"[protein_search] Remapped indices to protein IDs in {output_txt}")
 
-def run_nlsh_pipeline(
+def run_nlsh(
 	base_dat: str,
 	query_dat: str,
 	output_txt: str,
@@ -270,7 +342,7 @@ def run_protein_search(
 							raise
 						os.chdir(prev_cwd)
 
-					qps = run_nlsh_pipeline(
+					qps = run_nlsh(
 						base_dat=base_dat,
 						query_dat=query_dat,
 						output_txt=algo_output,
@@ -450,7 +522,7 @@ def main():
 	
 	# Hypercube params
 	parser.add_argument("--kproj", type=int, default=12, help="Number of projections (hypercube)")
-	parser.add_argument("-M", type=int, default=8, help="Max candidates to check (hypercube) or subvectors (ivfpq)")
+	parser.add_argument("-M", type=int, default=16, help="Max candidates to check (hypercube) or subvectors (ivfpq)")
 	parser.add_argument("--probes", type=int, default=2, help="Vertices to examine (hypercube)")
 	
 	# IVFPQ specific
@@ -469,6 +541,7 @@ def main():
 	parser.add_argument("--nlsh-lr", type=float, default=1e-3, help="Learning rate (nlsh build)")
 
 	args = parser.parse_args()
+
 	method_lower = args.method.lower()
 	all_qps = run_protein_search(
 		base_dat=args.d,
@@ -500,7 +573,6 @@ def main():
 	)
 
 	# Deleting unecessary files
-	
 	if method_lower == "all":
 		all_methods = ["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh"]
 		base_output = os.path.splitext(args.output)[0]
@@ -545,7 +617,25 @@ def main():
 
 	# Compute Recall against BLAST results (topN.tsv) vs the results.txt
 	# If method.lower == "all" then compare all the results_algo.txt vs the BLAST_results.tsv
-	compute_recall(blast_results)
+	if method_lower == "all":
+		all_methods = ["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh"]
+		base_output = os.path.splitext(args.output)[0]
+
+		print("\nRecall results:")
+		for algo in all_methods:
+			ann_txt = f"{base_output}_{algo}.txt"
+			mean_recall, _ = compute_recall(blast_tsv=blast_results, ann_txt=ann_txt, topN=args.N)
+
+			if algo == "lsh" or algo == "nlsh" or algo == "ivfpq":
+				print(f"  {algo.upper():10s}: {mean_recall:.4f}") # LSH / NLSH / IVFPQ
+			elif algo == "ivfflat":
+				algo = algo[:4].upper() + algo[4:]  #IVFFlat
+				print(f"  {algo:10s}: {mean_recall:.4f}") # everything else
+			else:
+				print(f"  {algo.capitalize():10s}: {mean_recall:.4f}") # everything else
+	else:
+		mean_recall, _ = compute_recall(blast_tsv=blast_results, ann_txt=args.output, topN=args.N)
+		print(f"\nRecall@{args.N}: {mean_recall:.4f}")
 
 
 if __name__ == "__main__":

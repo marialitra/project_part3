@@ -15,7 +15,7 @@ search:
 	python3 src/protein_search.py \
 	-d output/embeddings/vectors.dat -q Data/targets.fasta \
 	-o output/search/results.txt \
-	-method ivfpq
+	-method all
 # Possible Inputs:
 # -method <all|lsh|hypercube|ivfflat|ivfpq>
 
