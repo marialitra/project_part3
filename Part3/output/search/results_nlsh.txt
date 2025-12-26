@@ -1,86 +1,86 @@
 Neural LSH
 
 Query: A0A009HN45
-Nearest neighbor-1: Q7MF05
-Nearest neighbor-2: Q94392
-Nearest neighbor-3: Q83MS8
-Nearest neighbor-4: Q5HGJ9
-Nearest neighbor-5: Q9CF72
+Nearest neighbor-1: A7ML81
+Nearest neighbor-2: Q6BKP5
+Nearest neighbor-3: Q1CD55
+Nearest neighbor-4: B2VIF2
+Nearest neighbor-5: C5G7E1
 
 Query: A0A009HQC9
-Nearest neighbor-1: Q7MF05
-Nearest neighbor-2: B7I5H3
-Nearest neighbor-3: Q580X6
-Nearest neighbor-4: Q9Y7Y6
-Nearest neighbor-5: A9N2L7
+Nearest neighbor-1: A7ML81
+Nearest neighbor-2: Q1CD55
+Nearest neighbor-3: C5G7E1
+Nearest neighbor-4: A9KBN5
+Nearest neighbor-5: B2VIF2
 
 Query: A0A010Q8R4
-Nearest neighbor-1: Q580X6
-Nearest neighbor-2: B5DDX6
-Nearest neighbor-3: P0CO29
-Nearest neighbor-4: Q758L3
-Nearest neighbor-5: A2YGP6
+Nearest neighbor-1: C5G7E1
+Nearest neighbor-2: A2AD83
+Nearest neighbor-3: Q5RED0
+Nearest neighbor-4: Q2KIR0
+Nearest neighbor-5: Q1LY10
 
 Query: A0A009HPM0
-Nearest neighbor-1: P75825
-Nearest neighbor-2: B7I5H3
-Nearest neighbor-3: A9N2L7
-Nearest neighbor-4: O25424
-Nearest neighbor-5: Q2VYH7
+Nearest neighbor-1: A7FFX8
+Nearest neighbor-2: A8AD60
+Nearest neighbor-3: B2VIF2
+Nearest neighbor-4: Q1JJ80
+Nearest neighbor-5: B7JGM4
 
 Query: A0A009IB02
-Nearest neighbor-1: B3QSM9
-Nearest neighbor-2: A1VL69
-Nearest neighbor-3: Q9NZT1
-Nearest neighbor-4: Q1D6D8
-Nearest neighbor-5: O25424
+Nearest neighbor-1: Q4ZMN4
+Nearest neighbor-2: A8FG15
+Nearest neighbor-3: A7ML81
+Nearest neighbor-4: Q6G8C2
+Nearest neighbor-5: Q9RPY0
 
 Query: A0A001
-Nearest neighbor-1: Q642A6
-Nearest neighbor-2: Q4JSX4
-Nearest neighbor-3: Q83MS8
-Nearest neighbor-4: Q06774
-Nearest neighbor-5: A8A0G5
+Nearest neighbor-1: A1UG51
+Nearest neighbor-2: P9WJZ4
+Nearest neighbor-3: B7GQ78
+Nearest neighbor-4: P9WKE0
+Nearest neighbor-5: Q2G7G7
 
 Query: A0A002
-Nearest neighbor-1: Q642A6
-Nearest neighbor-2: Q4JSX4
-Nearest neighbor-3: Q83MS8
-Nearest neighbor-4: Q06774
-Nearest neighbor-5: A8A0G5
+Nearest neighbor-1: A1UG51
+Nearest neighbor-2: Q2G7G7
+Nearest neighbor-3: B7GQ78
+Nearest neighbor-4: P9WJZ4
+Nearest neighbor-5: Q7Z991
 
 Query: A0A010Q3W2
-Nearest neighbor-1: Q580X6
-Nearest neighbor-2: A2YGP6
-Nearest neighbor-3: Q83MS8
-Nearest neighbor-4: P36552
-Nearest neighbor-5: Q758L3
+Nearest neighbor-1: C5G7E1
+Nearest neighbor-2: Q1LY10
+Nearest neighbor-3: P04062
+Nearest neighbor-4: Q9ZUF4
+Nearest neighbor-5: D4AD75
 
 Query: A0A009HLV9
-Nearest neighbor-1: Q94392
-Nearest neighbor-2: Q83MS8
-Nearest neighbor-3: A6KXY8
-Nearest neighbor-4: Q4JSX4
-Nearest neighbor-5: Q7MF05
+Nearest neighbor-1: Q1CD55
+Nearest neighbor-2: A7ML81
+Nearest neighbor-3: A1UG51
+Nearest neighbor-4: B3EE33
+Nearest neighbor-5: O84340
 
 Query: A0A009HL96
-Nearest neighbor-1: A6KXY8
-Nearest neighbor-2: O48881
-Nearest neighbor-3: Q9Y2H1
-Nearest neighbor-4: A8FUW4
-Nearest neighbor-5: B2UX32
+Nearest neighbor-1: A5VUU3
+Nearest neighbor-2: P71239
+Nearest neighbor-3: Q57301
+Nearest neighbor-4: Q8Z9L4
+Nearest neighbor-5: B3EE33
 
 Query: A0A009I3Y5
-Nearest neighbor-1: Q5HGJ9
-Nearest neighbor-2: A8FUW4
-Nearest neighbor-3: A9N2L7
+Nearest neighbor-1: Q936E0
+Nearest neighbor-2: Q9ZUF4
+Nearest neighbor-3: A8FUW4
 Nearest neighbor-4: Q9VNH1
-Nearest neighbor-5: A4VYG8
+Nearest neighbor-5: Q6BKP5
 
 Query: A0A009PCK4
-Nearest neighbor-1: A8FUW4
-Nearest neighbor-2: Q5HGJ9
-Nearest neighbor-3: A9N2L7
+Nearest neighbor-1: Q936E0
+Nearest neighbor-2: Q9ZUF4
+Nearest neighbor-3: A8FUW4
 Nearest neighbor-4: Q9VNH1
-Nearest neighbor-5: A4VYG8
+Nearest neighbor-5: Q6BKP5
 

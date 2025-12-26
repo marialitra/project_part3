@@ -224,7 +224,7 @@ def run_protein_search(
 	"""
 
 	# Handle 'all' method by recursively calling for each algorithm
-	if method.lower() == "all":
+	if method == "all":
 		all_methods = ["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh"]
 		all_qps = {}
 		base_output = os.path.splitext(output_txt)[0]
@@ -366,31 +366,6 @@ def run_protein_search(
 		os.chdir(prev_cwd)
 
 	# 3. Run selected ANN algorithm (cosine) on protein data
-	method_lower = method.lower()
-	# if method_lower == "nlsh":
-	# 	qps = run_nlsh_pipeline(
-	# 		base_dat=base_dat,
-	# 		query_dat=query_dat,
-	# 		output_txt=output_txt,
-	# 		N=N,
-	# 		R=R,
-	# 		seed=seed,
-	# 		nlsh_index=nlsh_index,
-	# 		nlsh_T=nlsh_T,
-	# 		nlsh_m=nlsh_m,
-	# 		nlsh_imbalance=nlsh_imbalance,
-	# 		nlsh_kahip_mode=nlsh_kahip_mode,
-	# 		nlsh_layers=nlsh_layers,
-	# 		nlsh_nodes=nlsh_nodes,
-	# 		nlsh_epochs=nlsh_epochs,
-	# 		nlsh_batch_size=nlsh_batch_size,
-	# 		nlsh_lr=nlsh_lr,
-	# 	)
-
-	# 	print(f"[protein_search] Done. Results at: {output_txt}")
-
-	# 	return qps
-
 	# We invoke the C binary exactly like Part1 examples, but with -type protein
 	cmd = [
 		exe_path,
@@ -403,16 +378,16 @@ def run_protein_search(
 		"-range", "false",
 	]
 
-	if method_lower == "lsh":
+	if method == "lsh":
 		cmd.extend(["-k", str(k), "-L", str(L), "-w", str(w), "-lsh"])
 		algo = "lsh"
-	elif method_lower == "hypercube":
+	elif method == "hypercube":
 		cmd.extend(["-kproj", str(kproj), "-w", str(w), "-M", str(M), "-probes", str(probes), "-hypercube"])
 		algo = "hypercube"
-	elif method_lower == "ivfflat":
+	elif method == "ivfflat":
 		cmd.extend(["-kclusters", str(kclusters), "-nprobe", str(nprobe), "-ivfflat"])
 		algo = "ivfflat"
-	elif method_lower == "ivfpq":
+	elif method == "ivfpq":
 		cmd.extend(["-kclusters", str(kclusters), "-nprobe", str(nprobe), "-M", str(M), "-nbits", str(nbits), "-ivfpq"])
 		algo = "ivfpq"
 	else:
@@ -475,7 +450,7 @@ def main():
 	
 	# Hypercube params
 	parser.add_argument("--kproj", type=int, default=12, help="Number of projections (hypercube)")
-	parser.add_argument("-M", type=int, default=500, help="Max candidates to check (hypercube) or subvectors (ivfpq)")
+	parser.add_argument("-M", type=int, default=8, help="Max candidates to check (hypercube) or subvectors (ivfpq)")
 	parser.add_argument("--probes", type=int, default=2, help="Vertices to examine (hypercube)")
 	
 	# IVFPQ specific
@@ -494,11 +469,12 @@ def main():
 	parser.add_argument("--nlsh-lr", type=float, default=1e-3, help="Learning rate (nlsh build)")
 
 	args = parser.parse_args()
+	method_lower = args.method.lower()
 	all_qps = run_protein_search(
 		base_dat=args.d,
 		query_fasta=args.q,
 		output_txt=args.output,
-		method=args.method,
+		method=method_lower,
 		N=args.N,
 		R=args.R,
 		seed=args.seed,
@@ -524,9 +500,8 @@ def main():
 	)
 
 	# Deleting unecessary files
-	method = args.method
 	
-	if method.lower() == "all":
+	if method_lower == "all":
 		all_methods = ["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh"]
 		base_output = os.path.splitext(args.output)[0]
 		
@@ -540,13 +515,13 @@ def main():
 
 	# Print All QPS status
 	if isinstance(all_qps, dict):
-		if method.lower() == "all":
+		if method_lower == "all":
 			print("\nQPS results:")
 
 			for method, qps in all_qps.items():
-				if method.lower() == "lsh" or method.lower() == "nlsh" or method.lower() == "ivfpq":
+				if method == "lsh" or method == "nlsh" or method == "ivfpq":
 					print(f"  {method.upper():10s}: {qps}") # LSH / NLSH / IVFPQ
-				elif method.lower() == "ivfflat":
+				elif method == "ivfflat":
 					method = method[:4].upper() + method[4:]  #IVFFlat
 					print(f"  {method:10s}: {qps}") # everything else
 				else:
@@ -554,14 +529,14 @@ def main():
 	else:
 		print("\nQPS result:")
 
-		if method.lower() == "lsh" or method.lower() == "ivfpq":
-			method = method.upper()  # LSH / IVFPQ
-		elif method.lower() == "ivfflat":
-			method = method[:3].upper() + method[3:]  #IVFFlat
+		if method_lower == "lsh" or method_lower == "ivfpq":
+			method_lower = method_lower.upper()  # LSH / IVFPQ
+		elif method_lower == "ivfflat":
+			method_lower = method_lower[:3].upper() + method_lower[3:]  #IVFFlat
 		else:
-			method = method.capitalize() # everything else
+			method_lower = method_lower.capitalize() # everything else
 
-		print(f"  {method:10s}: {all_qps}")
+		print(f"  {method_lower:10s}: {all_qps}")
 
 
 	# Running BLAST command
