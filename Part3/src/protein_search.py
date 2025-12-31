@@ -202,20 +202,16 @@ def generate_per_query_report(
 				query_id = line.strip()[1:].split()[0]
 				query_ids.append(query_id)
 
-	with open(output_report, "w") as f:
-		# Global header
-		f.write("=" * 110 + "\n")
-		f.write(f"Method: {method_name}\n")
-		f.write(f"N = {topN} (Top-N size for Recall@N evaluation)\n")
-		if qps is not None and qps > 0:
-			f.write(f"QPS: {qps:.2f} | Time/query: {1.0/qps:.6f}s\n")
-		f.write("=" * 110 + "\n\n")
+	blast_qps = 1.0 / 1.5
+	blast_time_per_query = 1.5
 
+	with open(output_report, "w") as f:
 		# Iterate through each query
 		for query_id in query_ids:
-			f.write("\n" + "-" * 110 + "\n")
+			f.write("\n" + "=" * 110 + "\n")
 			f.write(f"Query: {query_id}\n")
-			f.write("-" * 110 + "\n")
+			f.write(f"N = {topN}\n")
+			f.write("=" * 110 + "\n\n")
 
 			# Get neighbors for this query from results
 			neighbors = method_results.get(query_id, [])
@@ -225,13 +221,28 @@ def generate_per_query_report(
 			# Compute recall for this query
 			if blast_top_n:
 				neighbors_in_blast = sum(1 for nid, _ in neighbors[:topN] if nid in blast_top_n)
-				recall = neighbors_in_blast / len(blast_top_n)
+				recall = neighbors_in_blast / topN
 			else:
 				recall = 0.0
 
-			f.write(f"Recall@{topN} vs BLAST Top-N: {recall:.4f}\n\n")
+			# [1] Method comparison (this method vs BLAST)
+			f.write("[1] Method comparison (per-query recall)\n")
+			f.write("-" * 110 + "\n")
+			f.write(f"{'Method':<20} | {'Time/query (s)':<15} | {'QPS':<10} | {'Recall@N':<12}\n")
+			f.write("-" * 110 + "\n")
 
-			# Table header
+			if qps is not None and qps > 0:
+				time_per_query = 1.0 / qps
+				f.write(f"{method_name:<20} | {time_per_query:>14.4f} | {qps:>9.2f} | {recall:>11.4f}\n")
+			else:
+				f.write(f"{method_name:<20} | {'N/A':>14s} | {'N/A':>9s} | {recall:>11.4f}\n")
+
+			f.write(f"{'BLAST (Ref)':<20} | {blast_time_per_query:>14.3f} | {blast_qps:>9.2f} | {1.0:>11.4f}\n")
+			f.write("-" * 110 + "\n\n")
+
+			# [2] Top-N neighbors
+			f.write("[2] Top-N neighbors\n")
+			f.write("-" * 110 + "\n")
 			f.write(
 				f"{'Rank':<6} | {'Neighbor ID':<15} | {'Distance':<12} | {'BLAST ID%':<12} | {'BLAST Top-N':<12} | {'Bio Comment':<30}\n"
 			)
@@ -241,12 +252,13 @@ def generate_per_query_report(
 			for rank, (neighbor_id, distance) in enumerate(neighbors[:topN], 1):
 				in_blast = neighbor_id in blast_top_n
 				blast_in_str = "Yes" if in_blast else "No"
-				blast_id = blast_identities.get(neighbor_id, 0.0)
+				blast_id_val = blast_identities.get(neighbor_id)
+				blast_id_str = f"{blast_id_val:>11.2f}" if blast_id_val is not None else "undetected".rjust(11)
 
 				# Bio comment logic
-				if in_blast and blast_id > 30:
+				if in_blast and blast_id_val is not None and blast_id_val > 30:
 					bio_comment = "Homolog"
-				elif in_blast and 20 < blast_id <= 30:
+				elif in_blast and blast_id_val is not None and 20 < blast_id_val <= 30:
 					bio_comment = "Remote homolog"
 				elif not in_blast:
 					bio_comment = "Possible false positive"
@@ -254,7 +266,7 @@ def generate_per_query_report(
 					bio_comment = ""
 
 				f.write(
-					f"{rank:<6} | {neighbor_id:<15} | {distance:>11.3f} | {blast_id:>11.2f} | {blast_in_str:<12} | {bio_comment:<30}\n"
+					f"{rank:<6} | {neighbor_id:<15} | {distance:>11.3f} | {blast_id_str} | {blast_in_str:<12} | {bio_comment:<30}\n"
 				)
 
 		f.write("\n" + "=" * 110 + "\n")
@@ -265,6 +277,120 @@ def generate_per_query_report(
 		f.write("=" * 110 + "\n")
 
 	print(f"[protein_search] Per-query report written to {output_report}")
+
+
+def generate_all_methods_report(
+	output_report: str,
+	query_fasta: str,
+	topN: int,
+	method_qps: Dict[str, Optional[float]],
+	method_results: Dict[str, Dict[str, List[Tuple[str, float]]]],
+	blast_results_topn: Dict[str, set],
+	blast_results_identity: Dict[str, List[Tuple[str, float]]],
+):
+	"""
+	Generate a single consolidated report for method="all" with per-query summaries and neighbors across methods.
+	Per-query recall is computed per method. The neighbor tables reuse the current per-method format.
+	"""
+	# Read all query IDs from FASTA
+	query_ids = []
+	with open(query_fasta, "r") as f:
+		for line in f:
+			if line.startswith(">"):
+				query_id = line.strip()[1:].split()[0]
+				query_ids.append(query_id)
+
+	method_display = {
+		"lsh": "Euclidean LSH",
+		"hypercube": "Hypercube",
+		"ivfflat": "IVF-Flat",
+		"ivfpq": "IVF-PQ",
+		"nlsh": "Neural LSH",
+	}
+	method_order = ["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh"]
+
+	blast_qps = 1.0 / 1.5  # reference
+	blast_time_per_query = 1.5
+
+	with open(output_report, "w") as f:
+		f.write("=" * 110 + "\n")
+		f.write("ANN Evaluation Report (method = all)\n")
+		f.write(f"Top-N = {topN}\n")
+		f.write("=" * 110 + "\n\n")
+
+		for query_id in query_ids:
+			f.write("\n" + "=" * 110 + "\n")
+			f.write(f"Query: {query_id}\n")
+			f.write(f"N = {topN}\n")
+			f.write("=" * 110 + "\n\n")
+
+			# [1] Per-query method comparison
+			f.write("[1] Method comparison (per-query recall)\n")
+			f.write("-" * 110 + "\n")
+			f.write(f"{'Method':<20} | {'Time/query (s)':<15} | {'QPS':<10} | {'Recall@N':<12}\n")
+			f.write("-" * 110 + "\n")
+
+			blast_top_n = blast_results_topn.get(query_id, set())
+
+			for m in method_order:
+				name = method_display[m]
+				qps_val = method_qps.get(m)
+				neighbors = method_results.get(m, {}).get(query_id, [])
+				if blast_top_n:
+					hits = sum(1 for nid, _ in neighbors[:topN] if nid in blast_top_n)
+					recall_q = hits / topN
+				else:
+					recall_q = 0.0
+
+				if qps_val is not None and qps_val > 0:
+					time_per_query = 1.0 / qps_val
+					f.write(f"{name:<20} | {time_per_query:>14.4f} | {qps_val:>9.2f} | {recall_q:>11.4f}\n")
+				else:
+					f.write(f"{name:<20} | {'N/A':>14s} | {'N/A':>9s} | {recall_q:>11.4f}\n")
+
+			# BLAST reference row
+			f.write(f"{'BLAST (Ref)':<20} | {blast_time_per_query:>14.3f} | {blast_qps:>9.2f} | {1.0:>11.4f}\n")
+			f.write("-" * 110 + "\n\n")
+
+			# [2] Top-N neighbors per method
+			f.write("[2] Top-N neighbors per method\n")
+			for m in method_order:
+				name = method_display[m]
+				neighbors = method_results.get(m, {}).get(query_id, [])
+				blast_identities = {tid: ident for tid, ident in blast_results_identity.get(query_id, [])}
+
+				f.write("\n" + name + "\n")
+				f.write("-" * 110 + "\n")
+				f.write(f"{'Rank':<6} | {'Neighbor ID':<15} | {'Distance':<12} | {'BLAST ID%':<12} | {'BLAST Top-N':<12} | {'Bio Comment':<30}\n")
+				f.write("-" * 110 + "\n")
+
+				for rank, (neighbor_id, distance) in enumerate(neighbors[:topN], 1):
+					in_blast = neighbor_id in blast_top_n
+					blast_in_str = "Yes" if in_blast else "No"
+					blast_id_val = blast_identities.get(neighbor_id)
+					blast_id_str = f"{blast_id_val:>11.2f}" if blast_id_val is not None else "undetected".rjust(11)
+
+					if in_blast and blast_id_val is not None and blast_id_val > 30:
+						bio_comment = "Homolog"
+					elif in_blast and blast_id_val is not None and 20 < blast_id_val <= 30:
+						bio_comment = "Remote homolog"
+					elif not in_blast:
+						bio_comment = "Possible false positive"
+					else:
+						bio_comment = ""
+
+					f.write(
+						f"{rank:<6} | {neighbor_id:<15} | {distance:>11.3f} | {blast_id_str} | {blast_in_str:<12} | {bio_comment:<30}\n"
+					)
+
+			f.write("\n" + "=" * 110 + "\n")
+			f.write(
+				"Note: Distance values from embedding space (cosine-based). "
+				"BLAST ID% from BLAST results. Bio Comment inferred from BLAST identity thresholds.\n"
+			)
+			f.write("=" * 110 + "\n\n")
+
+	print(f"[protein_search] Consolidated all-methods report written to {output_report}")
 
 
 
@@ -853,7 +979,7 @@ def main():
 		all_methods_display = ["Euclidean LSH", "Hypercube", "IVF-Flat", "IVF-PQ", "Neural LSH"]
 		base_output = os.path.splitext(args.output)[0]
 
-		print("\nRecall results:")
+		print("\nRecall results (average, for logging only):")
 		method_recall = {}
 		method_results = {}
 
@@ -876,20 +1002,17 @@ def main():
 		# Parse BLAST top-N
 		blast_gt = parse_blast_tsv(blast_results, args.N)
 
-		# Generate per-query reports for each method
-		for algo, algo_display in zip(all_methods, all_methods_display):
-			report_path = f"{base_output}_{algo}_REPORT.txt"
-			generate_per_query_report(
-				output_report=report_path,
-				query_fasta=args.q,
-				topN=args.N,
-				method_name=algo_display,
-				method_key=algo,
-				qps=all_qps.get(algo),
-				method_results=method_results.get(algo, {}),
-				blast_results_topn=blast_gt,
-				blast_results_identity=blast_identity,
-			)
+		# Generate a single consolidated report for all methods
+		report_path = base_output + "_REPORT.txt"
+		generate_all_methods_report(
+			output_report=report_path,
+			query_fasta=args.q,
+			topN=args.N,
+			method_qps=all_qps,
+			method_results=method_results,
+			blast_results_topn=blast_gt,
+			blast_results_identity=blast_identity,
+		)
 	else:
 		mean_recall, _ = compute_recall(blast_tsv=blast_results, ann_txt=args.output, topN=args.N)
 		print(f"\nRecall@{args.N} (average): {mean_recall:.4f}")

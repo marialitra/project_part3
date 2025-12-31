@@ -1,141 +1,215 @@
-==============================================================================================================
-Method: Nlsh
-N = 10 (Top-N size for Recall@N evaluation)
-QPS: 44.93 | Time/query: 0.022258s
-==============================================================================================================
 
-
---------------------------------------------------------------------------------------------------------------
+==============================================================================================================
 Query: A0A009I3Y5
---------------------------------------------------------------------------------------------------------------
-Recall@10 vs BLAST Top-N: 0.0000
+N = 10
+==============================================================================================================
 
+[1] Method comparison (per-query recall)
+--------------------------------------------------------------------------------------------------------------
+Method               | Time/query (s)  | QPS        | Recall@N    
+--------------------------------------------------------------------------------------------------------------
+Nlsh                 |         0.0427 |     23.41 |      0.0000
+BLAST (Ref)          |          1.500 |      0.67 |      1.0000
+--------------------------------------------------------------------------------------------------------------
+
+[2] Top-N neighbors
+--------------------------------------------------------------------------------------------------------------
 Rank   | Neighbor ID     | Distance     | BLAST ID%    | BLAST Top-N  | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | A5UG81          |       0.347 |        0.00 | No           | Possible false positive       
-2      | P44033          |       0.361 |        0.00 | No           | Possible false positive       
-3      | Q8EKA0          |       0.388 |        0.00 | No           | Possible false positive       
-4      | B2K7I7          |       0.394 |        0.00 | No           | Possible false positive       
-5      | Q12SQ2          |       0.403 |        0.00 | No           | Possible false positive       
-6      | B4F0D4          |       0.407 |        0.00 | No           | Possible false positive       
-7      | A3DA85          |       0.410 |        0.00 | No           | Possible false positive       
-8      | Q8EJX6          |       0.412 |        0.00 | No           | Possible false positive       
-9      | A1RPL0          |       0.418 |        0.00 | No           | Possible false positive       
-10     | P47448          |       0.418 |        0.00 | No           | Possible false positive       
+1      | P14181          |       0.365 |  undetected | No           | Possible false positive       
+2      | Q4QLU9          |       0.411 |  undetected | No           | Possible false positive       
+3      | P47448          |       0.418 |  undetected | No           | Possible false positive       
+4      | Q8EIL1          |       0.424 |  undetected | No           | Possible false positive       
+5      | C1EQQ8          |       0.424 |  undetected | No           | Possible false positive       
+6      | B9IWP6          |       0.428 |  undetected | No           | Possible false positive       
+7      | Q635P6          |       0.429 |  undetected | No           | Possible false positive       
+8      | Q2NIP7          |       0.429 |  undetected | No           | Possible false positive       
+9      | Q7VP87          |       0.429 |  undetected | No           | Possible false positive       
+10     | Q54KZ8          |       0.429 |  undetected | No           | Possible false positive       
 
---------------------------------------------------------------------------------------------------------------
+==============================================================================================================
 Query: A0A009PCK4
---------------------------------------------------------------------------------------------------------------
-Recall@10 vs BLAST Top-N: 0.0000
+N = 10
+==============================================================================================================
 
+[1] Method comparison (per-query recall)
+--------------------------------------------------------------------------------------------------------------
+Method               | Time/query (s)  | QPS        | Recall@N    
+--------------------------------------------------------------------------------------------------------------
+Nlsh                 |         0.0427 |     23.41 |      0.0000
+BLAST (Ref)          |          1.500 |      0.67 |      1.0000
+--------------------------------------------------------------------------------------------------------------
+
+[2] Top-N neighbors
+--------------------------------------------------------------------------------------------------------------
 Rank   | Neighbor ID     | Distance     | BLAST ID%    | BLAST Top-N  | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | A5UG81          |       0.341 |        0.00 | No           | Possible false positive       
-2      | P44033          |       0.357 |        0.00 | No           | Possible false positive       
-3      | Q8EKA0          |       0.389 |        0.00 | No           | Possible false positive       
-4      | B2K7I7          |       0.397 |        0.00 | No           | Possible false positive       
-5      | Q12SQ2          |       0.403 |        0.00 | No           | Possible false positive       
-6      | B4F0D4          |       0.407 |        0.00 | No           | Possible false positive       
-7      | A3DA85          |       0.411 |        0.00 | No           | Possible false positive       
-8      | Q8EJX6          |       0.412 |        0.00 | No           | Possible false positive       
-9      | A1RPL0          |       0.417 |        0.00 | No           | Possible false positive       
-10     | P47448          |       0.418 |        0.00 | No           | Possible false positive       
+1      | P14181          |       0.361 |  undetected | No           | Possible false positive       
+2      | Q4QLU9          |       0.411 |  undetected | No           | Possible false positive       
+3      | P47448          |       0.418 |  undetected | No           | Possible false positive       
+4      | C1EQQ8          |       0.419 |  undetected | No           | Possible false positive       
+5      | Q635P6          |       0.424 |  undetected | No           | Possible false positive       
+6      | B9IWP6          |       0.424 |  undetected | No           | Possible false positive       
+7      | Q8EIL1          |       0.427 |  undetected | No           | Possible false positive       
+8      | Q2NIP7          |       0.427 |  undetected | No           | Possible false positive       
+9      | Q6C2A3          |       0.428 |  undetected | No           | Possible false positive       
+10     | Q9CP74          |       0.429 |  undetected | No           | Possible false positive       
 
---------------------------------------------------------------------------------------------------------------
+==============================================================================================================
 Query: A0A001
---------------------------------------------------------------------------------------------------------------
-Recall@10 vs BLAST Top-N: 0.1000
+N = 10
+==============================================================================================================
 
+[1] Method comparison (per-query recall)
+--------------------------------------------------------------------------------------------------------------
+Method               | Time/query (s)  | QPS        | Recall@N    
+--------------------------------------------------------------------------------------------------------------
+Nlsh                 |         0.0427 |     23.41 |      0.1000
+BLAST (Ref)          |          1.500 |      0.67 |      1.0000
+--------------------------------------------------------------------------------------------------------------
+
+[2] Top-N neighbors
+--------------------------------------------------------------------------------------------------------------
 Rank   | Neighbor ID     | Distance     | BLAST ID%    | BLAST Top-N  | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
 1      | P9WQJ3          |       0.299 |       25.31 | No           | Possible false positive       
 2      | Q13BH6          |       0.319 |       32.72 | No           | Possible false positive       
-3      | Q9ZEP3          |       0.391 |        0.00 | No           | Possible false positive       
-4      | A0K739          |       0.399 |       35.64 | No           | Possible false positive       
-5      | Q51719          |       0.401 |       30.19 | No           | Possible false positive       
-6      | Q8P8W4          |       0.401 |       36.10 | Yes          | Homolog                       
-7      | Q3JSR6          |       0.407 |       37.06 | No           | Possible false positive       
+3      | Q03024          |       0.330 |       38.46 | No           | Possible false positive       
+4      | Q20Z38          |       0.343 |       23.54 | No           | Possible false positive       
+5      | A0K739          |       0.399 |       35.64 | No           | Possible false positive       
+6      | Q51719          |       0.401 |       30.19 | No           | Possible false positive       
+7      | Q8P8W4          |       0.401 |       36.10 | Yes          | Homolog                       
 8      | P23886          |       0.410 |       32.14 | No           | Possible false positive       
-9      | Q82MV1          |       0.425 |       33.33 | No           | Possible false positive       
-10     | A6W3V7          |       0.429 |        0.00 | No           | Possible false positive       
+9      | Q21BF6          |       0.415 |       32.75 | No           | Possible false positive       
+10     | O70595          |       0.417 |       27.54 | No           | Possible false positive       
 
---------------------------------------------------------------------------------------------------------------
+==============================================================================================================
 Query: A0A002
---------------------------------------------------------------------------------------------------------------
-Recall@10 vs BLAST Top-N: 0.1000
+N = 10
+==============================================================================================================
 
+[1] Method comparison (per-query recall)
+--------------------------------------------------------------------------------------------------------------
+Method               | Time/query (s)  | QPS        | Recall@N    
+--------------------------------------------------------------------------------------------------------------
+Nlsh                 |         0.0427 |     23.41 |      0.1000
+BLAST (Ref)          |          1.500 |      0.67 |      1.0000
+--------------------------------------------------------------------------------------------------------------
+
+[2] Top-N neighbors
+--------------------------------------------------------------------------------------------------------------
 Rank   | Neighbor ID     | Distance     | BLAST ID%    | BLAST Top-N  | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
 1      | P9WQJ3          |       0.310 |       27.74 | Yes          | Remote homolog                
 2      | Q13BH6          |       0.334 |       29.24 | No           | Possible false positive       
-3      | P23886          |       0.408 |       27.80 | No           | Possible false positive       
-4      | Q8P8W4          |       0.409 |       27.78 | No           | Possible false positive       
-5      | Q51719          |       0.418 |       30.85 | No           | Possible false positive       
-6      | Q82MV1          |       0.422 |       29.52 | No           | Possible false positive       
-7      | A0K739          |       0.428 |       32.91 | No           | Possible false positive       
-8      | A6W3V7          |       0.434 |        0.00 | No           | Possible false positive       
-9      | Q3JSR6          |       0.444 |       32.88 | No           | Possible false positive       
-10     | Q60AI1          |       0.445 |       33.59 | No           | Possible false positive       
+3      | Q03024          |       0.347 |       31.31 | No           | Possible false positive       
+4      | Q20Z38          |       0.357 |       28.29 | No           | Possible false positive       
+5      | P23886          |       0.408 |       27.80 | No           | Possible false positive       
+6      | Q8P8W4          |       0.409 |       27.78 | No           | Possible false positive       
+7      | Q51719          |       0.418 |       30.85 | No           | Possible false positive       
+8      | Q82MV1          |       0.422 |       29.52 | No           | Possible false positive       
+9      | Q28433          |       0.422 |       27.38 | No           | Possible false positive       
+10     | A0K739          |       0.428 |       32.91 | No           | Possible false positive       
 
---------------------------------------------------------------------------------------------------------------
+==============================================================================================================
 Query: A0A009HL96
---------------------------------------------------------------------------------------------------------------
-Recall@10 vs BLAST Top-N: 0.2000
+N = 10
+==============================================================================================================
 
+[1] Method comparison (per-query recall)
+--------------------------------------------------------------------------------------------------------------
+Method               | Time/query (s)  | QPS        | Recall@N    
+--------------------------------------------------------------------------------------------------------------
+Nlsh                 |         0.0427 |     23.41 |      0.4000
+BLAST (Ref)          |          1.500 |      0.67 |      1.0000
+--------------------------------------------------------------------------------------------------------------
+
+[2] Top-N neighbors
+--------------------------------------------------------------------------------------------------------------
 Rank   | Neighbor ID     | Distance     | BLAST ID%    | BLAST Top-N  | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | Q5HI09          |       0.180 |       26.13 | No           | Possible false positive       
-2      | P33112          |       0.181 |       30.84 | No           | Possible false positive       
-3      | Q99VW2          |       0.186 |       26.13 | No           | Possible false positive       
-4      | Q8CQ37          |       0.190 |       27.93 | No           | Possible false positive       
-5      | Q99RR6          |       0.211 |       31.28 | No           | Possible false positive       
-6      | P28257          |       0.219 |       32.75 | Yes          | Homolog                       
-7      | Q9AE24          |       0.220 |       27.63 | No           | Possible false positive       
-8      | P0CAW8          |       0.221 |       31.44 | No           | Possible false positive       
-9      | A6WZ81          |       0.238 |       33.19 | No           | Possible false positive       
-10     | A0A0H2UQ68      |       0.271 |       37.29 | Yes          | Homolog                       
+1      | P45189          |       0.249 |       34.19 | Yes          | Homolog                       
+2      | Q9KM23          |       0.324 |       32.74 | No           | Possible false positive       
+3      | Q1XDE4          |       0.325 |       30.87 | No           | Possible false positive       
+4      | P26319          |       0.340 |       29.47 | No           | Possible false positive       
+5      | A0A0H3NGY1      |       0.342 |       30.70 | Yes          | Homolog                       
+6      | P0AA17          |       0.342 |       30.70 | Yes          | Homolog                       
+7      | P96686          |       0.361 |       31.03 | No           | Possible false positive       
+8      | Q55890          |       0.387 |       29.69 | No           | Possible false positive       
+9      | P44845          |       0.389 |       22.62 | No           | Possible false positive       
+10     | P23620          |       0.414 |       34.48 | Yes          | Homolog                       
 
---------------------------------------------------------------------------------------------------------------
+==============================================================================================================
 Query: A0A009HLV9
---------------------------------------------------------------------------------------------------------------
-Recall@10 vs BLAST Top-N: 0.2000
+N = 10
+==============================================================================================================
 
+[1] Method comparison (per-query recall)
+--------------------------------------------------------------------------------------------------------------
+Method               | Time/query (s)  | QPS        | Recall@N    
+--------------------------------------------------------------------------------------------------------------
+Nlsh                 |         0.0427 |     23.41 |      0.4000
+BLAST (Ref)          |          1.500 |      0.67 |      1.0000
+--------------------------------------------------------------------------------------------------------------
+
+[2] Top-N neighbors
+--------------------------------------------------------------------------------------------------------------
 Rank   | Neighbor ID     | Distance     | BLAST ID%    | BLAST Top-N  | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | A5FRK7          |       0.249 |        0.00 | No           | Possible false positive       
-2      | Q03YJ6          |       0.252 |        0.00 | No           | Possible false positive       
-3      | P71229          |       0.259 |       38.61 | Yes          | Homolog                       
-4      | B0JY77          |       0.260 |        0.00 | No           | Possible false positive       
-5      | Q15RN6          |       0.262 |        0.00 | No           | Possible false positive       
-6      | Q8DEV2          |       0.269 |        0.00 | No           | Possible false positive       
-7      | Q83BE0          |       0.275 |        0.00 | No           | Possible false positive       
-8      | Q9KU18          |       0.277 |        0.00 | No           | Possible false positive       
-9      | P0DF50          |       0.278 |        0.00 | No           | Possible false positive       
-10     | A4STH5          |       0.282 |       39.41 | Yes          | Homolog                       
+1      | P28787          |       0.141 |       62.53 | Yes          | Homolog                       
+2      | O87455          |       0.216 |       39.56 | Yes          | Homolog                       
+3      | Q06065          |       0.221 |       41.34 | Yes          | Homolog                       
+4      | Q5E3W8          |       0.222 |       44.12 | No           | Possible false positive       
+5      | P36219          |       0.223 |       40.87 | No           | Possible false positive       
+6      | Q3K999          |       0.226 |       37.68 | No           | Possible false positive       
+7      | A1KU52          |       0.237 |  undetected | No           | Possible false positive       
+8      | P23747          |       0.238 |       40.00 | Yes          | Homolog                       
+9      | P59402          |       0.242 |       40.33 | No           | Possible false positive       
+10     | P37931          |       0.243 |       41.63 | No           | Possible false positive       
 
---------------------------------------------------------------------------------------------------------------
+==============================================================================================================
 Query: A0A009HN45
---------------------------------------------------------------------------------------------------------------
-Recall@10 vs BLAST Top-N: 0.2000
+N = 10
+==============================================================================================================
 
+[1] Method comparison (per-query recall)
+--------------------------------------------------------------------------------------------------------------
+Method               | Time/query (s)  | QPS        | Recall@N    
+--------------------------------------------------------------------------------------------------------------
+Nlsh                 |         0.0427 |     23.41 |      0.3000
+BLAST (Ref)          |          1.500 |      0.67 |      1.0000
+--------------------------------------------------------------------------------------------------------------
+
+[2] Top-N neighbors
+--------------------------------------------------------------------------------------------------------------
 Rank   | Neighbor ID     | Distance     | BLAST ID%    | BLAST Top-N  | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | A6QKD8          |       0.143 |        0.00 | No           | Possible false positive       
-2      | A7MSB2          |       0.144 |       36.43 | Yes          | Homolog                       
-3      | Q3K063          |       0.152 |        0.00 | No           | Possible false positive       
-4      | Q9ZDW2          |       0.153 |        0.00 | No           | Possible false positive       
-5      | Q1MQP3          |       0.154 |        0.00 | No           | Possible false positive       
-6      | Q7VJC6          |       0.160 |        0.00 | No           | Possible false positive       
-7      | B0BT63          |       0.160 |       33.59 | Yes          | Homolog                       
-8      | Q92H92          |       0.163 |        0.00 | No           | Possible false positive       
-9      | P52126          |       0.163 |        0.00 | No           | Possible false positive       
-10     | Q0HMR2          |       0.165 |       23.36 | No           | Possible false positive       
+1      | A7MSB2          |       0.144 |       36.43 | Yes          | Homolog                       
+2      | Q9ZDW2          |       0.153 |  undetected | No           | Possible false positive       
+3      | B0BT63          |       0.160 |       33.59 | Yes          | Homolog                       
+4      | P52126          |       0.163 |  undetected | No           | Possible false positive       
+5      | Q0HMR2          |       0.165 |       23.36 | No           | Possible false positive       
+6      | Q99ZA5          |       0.165 |  undetected | No           | Possible false positive       
+7      | Q1JBD1          |       0.165 |  undetected | No           | Possible false positive       
+8      | Q0HR19          |       0.165 |       23.68 | Yes          | Remote homolog                
+9      | P0C9B2          |       0.171 |  undetected | No           | Possible false positive       
+10     | Q5X0E6          |       0.172 |  undetected | No           | Possible false positive       
 
---------------------------------------------------------------------------------------------------------------
+==============================================================================================================
 Query: A0A009HQC9
---------------------------------------------------------------------------------------------------------------
-Recall@10 vs BLAST Top-N: 0.8000
+N = 10
+==============================================================================================================
 
+[1] Method comparison (per-query recall)
+--------------------------------------------------------------------------------------------------------------
+Method               | Time/query (s)  | QPS        | Recall@N    
+--------------------------------------------------------------------------------------------------------------
+Nlsh                 |         0.0427 |     23.41 |      0.8000
+BLAST (Ref)          |          1.500 |      0.67 |      1.0000
+--------------------------------------------------------------------------------------------------------------
+
+[2] Top-N neighbors
+--------------------------------------------------------------------------------------------------------------
 Rank   | Neighbor ID     | Distance     | BLAST ID%    | BLAST Top-N  | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
 1      | Q0HR19          |       0.107 |       44.55 | Yes          | Homolog                       
@@ -149,77 +223,117 @@ Rank   | Neighbor ID     | Distance     | BLAST ID%    | BLAST Top-N  | Bio Comm
 9      | B5FI41          |       0.128 |       42.27 | Yes          | Homolog                       
 10     | Q5PDF0          |       0.129 |       42.27 | Yes          | Homolog                       
 
---------------------------------------------------------------------------------------------------------------
+==============================================================================================================
 Query: A0A009HPM0
---------------------------------------------------------------------------------------------------------------
-Recall@10 vs BLAST Top-N: 0.2000
+N = 10
+==============================================================================================================
 
+[1] Method comparison (per-query recall)
+--------------------------------------------------------------------------------------------------------------
+Method               | Time/query (s)  | QPS        | Recall@N    
+--------------------------------------------------------------------------------------------------------------
+Nlsh                 |         0.0427 |     23.41 |      0.2000
+BLAST (Ref)          |          1.500 |      0.67 |      1.0000
+--------------------------------------------------------------------------------------------------------------
+
+[2] Top-N neighbors
+--------------------------------------------------------------------------------------------------------------
 Rank   | Neighbor ID     | Distance     | BLAST ID%    | BLAST Top-N  | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
 1      | Q612F5          |       0.274 |       40.67 | Yes          | Homolog                       
 2      | Q5I0C3          |       0.281 |       46.80 | Yes          | Homolog                       
-3      | P44440          |       0.302 |        0.00 | No           | Possible false positive       
-4      | Q9CP74          |       0.305 |        0.00 | No           | Possible false positive       
-5      | Q8DXM9          |       0.306 |        0.00 | No           | Possible false positive       
-6      | A5F3L5          |       0.306 |        0.00 | No           | Possible false positive       
-7      | P57029          |       0.307 |        0.00 | No           | Possible false positive       
-8      | P07244          |       0.307 |        0.00 | No           | Possible false positive       
-9      | A3DA85          |       0.311 |        0.00 | No           | Possible false positive       
-10     | A8GKD1          |       0.316 |        0.00 | No           | Possible false positive       
+3      | Q9CMJ8          |       0.293 |  undetected | No           | Possible false positive       
+4      | Q12KL2          |       0.293 |  undetected | No           | Possible false positive       
+5      | P44440          |       0.302 |  undetected | No           | Possible false positive       
+6      | Q9CP74          |       0.305 |  undetected | No           | Possible false positive       
+7      | Q8DXM9          |       0.306 |  undetected | No           | Possible false positive       
+8      | P57029          |       0.307 |  undetected | No           | Possible false positive       
+9      | P07244          |       0.307 |  undetected | No           | Possible false positive       
+10     | A8GKD1          |       0.316 |  undetected | No           | Possible false positive       
 
---------------------------------------------------------------------------------------------------------------
+==============================================================================================================
 Query: A0A009IB02
---------------------------------------------------------------------------------------------------------------
-Recall@10 vs BLAST Top-N: 0.5714
+N = 10
+==============================================================================================================
 
+[1] Method comparison (per-query recall)
+--------------------------------------------------------------------------------------------------------------
+Method               | Time/query (s)  | QPS        | Recall@N    
+--------------------------------------------------------------------------------------------------------------
+Nlsh                 |         0.0427 |     23.41 |      0.5000
+BLAST (Ref)          |          1.500 |      0.67 |      1.0000
+--------------------------------------------------------------------------------------------------------------
+
+[2] Top-N neighbors
+--------------------------------------------------------------------------------------------------------------
 Rank   | Neighbor ID     | Distance     | BLAST ID%    | BLAST Top-N  | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
 1      | P10802          |       0.276 |       45.82 | Yes          | Homolog                       
-2      | P49786          |       0.461 |        0.00 | No           | Possible false positive       
+2      | P11961          |       0.459 |       33.33 | Yes          | Homolog                       
 3      | P43874          |       0.510 |       39.58 | No           | Possible false positive       
 4      | P29337          |       0.533 |       34.48 | Yes          | Homolog                       
-5      | P02904          |       0.547 |       36.67 | No           | Possible false positive       
-6      | Q06881          |       0.556 |       30.36 | Yes          | Homolog                       
-7      | P0ABE1          |       0.561 |       29.09 | No           | Possible false positive       
-8      | Q68XI8          |       0.576 |       27.54 | Yes          | Remote homolog                
-9      | Q6MMS6          |       0.581 |        0.00 | No           | Possible false positive       
-10     | B5XWP9          |       0.585 |        0.00 | No           | Possible false positive       
+5      | Q06881          |       0.556 |       30.36 | Yes          | Homolog                       
+6      | P0ABE1          |       0.561 |       29.09 | No           | Possible false positive       
+7      | Q68XI8          |       0.576 |       27.54 | Yes          | Remote homolog                
+8      | Q6MMS6          |       0.581 |  undetected | No           | Possible false positive       
+9      | P57003          |       0.597 |  undetected | No           | Possible false positive       
+10     | B4T0Q0          |       0.597 |  undetected | No           | Possible false positive       
 
---------------------------------------------------------------------------------------------------------------
+==============================================================================================================
 Query: A0A010Q3W2
---------------------------------------------------------------------------------------------------------------
-Recall@10 vs BLAST Top-N: 0.0000
+N = 10
+==============================================================================================================
 
+[1] Method comparison (per-query recall)
+--------------------------------------------------------------------------------------------------------------
+Method               | Time/query (s)  | QPS        | Recall@N    
+--------------------------------------------------------------------------------------------------------------
+Nlsh                 |         0.0427 |     23.41 |      0.0000
+BLAST (Ref)          |          1.500 |      0.67 |      1.0000
+--------------------------------------------------------------------------------------------------------------
+
+[2] Top-N neighbors
+--------------------------------------------------------------------------------------------------------------
 Rank   | Neighbor ID     | Distance     | BLAST ID%    | BLAST Top-N  | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | P0CS29          |       0.263 |        0.00 | No           | Possible false positive       
-2      | A2QI22          |       0.268 |       25.42 | No           | Possible false positive       
-3      | A1CXL0          |       0.271 |       33.33 | No           | Possible false positive       
-4      | A2RAG5          |       0.276 |        0.00 | No           | Possible false positive       
+1      | P0CS56          |       0.253 |  undetected | No           | Possible false positive       
+2      | Q2UUT4          |       0.254 |  undetected | No           | Possible false positive       
+3      | A2QI22          |       0.268 |       25.42 | No           | Possible false positive       
+4      | A1CXL0          |       0.271 |       33.33 | No           | Possible false positive       
 5      | O35828          |       0.280 |       26.32 | No           | Possible false positive       
-6      | Q9SU78          |       0.286 |       27.91 | No           | Possible false positive       
-7      | A1CBB8          |       0.286 |        0.00 | No           | Possible false positive       
+6      | Q9P7C0          |       0.285 |       37.93 | No           | Possible false positive       
+7      | Q9SU78          |       0.286 |       27.91 | No           | Possible false positive       
 8      | Q9NRL3          |       0.287 |       22.70 | No           | Possible false positive       
-9      | Q652L2          |       0.288 |       34.92 | No           | Possible false positive       
-10     | Q756D0          |       0.291 |       22.22 | No           | Possible false positive       
+9      | Q5NVM2          |       0.298 |       41.94 | No           | Possible false positive       
+10     | Q20059          |       0.298 |       27.78 | No           | Possible false positive       
 
---------------------------------------------------------------------------------------------------------------
+==============================================================================================================
 Query: A0A010Q8R4
---------------------------------------------------------------------------------------------------------------
-Recall@10 vs BLAST Top-N: 0.0000
+N = 10
+==============================================================================================================
 
+[1] Method comparison (per-query recall)
+--------------------------------------------------------------------------------------------------------------
+Method               | Time/query (s)  | QPS        | Recall@N    
+--------------------------------------------------------------------------------------------------------------
+Nlsh                 |         0.0427 |     23.41 |      0.0000
+BLAST (Ref)          |          1.500 |      0.67 |      1.0000
+--------------------------------------------------------------------------------------------------------------
+
+[2] Top-N neighbors
+--------------------------------------------------------------------------------------------------------------
 Rank   | Neighbor ID     | Distance     | BLAST ID%    | BLAST Top-N  | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | Q9P4R5          |       0.249 |        0.00 | No           | Possible false positive       
-2      | Q652L2          |       0.253 |        0.00 | No           | Possible false positive       
-3      | P0CS29          |       0.260 |        0.00 | No           | Possible false positive       
-4      | A1DIN7          |       0.269 |        0.00 | No           | Possible false positive       
-5      | A2QGF0          |       0.276 |        0.00 | No           | Possible false positive       
-6      | Q6CXX3          |       0.278 |       26.09 | No           | Possible false positive       
-7      | A0A348AXX6      |       0.280 |        0.00 | No           | Possible false positive       
-8      | A1CBB8          |       0.282 |        0.00 | No           | Possible false positive       
-9      | A2RAG5          |       0.286 |        0.00 | No           | Possible false positive       
-10     | B8MJJ8          |       0.286 |        0.00 | No           | Possible false positive       
+1      | P0CS56          |       0.255 |  undetected | No           | Possible false positive       
+2      | Q5NVM2          |       0.276 |  undetected | No           | Possible false positive       
+3      | Q2UUT4          |       0.278 |  undetected | No           | Possible false positive       
+4      | C3VEQ3          |       0.279 |  undetected | No           | Possible false positive       
+5      | A0A348AXX6      |       0.280 |  undetected | No           | Possible false positive       
+6      | Q9P7C0          |       0.286 |  undetected | No           | Possible false positive       
+7      | Q4PAR1          |       0.288 |  undetected | No           | Possible false positive       
+8      | Q9SU78          |       0.289 |       26.39 | No           | Possible false positive       
+9      | E4UPA0          |       0.295 |  undetected | No           | Possible false positive       
+10     | Q4WVA5          |       0.295 |  undetected | No           | Possible false positive       
 
 ==============================================================================================================
 Note: Distance values from embedding space (cosine-based). BLAST ID% from BLAST results. Bio Comment inferred from BLAST identity thresholds.
