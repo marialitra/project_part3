@@ -17,7 +17,7 @@ search:
 	-o output/search/results.txt \
 	-method all
 # Possible Inputs:
-# -method <all|lsh|hypercube|ivfflat|ivfpq>
+# -method <all|lsh|hypercube|ivfflat|ivfpq|neural>
 
 # BLAST: build SwissProt DB and run blastp on targets
 blast_db:

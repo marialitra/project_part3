@@ -37,3 +37,5 @@ not called ids.txt but verctors_ids.txt, problem?
 7.) it was running for nlsh but it is not an  option so i fixed it not to run for it
 
 now lets do grid search to compute hyperparameters. N=[1,10,50], seed =42, kculsters = [200, 500, 1000, 5000], nprobe =[50, 100, 250, 500, 1500] only if nprobe < kclusters, k =[2,4,6], L = [5, 10, 15], w = [20, 40, 80, 120, 300, 500, 1000], kproj =[12, 14, 16, 20], M= [2000, 5000, 10000], probes=[100, 250, 500], nbits=8, ivfpq-M =[8,16], nlsh-T = [1000, 1500], nlsh-m=[1800, 2000, 2200], nlsh-layers =[5,10,15], nlsh-nodes = [128, 256, 512], epochs = 8, nlsh-batch-size = 512
+
+8.) we thought that the extra command about the nueral lsh will be neural as it says in the pdf of the assignment (in the lab's pdf it does not say so)

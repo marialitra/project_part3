@@ -221,25 +221,25 @@ def generate_per_query_report(
 				recall = 0.0
 
 			# [1] Method comparison (this method vs BLAST)
-			f.write("[1] Method comparison (per-query recall)\n")
+			f.write("[1] Brief Method Comparison\n")
 			f.write("-" * 110 + "\n")
-			f.write(f"{'Method':<20} | {'Time/query (s)':<15} | {'QPS':<10} | {'Recall@N':<12}\n")
+			f.write(f"{'Method':<20} | {'Time/query (s)':<15} | {'QPS':<10} | {'Recall@N vs BLAST Top-N':<25}\n")
 			f.write("-" * 110 + "\n")
 
 			if qps is not None and qps > 0:
 				time_per_query = 1.0 / qps
-				f.write(f"{method_name:<20} | {time_per_query:>14.4f} | {qps:>9.2f} | {recall:>11.4f}\n")
+				f.write(f"{method_name:<20} | {time_per_query:<15.3f} | {qps:<10.3f} | {recall:<25.2f}\n")
 			else:
-				f.write(f"{method_name:<20} | {'N/A':>14s} | {'N/A':>9s} | {recall:>11.4f}\n")
+				f.write(f"{method_name:<20} | {'N/A':<15s} | {'N/A':<10s} | {recall:<25.2f}\n")
 
-			f.write(f"{'BLAST (Ref)':<20} | {blast_time_per_query:>14.3f} | {blast_qps:>9.2f} | {1.0:>11.4f}\n")
+			f.write(f"{'BLAST (Ref)':<20} | {blast_time_per_query:<15.3f} | {blast_qps:<10.3f} | {1.00:<25.2f}\n")
 			f.write("-" * 110 + "\n\n")
 
 			# [2] Top-N neighbors
 			f.write("[2] Top-N neighbors\n")
 			f.write("-" * 110 + "\n")
 			f.write(
-				f"{'Rank':<6} | {'Neighbor ID':<15} | {'Distance':<12} | {'BLAST ID%':<12} | {'BLAST Top-N':<12} | {'Bio Comment':<30}\n"
+				f"{'Rank':<6} | {'Neighbor ID':<15} | {'Distance':<12} | {'BLAST Identity':<17} | {'In BLAST Top-N?':<17} | {'Bio Comment':<30}\n"
 			)
 			f.write("-" * 110 + "\n")
 
@@ -248,7 +248,7 @@ def generate_per_query_report(
 				in_blast = neighbor_id in blast_top_n
 				blast_in_str = "Yes" if in_blast else "No"
 				blast_id_val = blast_identities.get(neighbor_id)
-				blast_id_str = f"{blast_id_val:>11.2f}" if blast_id_val is not None else "undetected".rjust(11)
+				blast_id_str = f"{blast_id_val:<17f}" if blast_id_val is not None else "undetected".ljust(17)
 
 				# Bio comment logic
 				if in_blast and blast_id_val is not None and blast_id_val > 30:
@@ -261,7 +261,7 @@ def generate_per_query_report(
 					bio_comment = ""
 
 				f.write(
-					f"{rank:<6} | {neighbor_id:<15} | {distance:>11.3f} | {blast_id_str} | {blast_in_str:<12} | {bio_comment:<30}\n"
+					f"{rank:<6} | {neighbor_id:<15} | {distance:<12.2f} | {blast_id_str} | {blast_in_str:<17} | {bio_comment:<30}\n"
 				)
 
 		f.write("\n" + "=" * 110 + "\n")
@@ -320,9 +320,9 @@ def generate_all_methods_report(
 			f.write("=" * 110 + "\n\n")
 
 			# [1] Per-query method comparison
-			f.write("[1] Method comparison (per-query recall)\n")
+			f.write("[1] Brief Method Comparison\n")
 			f.write("-" * 110 + "\n")
-			f.write(f"{'Method':<20} | {'Time/query (s)':<15} | {'QPS':<10} | {'Recall@N':<12}\n")
+			f.write(f"{'Method':<20} | {'Time/query (s)':<15} | {'QPS':<10} | {'Recall@N vs BLAST Top-N':<25}\n")
 			f.write("-" * 110 + "\n")
 
 			blast_top_n = blast_results_topn.get(query_id, set())
@@ -339,12 +339,12 @@ def generate_all_methods_report(
 
 				if qps_val is not None and qps_val > 0:
 					time_per_query = 1.0 / qps_val
-					f.write(f"{name:<20} | {time_per_query:>14.4f} | {qps_val:>9.2f} | {recall_q:>11.4f}\n")
+					f.write(f"{name:<20} | {time_per_query:<15.3f} | {qps_val:<10.3f} | {recall_q:<25.2f}\n")
 				else:
-					f.write(f"{name:<20} | {'N/A':>14s} | {'N/A':>9s} | {recall_q:>11.4f}\n")
+					f.write(f"{name:<20} | {'N/A':<14s} | {'N/A':<10s} | {recall_q:<25.2f}\n")
 
 			# BLAST reference row
-			f.write(f"{'BLAST (Ref)':<20} | {blast_time_per_query:>14.3f} | {blast_qps:>9.2f} | {1.0:>11.4f}\n")
+			f.write(f"{'BLAST (Ref)':<20} | {blast_time_per_query:<15.3f} | {blast_qps:<10.3f} | {1.00:<25.2f}\n")
 			f.write("-" * 110 + "\n\n")
 
 			# [2] Top-N neighbors per method
@@ -356,14 +356,14 @@ def generate_all_methods_report(
 
 				f.write("\n" + name + "\n")
 				f.write("-" * 110 + "\n")
-				f.write(f"{'Rank':<6} | {'Neighbor ID':<15} | {'Distance':<12} | {'BLAST ID%':<12} | {'BLAST Top-N':<12} | {'Bio Comment':<30}\n")
+				f.write(f"{'Rank':<6} | {'Neighbor ID':<15} | {'Distance':<12} | {'BLAST Identity':<17} | {'In BLAST Top-N?':<17} | {'Bio Comment':<30}\n")
 				f.write("-" * 110 + "\n")
 
 				for rank, (neighbor_id, distance) in enumerate(neighbors[:topN], 1):
 					in_blast = neighbor_id in blast_top_n
 					blast_in_str = "Yes" if in_blast else "No"
 					blast_id_val = blast_identities.get(neighbor_id)
-					blast_id_str = f"{blast_id_val:>11.2f}" if blast_id_val is not None else "undetected".rjust(11)
+					blast_id_str = f"{blast_id_val:<17f}" if blast_id_val is not None else "undetected".ljust(17)
 
 					if in_blast and blast_id_val is not None and blast_id_val > 30:
 						bio_comment = "Homolog"
@@ -375,7 +375,7 @@ def generate_all_methods_report(
 						bio_comment = ""
 
 					f.write(
-						f"{rank:<6} | {neighbor_id:<15} | {distance:>11.3f} | {blast_id_str} | {blast_in_str:<12} | {bio_comment:<30}\n"
+						f"{rank:<6} | {neighbor_id:<15} | {distance:<12.2f} | {blast_id_str} | {blast_in_str:<17} | {bio_comment:<30}\n"
 					)
 
 			f.write("\n" + "=" * 110 + "\n")
@@ -920,17 +920,17 @@ def main():
 		nlsh_lr=args.nlsh_lr,
 	)
 
-	# Deleting unecessary files
-	if method_lower == "all":
-		all_methods = ["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh"]
-		base_output = os.path.splitext(args.output)[0]
+	# # Deleting unecessary files
+	# if method_lower == "all":
+	# 	all_methods = ["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh"]
+	# 	base_output = os.path.splitext(args.output)[0]
 		
-		for algo in all_methods:
-			os.remove(f"{base_output}_{algo}.queries_ids.txt")
-			os.remove(f"{base_output}_{algo}.queries.dat")
-	else:
-		os.remove(os.path.splitext(args.output)[0] + ".queries.dat")
-		os.remove(os.path.splitext(args.output)[0] + ".queries_ids.txt")
+	# 	for algo in all_methods:
+	# 		os.remove(f"{base_output}_{algo}.queries_ids.txt")
+	# 		os.remove(f"{base_output}_{algo}.queries.dat")
+	# else:
+	# 	os.remove(os.path.splitext(args.output)[0] + ".queries.dat")
+	# 	os.remove(os.path.splitext(args.output)[0] + ".queries_ids.txt")
 	
 
 	# Print All QPS status
@@ -998,9 +998,9 @@ def main():
 		blast_gt = parse_blast_tsv(blast_results, args.N)
 
 		# Generate a single consolidated report for all methods
-		report_path = base_output + "_REPORT.txt"
+		# report_path = base_output + "_REPORT.txt"
 		generate_all_methods_report(
-			output_report=report_path,
+			output_report=args.output,
 			query_fasta=args.q,
 			topN=args.N,
 			method_qps=all_qps,
@@ -1029,9 +1029,9 @@ def main():
 		method_display = method_display_map.get(method_lower, method_lower.capitalize())
 
 		# Generate per-query report
-		report_path = os.path.splitext(args.output)[0] + "_REPORT.txt"
+		# report_path = os.path.splitext(args.output)[0] + "_REPORT.txt"
 		generate_per_query_report(
-			output_report=report_path,
+			output_report=args.output,
 			query_fasta=args.q,
 			topN=args.N,
 			method_name=method_display,
@@ -1041,6 +1041,23 @@ def main():
 			blast_results_topn=blast_gt,
 			blast_results_identity=blast_identity,
 		)
+
+
+	# Deleting unecessary files
+	if method_lower == "all":
+		all_methods = ["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh"]
+		base_output = os.path.splitext(args.output)[0]
+		
+		for algo in all_methods:
+			os.remove(f"{base_output}_{algo}.txt")
+			os.remove(f"{base_output}_{algo}.queries_ids.txt")
+			os.remove(f"{base_output}_{algo}.queries.dat")
+	else:
+		base_output = os.path.splitext(args.output)[0]
+
+		os.remove(f"{base_output}.queries.dat")
+		os.remove(f"{base_output}.queries_ids.txt")
+	
 
 
 if __name__ == "__main__":
