@@ -171,7 +171,7 @@ def parse_neighbor_results(results_txt: str, topN: int) -> Dict[str, List[Tuple[
 
 def generate_per_query_report(
 	output_report: str,
-	query_fasta: str,
+	query_ids: list,
 	topN: int,
 	method_name: str,
 	method_key: str,
@@ -196,13 +196,6 @@ def generate_per_query_report(
 		blast_results_topn: {query_id: set(neighbor_ids)}
 		blast_results_identity: {query_id: [(neighbor_id, identity%), ...]}
 	"""
-	# Read all query IDs from FASTA
-	query_ids = []
-	with open(query_fasta, "r") as f:
-		for line in f:
-			if line.startswith(">"):
-				query_id = line.strip()[1:].split()[0]
-				query_ids.append(query_id)
 
 	with open(output_report, "w") as f:
 		# Iterate through each query
@@ -220,7 +213,7 @@ def generate_per_query_report(
 			# Compute recall for this query
 			if blast_top_n:
 				neighbors_in_blast = sum(1 for nid, _ in neighbors[:topN] if nid in blast_top_n)
-				recall = neighbors_in_blast / topN
+				recall = neighbors_in_blast / len(blast_top_n)
 			else:
 				recall = 0.0
 
@@ -251,7 +244,7 @@ def generate_per_query_report(
 				in_blast = neighbor_id in blast_top_n
 				blast_in_str = "Yes" if in_blast else "No"
 				blast_id_val = blast_identities.get(neighbor_id)
-				blast_id_str = f"{f'{blast_id_val:.0f}%' : <17}" if blast_id_val is not None else "undetected".ljust(17)
+				blast_id_str = f"{f'{blast_id_val:.2f}%' : <17}" if blast_id_val is not None else "undetected".ljust(17)
 
 				# Bio comment logic
 				if in_blast and blast_id_val is not None and blast_id_val > 30:
@@ -272,7 +265,7 @@ def generate_per_query_report(
 
 def generate_all_methods_report(
 	output_report: str,
-	query_fasta: str,
+	query_ids: list,
 	topN: int,
 	method_qps: Dict[str, Optional[float]],
 	method_results: Dict[str, Dict[str, List[Tuple[str, float]]]],
@@ -285,13 +278,6 @@ def generate_all_methods_report(
 	Generate a single consolidated report for method="all" with per-query summaries and neighbors across methods.
 	Per-query recall is computed per method. The neighbor tables reuse the current per-method format.
 	"""
-	# Read all query IDs from FASTA
-	query_ids = []
-	with open(query_fasta, "r") as f:
-		for line in f:
-			if line.startswith(">"):
-				query_id = line.strip()[1:].split()[0]
-				query_ids.append(query_id)
 
 	method_display = {
 		"lsh": "Euclidean LSH",
@@ -328,7 +314,7 @@ def generate_all_methods_report(
 				neighbors = method_results.get(m, {}).get(query_id, [])
 				if blast_top_n:
 					hits = sum(1 for nid, _ in neighbors[:topN] if nid in blast_top_n)
-					recall_q = hits / topN
+					recall_q = hits / len(blast_top_n)
 				else:
 					recall_q = 0.0
 
@@ -947,9 +933,18 @@ def main():
 	blast_results = f"output/blast/topN/blast_results_top{args.N}.tsv"
 	blast_time = blast_executable(args.N, blast_results)
 
-	num_queries = 12
-	blast_time_per_query = blast_time / num_queries
-	blast_qps = num_queries / blast_time
+	# Read all query IDs from FASTA and
+	# Find the total number of queries
+	query_ids = []
+	with open(args.q, "r") as f:
+		for line in f:
+			if line.startswith(">"):
+				query_id = line.strip()[1:].split()[0]
+				query_ids.append(query_id)
+
+	total_proteins = len(query_ids)
+	blast_time_per_query = blast_time / total_proteins
+	blast_qps = total_proteins / blast_time
 
 	# Parse BLAST results with identity
 	blast_results_path = "output/blast/search/blast_results.tsv"
@@ -989,7 +984,7 @@ def main():
 		# report_path = base_output + "_REPORT.txt"
 		generate_all_methods_report(
 			output_report=args.output,
-			query_fasta=args.q,
+			query_ids=query_ids,
 			topN=args.N,
 			method_qps=all_qps,
 			method_results=method_results,
@@ -1022,7 +1017,7 @@ def main():
 		# report_path = os.path.splitext(args.output)[0] + "_REPORT.txt"
 		generate_per_query_report(
 			output_report=args.output,
-			query_fasta=args.q,
+			query_ids=query_ids,
 			topN=args.N,
 			method_name=method_display,
 			method_key=method_lower,

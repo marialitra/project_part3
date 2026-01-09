@@ -39,3 +39,62 @@ not called ids.txt but verctors_ids.txt, problem?
 now lets do grid search to compute hyperparameters. N=[1,10,50], seed =42, kculsters = [200, 500, 1000, 5000], nprobe =[50, 100, 250, 500, 1500] only if nprobe < kclusters, k =[2,4,6], L = [5, 10, 15], w = [20, 40, 80, 120, 300, 500, 1000], kproj =[12, 14, 16, 20], M= [2000, 5000, 10000], probes=[100, 250, 500], nbits=8, ivfpq-M =[8,16], nlsh-T = [1000, 1500], nlsh-m=[1800, 2000, 2200], nlsh-layers =[5,10,15], nlsh-nodes = [128, 256, 512], epochs = 8, nlsh-batch-size = 512
 
 8.) we thought that the extra command about the nueral lsh will be neural as it says in the pdf of the assignment (in the lab's pdf it does not say so)
+
+
+9.)
+BLAST may return fewer than N hits after filtering.
+
+so instead of:
+recall = neighbors_in_blast / args.N
+we do:
+recall = neighbors_in_blast / len(blast_top_n)
+
+
+10.) IMPORTANT
+Why the same protein appears multiple times in BLAST
+
+Let’s take your example:
+
+sp|P11961|ODP2_GEOSE
+
+
+This is one unique UniProt protein.
+
+Yet BLAST reports it three times, with different stats:
+
+33% identity over 439 aa
+38% identity over 78 aa
+33% identity over 108 aa
+
+Why?
+
+Because BLAST does local alignment, not global alignment.
+
+What BLAST actually reports (important concept)
+
+BLAST reports HSPs (High-scoring Segment Pairs).
+
+That means:
+
+One protein sequence can align to multiple regions of the query
+
+Each alignment is reported as a separate row
+
+Each row can have:
+
+Different start/end positions
+
+Different alignment length
+
+Different % identity
+
+Different bit scores
+
+Different E-values
+
+This is 100% expected behavior.
+
+
+“BLAST reports multiple local alignments per protein; we collapse hits by UniProt ID and evaluate recall on unique target proteins, which is standard practice.”
+Also, in the blast reults in the report of the output
+we chose to take the results being shown from the last match of the protein in blast's list, we do not take the best results.
