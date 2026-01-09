@@ -1,19 +1,13 @@
 #!/usr/bin/env python3
 """Filter BLAST outfmt 6 results by E-value and per-query top-N bit scores."""
 
-from __future__ import annotations
-
-import argparse
-import csv
-from collections import defaultdict
-from pathlib import Path
-from typing import Dict, List, Tuple
+import libraries
+from libraries import Dict, List, Tuple, defaultdict, Path
 
 Hit = Tuple[float, float, List[str]]  # (bitscore, evalue, row)
 
-
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
+def parse_args() -> libraries.argparse.Namespace:
+    parser = libraries.argparse.ArgumentParser(
         description=(
             "Filter BLAST tabular (outfmt 6) results: keep rows with E <= max-evalue, "
             "sort per query by descending bit score, and retain top N per query."
@@ -50,7 +44,7 @@ def parse_args() -> argparse.Namespace:
 def filter_hits(input_path: Path, max_evalue: float) -> Dict[str, List[Hit]]:
     hits_by_query: Dict[str, List[Hit]] = defaultdict(list)
     with input_path.open(newline="") as f:
-        reader = csv.reader(f, delimiter="\t")
+        reader = libraries.csv.reader(f, delimiter="\t")
         for row in reader:
             if not row or row[0].startswith("#"):
                 continue
@@ -73,7 +67,7 @@ def filter_hits(input_path: Path, max_evalue: float) -> Dict[str, List[Hit]]:
 def write_top_hits(hits_by_query: Dict[str, List[Hit]], output_path: Path, top_n: int) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", newline="") as f:
-        writer = csv.writer(f, delimiter="\t")
+        writer = libraries.csv.writer(f, delimiter="\t")
         for query_id, hits in hits_by_query.items():
             # Sort by descending bitscore, then ascending evalue, then subject id for determinism.
             hits.sort(key=lambda h: (-h[0], h[1], h[2][1] if len(h[2]) > 1 else ""))

@@ -1,13 +1,8 @@
-import os
-import argparse
-import subprocess
-import sys
-from typing import Optional, Dict, List, Tuple
-from collections import defaultdict
-import re
+import libraries
+from libraries import os, subprocess, Optional, Dict, List, Tuple, defaultdict
 
 # Local imports
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "Algorithms", "src"))
+libraries.sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "Algorithms", "src"))
 from runSearchExe import build_executable, run_algorithm
 
 
@@ -61,7 +56,7 @@ def parse_blast_tsv(blast_tsv_path, topN):
 def _extract_neighbor_id(line: str) -> Optional[str]:
 	"""Return the neighbor token from a result line, ignoring distance."""
 	# Match both formats
-	match = re.search(r"Nearest neighbor-\d+\s*:\s*([^,\s]+)", line)
+	match = libraries.re.search(r"Nearest neighbor-\d+\s*:\s*([^,\s]+)", line)
 	if match:
 		return match.group(1).strip()
 	return None
@@ -151,7 +146,7 @@ def parse_neighbor_results(results_txt: str, topN: int) -> Dict[str, List[Tuple[
 	results = defaultdict(list)
 	current_query = None
 	# Match both formats: "Nearest neighbor-N: ID, 0.123" and "Nearest neighbor-N: ID, Distance: 0.123"
-	neighbor_re = re.compile(r"Nearest neighbor-\d+\s*:\s*([^,\s]+)\s*,\s*(?:Distance:\s*)?([\d.]+)")
+	neighbor_re = libraries.re.compile(r"Nearest neighbor-\d+\s*:\s*([^,\s]+)\s*,\s*(?:Distance:\s*)?([\d.]+)")
 
 	with open(results_txt, "r") as f:
 		for line in f:
@@ -418,7 +413,7 @@ def remap_output_ids(output_txt: str, base_ids_txt: str, query_ids_txt: str):
 		lines = f.readlines()
 	
 	remapped_lines = []
-	neighbor_colon_re = re.compile(r"^(Nearest neighbor-\d+)\s*:\s*(\d+)(.*)$")
+	neighbor_colon_re = libraries.re.compile(r"^(Nearest neighbor-\d+)\s*:\s*(\d+)(.*)$")
 
 	for raw_line in lines:
 		line = raw_line.rstrip("\n")
@@ -481,7 +476,7 @@ def run_nlsh(
 	need_build = not (os.path.exists(model_path) and os.path.exists(inverted_path))
 	if need_build:
 		build_cmd = [
-			sys.executable,
+			libraries.sys.executable,
 			build_py,
 			"-d", os.path.abspath(base_dat),
 			"-i", os.path.abspath(index_dir),
@@ -504,7 +499,7 @@ def run_nlsh(
 		print(f"[protein_search] Reusing existing NLSH index at {index_dir} (model + inverted_file found)")
 
 	search_cmd = [
-		sys.executable,
+		libraries.sys.executable,
 		search_py,
 		"-d", os.path.abspath(base_dat),
 		"-q", os.path.abspath(query_dat),
@@ -611,7 +606,7 @@ def run_protein_search(
 					os.makedirs(os.path.dirname(algo_output), exist_ok=True)
 
 					embed_cmd = [
-						sys.executable,
+						libraries.sys.executable,
 						embed_py,
 						"-i", query_fasta,
 						"-o", query_dat,
@@ -709,7 +704,7 @@ def run_protein_search(
 		os.makedirs(os.path.dirname(output_txt), exist_ok=True)
 
 		embed_cmd = [
-			sys.executable,
+			libraries.sys.executable,
 			embed_py,
 			"-i", query_fasta,
 			"-o", query_dat,
@@ -763,7 +758,7 @@ def run_protein_search(
 	os.makedirs(os.path.dirname(output_txt), exist_ok=True)
 
 	embed_cmd = [
-		sys.executable,
+		libraries.sys.executable,
 		embed_py,
 		"-i", query_fasta,
 		"-o", query_dat,
@@ -852,7 +847,7 @@ def run_protein_search(
 
 
 def main():
-	parser = argparse.ArgumentParser("Protein ANN search wrapper")
+	parser = libraries.argparse.ArgumentParser("Protein ANN search wrapper")
 	parser.add_argument("-d", required=True, help="Path to base protein vectors .dat (float32 N x 320)")
 	parser.add_argument("-q", required=True, help="Path to FASTA with query sequences")
 	parser.add_argument("-o", "--output", required=True, help="Output neighbors file (text)")

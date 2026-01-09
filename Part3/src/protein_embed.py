@@ -1,17 +1,18 @@
-from libraries import torch, os, np, esm, SeqIO, argparse
+import libraries
+from libraries import np, esm, SeqIO
 
 # -----------------------------
 # CPU optimization
 # -----------------------------
-os.environ['OMP_NUM_THREADS'] = '4'
-os.environ['MKL_NUM_THREADS'] = '4'
-torch.set_num_threads(4)
+libraries.os.environ['OMP_NUM_THREADS'] = '4'
+libraries.os.environ['MKL_NUM_THREADS'] = '4'
+libraries.torch.set_num_threads(4)
 
 # -----------------------------
 # Main
 # -----------------------------
 def main():
-    parser = argparse.ArgumentParser(description="Generate protein embeddings using ESM2")
+    parser = libraries.argparse.ArgumentParser(description="Generate protein embeddings using ESM2")
     parser.add_argument('-i', '--input', type=str, required=True, help='Input FASTA file')
     parser.add_argument('-o', '--output', type=str, required=True, help='Output vectors.dat file')
     parser.add_argument('-model', '--model', type=str, default='esm2_t6_8M_UR50D')
@@ -22,14 +23,14 @@ def main():
 
     FASTA = args.input
     VECTORS_FILE = args.output
-    IDS_FILE = os.path.splitext(VECTORS_FILE)[0] + "_ids.txt"
+    IDS_FILE = libraries.os.path.splitext(VECTORS_FILE)[0] + "_ids.txt"
 
     BATCH_SIZE = args.batch_size
     MAX_LEN = args.max_len
     EMBED_DIM = 320
-    DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    DEVICE = libraries.torch.device("cuda" if libraries.torch.cuda.is_available() else "cpu")
 
-    os.makedirs(os.path.dirname(VECTORS_FILE), exist_ok=True)
+    libraries.os.makedirs(libraries.os.path.dirname(VECTORS_FILE), exist_ok=True)
 
     # -----------------------------
     # Load model
@@ -69,7 +70,7 @@ def main():
     # Inference
     # -----------------------------
     with open(IDS_FILE, 'w', encoding='ascii', errors='replace') as id_file_handle:
-        with torch.no_grad():
+        with libraries.torch.no_grad():
             idx = 0
             for i in range(0, N, BATCH_SIZE):
                 batch = data[i:i + BATCH_SIZE]
