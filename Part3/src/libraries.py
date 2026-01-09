@@ -4,6 +4,7 @@ import argparse
 import re
 import subprocess
 import csv
+import time
 
 import torch
 import esm

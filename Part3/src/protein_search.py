@@ -12,9 +12,14 @@ def blast_executable(neighbors: int, output: str):
     """
 
     try:
+        start = libraries.time.perf_counter()
         build_process = subprocess.run(["make", "blast", f"N={neighbors}", f"out={output}"], capture_output=True, text=True, check=True)
+        end = libraries.time.perf_counter()
+
+        total_time = end - start
+        
         print("\n\nBuild complete: BLAST results are ready.")
-        return True
+        return total_time
     except subprocess.CalledProcessError as e:
         print("\n\n--- ERROR: Build failed. ---")
         print("STDOUT:", e.stdout)
@@ -174,6 +179,8 @@ def generate_per_query_report(
 	method_results: Dict[str, List[Tuple[str, float]]],
 	blast_results_topn: Dict[str, set],
 	blast_results_identity: Dict[str, List[Tuple[str, float]]],
+	blast_time_per_query: float,
+	blast_qps: float
 ):
 	"""
 	Generate comprehensive per-query report with individual recall.
@@ -196,9 +203,6 @@ def generate_per_query_report(
 			if line.startswith(">"):
 				query_id = line.strip()[1:].split()[0]
 				query_ids.append(query_id)
-
-	blast_qps = 1.0 / 1.5
-	blast_time_per_query = 1.5
 
 	with open(output_report, "w") as f:
 		# Iterate through each query
@@ -274,6 +278,8 @@ def generate_all_methods_report(
 	method_results: Dict[str, Dict[str, List[Tuple[str, float]]]],
 	blast_results_topn: Dict[str, set],
 	blast_results_identity: Dict[str, List[Tuple[str, float]]],
+	blast_time_per_query: float,
+	blast_qps:float
 ):
 	"""
 	Generate a single consolidated report for method="all" with per-query summaries and neighbors across methods.
@@ -295,9 +301,6 @@ def generate_all_methods_report(
 		"nlsh": "Neural LSH",
 	}
 	method_order = ["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh"]
-
-	blast_qps = 1.0 / 1.5  # reference
-	blast_time_per_query = 1.5
 
 	with open(output_report, "w") as f:
 		f.write("=" * 110 + "\n")
@@ -942,7 +945,11 @@ def main():
 
 	# Running BLAST command
 	blast_results = f"output/blast/topN/blast_results_top{args.N}.tsv"
-	blast_executable(args.N, blast_results)
+	blast_time = blast_executable(args.N, blast_results)
+
+	num_queries = 12
+	blast_time_per_query = blast_time / num_queries
+	blast_qps = num_queries / blast_time
 
 	# Parse BLAST results with identity
 	blast_results_path = "output/blast/search/blast_results.tsv"
@@ -988,6 +995,8 @@ def main():
 			method_results=method_results,
 			blast_results_topn=blast_gt,
 			blast_results_identity=blast_identity,
+			blast_time_per_query = blast_time_per_query,
+			blast_qps = blast_qps
 		)
 	else:
 		mean_recall, _ = compute_recall(blast_tsv=blast_results, ann_txt=args.output, topN=args.N)
@@ -1021,6 +1030,8 @@ def main():
 			method_results=method_results,
 			blast_results_topn=blast_gt,
 			blast_results_identity=blast_identity,
+			blast_time_per_query = blast_time_per_query,
+			blast_qps = blast_qps
 		)
 
 
