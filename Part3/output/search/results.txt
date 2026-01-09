@@ -1,3 +1,8 @@
+==============================================================================================================
+ANN Evaluation Report (method = all)
+Top-N = 10
+==============================================================================================================
+
 
 ==============================================================================================================
 Query: A0A009I3Y5
@@ -8,12 +13,15 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.342           | 2.926      | 0.00                     
-BLAST (Ref)          | 0.447           | 2.237      | 1.00                     
+Euclidean LSH        | 0.332           | 3.011      | 0.00                     
+Hypercube            | 0.003           | 307.235    | 0.00                     
+IVF-Flat             | 0.130           | 7.721      | 0.00                     
+IVF-PQ               | 0.030           | 33.761     | 0.00                     
+Neural LSH           | 0.013           | 74.416     | 0.00                     
+BLAST (Ref)          | 0.434           | 2.305      | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
-[2] Top-N neighbors
---------------------------------------------------------------------------------------------------------------
+[2] Top-N neighbors per method
 
 Method: Euclidean LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
@@ -29,6 +37,62 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 9      | A3DA85          | 0.08         | undetected        | No                | Possible false positive       
 10     | Q4QLU9          | 0.08         | undetected        | No                | Possible false positive       
 
+Method: Hypercube
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | B0BBT2          | 0.10         | 50%               | No                | Possible false positive       
+2      | P0C993          | 0.10         | undetected        | No                | Possible false positive       
+3      | C0MEP5          | 0.10         | undetected        | No                | Possible false positive       
+4      | P0DD36          | 0.10         | undetected        | No                | Possible false positive       
+5      | Q48RI5          | 0.10         | undetected        | No                | Possible false positive       
+6      | Q03308          | 0.10         | undetected        | No                | Possible false positive       
+7      | Q5X4J1          | 0.11         | undetected        | No                | Possible false positive       
+8      | B7UKC3          | 0.11         | undetected        | No                | Possible false positive       
+9      | Q1R5L6          | 0.11         | undetected        | No                | Possible false positive       
+10     | A1AGU2          | 0.11         | undetected        | No                | Possible false positive       
+
+Method: IVF-Flat
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | A5UG81          | 0.06         | undetected        | No                | Possible false positive       
+2      | P44033          | 0.07         | undetected        | No                | Possible false positive       
+3      | P14181          | 0.07         | undetected        | No                | Possible false positive       
+4      | Q8EKA0          | 0.07         | undetected        | No                | Possible false positive       
+5      | B2K7I7          | 0.08         | undetected        | No                | Possible false positive       
+6      | Q12SQ2          | 0.08         | undetected        | No                | Possible false positive       
+7      | B4F0D4          | 0.08         | undetected        | No                | Possible false positive       
+8      | A1SW96          | 0.08         | undetected        | No                | Possible false positive       
+9      | A3DA85          | 0.08         | undetected        | No                | Possible false positive       
+10     | Q4QLU9          | 0.08         | undetected        | No                | Possible false positive       
+
+Method: IVF-PQ
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | A5UG81          | 1.75         | undetected        | No                | Possible false positive       
+2      | Q4QLU9          | 1.91         | undetected        | No                | Possible false positive       
+3      | A9KYL6          | 1.99         | undetected        | No                | Possible false positive       
+4      | Q8E9R5          | 2.01         | undetected        | No                | Possible false positive       
+5      | P44150          | 2.03         | undetected        | No                | Possible false positive       
+6      | Q9CPH1          | 2.12         | undetected        | No                | Possible false positive       
+7      | B0V7R3          | 2.15         | undetected        | No                | Possible false positive       
+8      | B7UKC3          | 2.16         | undetected        | No                | Possible false positive       
+9      | Q9KRA6          | 2.27         | undetected        | No                | Possible false positive       
+10     | A5F7F2          | 2.28         | undetected        | No                | Possible false positive       
+
+Method: Neural LSH
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | A5UG81          | 0.35         | undetected        | No                | Possible false positive       
+2      | Q8EKA0          | 0.39         | undetected        | No                | Possible false positive       
+3      | Q12SQ2          | 0.40         | undetected        | No                | Possible false positive       
+4      | B4F0D4          | 0.41         | undetected        | No                | Possible false positive       
+5      | A1SW96          | 0.41         | undetected        | No                | Possible false positive       
+6      | A3DA85          | 0.41         | undetected        | No                | Possible false positive       
+7      | Q4QLU9          | 0.41         | undetected        | No                | Possible false positive       
+8      | Q8EIL1          | 0.42         | undetected        | No                | Possible false positive       
+9      | Q7VP87          | 0.43         | undetected        | No                | Possible false positive       
+10     | Q9CP74          | 0.43         | undetected        | No                | Possible false positive       
+
 ==============================================================================================================
 Query: A0A009PCK4
 N = 10
@@ -38,12 +102,15 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.342           | 2.926      | 0.00                     
-BLAST (Ref)          | 0.447           | 2.237      | 1.00                     
+Euclidean LSH        | 0.332           | 3.011      | 0.00                     
+Hypercube            | 0.003           | 307.235    | 0.00                     
+IVF-Flat             | 0.130           | 7.721      | 0.00                     
+IVF-PQ               | 0.030           | 33.761     | 0.00                     
+Neural LSH           | 0.013           | 74.416     | 0.00                     
+BLAST (Ref)          | 0.434           | 2.305      | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
-[2] Top-N neighbors
---------------------------------------------------------------------------------------------------------------
+[2] Top-N neighbors per method
 
 Method: Euclidean LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
@@ -59,6 +126,62 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 9      | A3DA85          | 0.08         | undetected        | No                | Possible false positive       
 10     | Q4QLU9          | 0.09         | undetected        | No                | Possible false positive       
 
+Method: Hypercube
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | B0BBT2          | 0.09         | 33%               | No                | Possible false positive       
+2      | P0C993          | 0.10         | undetected        | No                | Possible false positive       
+3      | C0MEP5          | 0.10         | undetected        | No                | Possible false positive       
+4      | P0DD36          | 0.10         | undetected        | No                | Possible false positive       
+5      | Q48RI5          | 0.10         | undetected        | No                | Possible false positive       
+6      | Q03308          | 0.10         | undetected        | No                | Possible false positive       
+7      | Q5X4J1          | 0.11         | undetected        | No                | Possible false positive       
+8      | B7UKC3          | 0.11         | undetected        | No                | Possible false positive       
+9      | Q1R5L6          | 0.11         | undetected        | No                | Possible false positive       
+10     | A1AGU2          | 0.11         | undetected        | No                | Possible false positive       
+
+Method: IVF-Flat
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | A5UG81          | 0.06         | undetected        | No                | Possible false positive       
+2      | P44033          | 0.06         | undetected        | No                | Possible false positive       
+3      | P14181          | 0.07         | undetected        | No                | Possible false positive       
+4      | Q8EKA0          | 0.08         | undetected        | No                | Possible false positive       
+5      | B2K7I7          | 0.08         | undetected        | No                | Possible false positive       
+6      | Q12SQ2          | 0.08         | undetected        | No                | Possible false positive       
+7      | A1SW96          | 0.08         | undetected        | No                | Possible false positive       
+8      | B4F0D4          | 0.08         | undetected        | No                | Possible false positive       
+9      | A3DA85          | 0.08         | undetected        | No                | Possible false positive       
+10     | Q4QLU9          | 0.09         | undetected        | No                | Possible false positive       
+
+Method: IVF-PQ
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | A5UG81          | 1.72         | undetected        | No                | Possible false positive       
+2      | Q4QLU9          | 1.91         | undetected        | No                | Possible false positive       
+3      | A9KYL6          | 1.98         | undetected        | No                | Possible false positive       
+4      | Q8E9R5          | 2.01         | undetected        | No                | Possible false positive       
+5      | P44150          | 2.02         | undetected        | No                | Possible false positive       
+6      | Q9CPH1          | 2.13         | undetected        | No                | Possible false positive       
+7      | B0V7R3          | 2.16         | undetected        | No                | Possible false positive       
+8      | B7UKC3          | 2.17         | undetected        | No                | Possible false positive       
+9      | Q9KRA6          | 2.26         | undetected        | No                | Possible false positive       
+10     | A5F7F2          | 2.27         | undetected        | No                | Possible false positive       
+
+Method: Neural LSH
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | A5UG81          | 0.34         | undetected        | No                | Possible false positive       
+2      | Q8EKA0          | 0.39         | undetected        | No                | Possible false positive       
+3      | Q12SQ2          | 0.40         | undetected        | No                | Possible false positive       
+4      | A1SW96          | 0.41         | undetected        | No                | Possible false positive       
+5      | B4F0D4          | 0.41         | undetected        | No                | Possible false positive       
+6      | A3DA85          | 0.41         | undetected        | No                | Possible false positive       
+7      | Q4QLU9          | 0.41         | undetected        | No                | Possible false positive       
+8      | Q8EIL1          | 0.43         | undetected        | No                | Possible false positive       
+9      | Q6C2A3          | 0.43         | undetected        | No                | Possible false positive       
+10     | Q9CP74          | 0.43         | undetected        | No                | Possible false positive       
+
 ==============================================================================================================
 Query: A0A001
 N = 10
@@ -68,26 +191,85 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.342           | 2.926      | 0.10                     
-BLAST (Ref)          | 0.447           | 2.237      | 1.00                     
+Euclidean LSH        | 0.332           | 3.011      | 0.10                     
+Hypercube            | 0.003           | 307.235    | 0.00                     
+IVF-Flat             | 0.130           | 7.721      | 0.10                     
+IVF-PQ               | 0.030           | 33.761     | 0.10                     
+Neural LSH           | 0.013           | 74.416     | 0.10                     
+BLAST (Ref)          | 0.434           | 2.305      | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
-[2] Top-N neighbors
---------------------------------------------------------------------------------------------------------------
+[2] Top-N neighbors per method
 
 Method: Euclidean LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | P9WQJ3          | 0.04         | 25.31%            | No                | Possible false positive       
-2      | Q13BH6          | 0.05         | 32.72%            | No                | Possible false positive       
-3      | Q03024          | 0.05         | 38.46%            | No                | Possible false positive       
-4      | Q20Z38          | 0.06         | 23.54%            | No                | Possible false positive       
+1      | P9WQJ3          | 0.04         | 25%               | No                | Possible false positive       
+2      | Q13BH6          | 0.05         | 33%               | No                | Possible false positive       
+3      | Q03024          | 0.05         | 38%               | No                | Possible false positive       
+4      | Q20Z38          | 0.06         | 24%               | No                | Possible false positive       
 5      | Q9ZEP3          | 0.08         | undetected        | No                | Possible false positive       
-6      | A0K739          | 0.08         | 35.64%            | No                | Possible false positive       
-7      | Q51719          | 0.08         | 30.19%            | No                | Possible false positive       
-8      | Q8P8W4          | 0.08         | 36.10%            | Yes               | Homolog                       
-9      | Q3JSR6          | 0.08         | 37.06%            | No                | Possible false positive       
-10     | P23886          | 0.08         | 32.14%            | No                | Possible false positive       
+6      | A0K739          | 0.08         | 36%               | No                | Possible false positive       
+7      | Q51719          | 0.08         | 30%               | No                | Possible false positive       
+8      | Q8P8W4          | 0.08         | 36%               | Yes               | Homolog                       
+9      | Q3JSR6          | 0.08         | 37%               | No                | Possible false positive       
+10     | P23886          | 0.08         | 32%               | No                | Possible false positive       
+
+Method: Hypercube
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | O70595          | 0.09         | 28%               | No                | Possible false positive       
+2      | Q9NP58          | 0.09         | 28%               | No                | Possible false positive       
+3      | C1A4A9          | 0.10         | undetected        | No                | Possible false positive       
+4      | B8JA66          | 0.11         | undetected        | No                | Possible false positive       
+5      | Q9RQQ9          | 0.11         | undetected        | No                | Possible false positive       
+6      | Q3IYI5          | 0.11         | undetected        | No                | Possible false positive       
+7      | P9WM40          | 0.12         | undetected        | No                | Possible false positive       
+8      | Q2N5V9          | 0.12         | undetected        | No                | Possible false positive       
+9      | Q02998          | 0.12         | undetected        | No                | Possible false positive       
+10     | O05560          | 0.12         | undetected        | No                | Possible false positive       
+
+Method: IVF-Flat
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P9WQJ3          | 0.04         | 25%               | No                | Possible false positive       
+2      | Q13BH6          | 0.05         | 33%               | No                | Possible false positive       
+3      | Q03024          | 0.05         | 38%               | No                | Possible false positive       
+4      | Q20Z38          | 0.06         | 24%               | No                | Possible false positive       
+5      | Q9ZEP3          | 0.08         | undetected        | No                | Possible false positive       
+6      | A0K739          | 0.08         | 36%               | No                | Possible false positive       
+7      | Q51719          | 0.08         | 30%               | No                | Possible false positive       
+8      | Q8P8W4          | 0.08         | 36%               | Yes               | Homolog                       
+9      | Q3JSR6          | 0.08         | 37%               | No                | Possible false positive       
+10     | P23886          | 0.08         | 32%               | No                | Possible false positive       
+
+Method: IVF-PQ
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P9WQJ3          | 1.34         | 25%               | No                | Possible false positive       
+2      | Q13BH6          | 1.42         | 33%               | No                | Possible false positive       
+3      | Q03024          | 1.47         | 38%               | No                | Possible false positive       
+4      | Q20Z38          | 1.53         | 24%               | No                | Possible false positive       
+5      | Q9ZEP3          | 1.76         | undetected        | No                | Possible false positive       
+6      | Q8P8W4          | 1.77         | 36%               | Yes               | Homolog                       
+7      | Q3JSR6          | 1.79         | 37%               | No                | Possible false positive       
+8      | P23886          | 1.81         | 32%               | No                | Possible false positive       
+9      | Q21BF6          | 1.83         | 33%               | No                | Possible false positive       
+10     | A3Q5L8          | 1.91         | undetected        | No                | Possible false positive       
+
+Method: Neural LSH
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P9WQJ3          | 0.30         | 25%               | No                | Possible false positive       
+2      | Q13BH6          | 0.32         | 33%               | No                | Possible false positive       
+3      | Q03024          | 0.33         | 38%               | No                | Possible false positive       
+4      | Q20Z38          | 0.34         | 24%               | No                | Possible false positive       
+5      | Q9ZEP3          | 0.39         | undetected        | No                | Possible false positive       
+6      | A0K739          | 0.40         | 36%               | No                | Possible false positive       
+7      | Q51719          | 0.40         | 30%               | No                | Possible false positive       
+8      | Q8P8W4          | 0.40         | 36%               | Yes               | Homolog                       
+9      | P23886          | 0.41         | 32%               | No                | Possible false positive       
+10     | O70595          | 0.42         | 28%               | No                | Possible false positive       
 
 ==============================================================================================================
 Query: A0A002
@@ -98,26 +280,85 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.342           | 2.926      | 0.10                     
-BLAST (Ref)          | 0.447           | 2.237      | 1.00                     
+Euclidean LSH        | 0.332           | 3.011      | 0.10                     
+Hypercube            | 0.003           | 307.235    | 0.00                     
+IVF-Flat             | 0.130           | 7.721      | 0.10                     
+IVF-PQ               | 0.030           | 33.761     | 0.10                     
+Neural LSH           | 0.013           | 74.416     | 0.10                     
+BLAST (Ref)          | 0.434           | 2.305      | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
-[2] Top-N neighbors
---------------------------------------------------------------------------------------------------------------
+[2] Top-N neighbors per method
 
 Method: Euclidean LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | P9WQJ3          | 0.05         | 27.74%            | Yes               | Remote homolog                
-2      | Q13BH6          | 0.06         | 29.24%            | No                | Possible false positive       
-3      | Q03024          | 0.06         | 31.31%            | No                | Possible false positive       
-4      | Q20Z38          | 0.06         | 28.29%            | No                | Possible false positive       
-5      | P23886          | 0.08         | 27.80%            | No                | Possible false positive       
-6      | Q8P8W4          | 0.08         | 27.78%            | No                | Possible false positive       
-7      | Q51719          | 0.09         | 30.85%            | No                | Possible false positive       
-8      | Q82MV1          | 0.09         | 29.52%            | No                | Possible false positive       
-9      | Q28433          | 0.09         | 27.38%            | No                | Possible false positive       
-10     | A0K739          | 0.09         | 32.91%            | No                | Possible false positive       
+1      | P9WQJ3          | 0.05         | 28%               | Yes               | Remote homolog                
+2      | Q13BH6          | 0.06         | 29%               | No                | Possible false positive       
+3      | Q03024          | 0.06         | 31%               | No                | Possible false positive       
+4      | Q20Z38          | 0.06         | 28%               | No                | Possible false positive       
+5      | P23886          | 0.08         | 28%               | No                | Possible false positive       
+6      | Q8P8W4          | 0.08         | 28%               | No                | Possible false positive       
+7      | Q51719          | 0.09         | 31%               | No                | Possible false positive       
+8      | Q82MV1          | 0.09         | 30%               | No                | Possible false positive       
+9      | Q28433          | 0.09         | 27%               | No                | Possible false positive       
+10     | A0K739          | 0.09         | 33%               | No                | Possible false positive       
+
+Method: Hypercube
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | O70595          | 0.09         | 32%               | No                | Possible false positive       
+2      | Q9NP58          | 0.10         | 32%               | No                | Possible false positive       
+3      | C1A4A9          | 0.12         | undetected        | No                | Possible false positive       
+4      | B8JA66          | 0.13         | undetected        | No                | Possible false positive       
+5      | Q9RQQ9          | 0.14         | undetected        | No                | Possible false positive       
+6      | Q02998          | 0.14         | undetected        | No                | Possible false positive       
+7      | Q3IYI5          | 0.14         | undetected        | No                | Possible false positive       
+8      | P9WM40          | 0.14         | undetected        | No                | Possible false positive       
+9      | Q9HUI3          | 0.14         | undetected        | No                | Possible false positive       
+10     | Q2N5V9          | 0.15         | undetected        | No                | Possible false positive       
+
+Method: IVF-Flat
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P9WQJ3          | 0.05         | 28%               | Yes               | Remote homolog                
+2      | Q13BH6          | 0.06         | 29%               | No                | Possible false positive       
+3      | Q03024          | 0.06         | 31%               | No                | Possible false positive       
+4      | Q20Z38          | 0.06         | 28%               | No                | Possible false positive       
+5      | P23886          | 0.08         | 28%               | No                | Possible false positive       
+6      | Q8P8W4          | 0.08         | 28%               | No                | Possible false positive       
+7      | Q51719          | 0.09         | 31%               | No                | Possible false positive       
+8      | Q82MV1          | 0.09         | 30%               | No                | Possible false positive       
+9      | Q28433          | 0.09         | 27%               | No                | Possible false positive       
+10     | A0K739          | 0.09         | 33%               | No                | Possible false positive       
+
+Method: IVF-PQ
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P9WQJ3          | 1.33         | 28%               | Yes               | Remote homolog                
+2      | Q03024          | 1.50         | 31%               | No                | Possible false positive       
+3      | Q8P8W4          | 1.75         | 28%               | No                | Possible false positive       
+4      | P23886          | 1.76         | 28%               | No                | Possible false positive       
+5      | Q51719          | 1.78         | 31%               | No                | Possible false positive       
+6      | A0K739          | 1.83         | 33%               | No                | Possible false positive       
+7      | Q7VZE5          | 1.90         | 30%               | No                | Possible false positive       
+8      | Q7WGW1          | 1.90         | 29%               | No                | Possible false positive       
+9      | Q4ZZK0          | 2.15         | 28%               | No                | Possible false positive       
+10     | Q3Z3V4          | 2.33         | 25%               | No                | Possible false positive       
+
+Method: Neural LSH
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P9WQJ3          | 0.31         | 28%               | Yes               | Remote homolog                
+2      | Q13BH6          | 0.33         | 29%               | No                | Possible false positive       
+3      | Q03024          | 0.35         | 31%               | No                | Possible false positive       
+4      | Q20Z38          | 0.36         | 28%               | No                | Possible false positive       
+5      | P23886          | 0.41         | 28%               | No                | Possible false positive       
+6      | Q8P8W4          | 0.41         | 28%               | No                | Possible false positive       
+7      | Q51719          | 0.42         | 31%               | No                | Possible false positive       
+8      | Q82MV1          | 0.42         | 30%               | No                | Possible false positive       
+9      | Q28433          | 0.42         | 27%               | No                | Possible false positive       
+10     | A0K739          | 0.43         | 33%               | No                | Possible false positive       
 
 ==============================================================================================================
 Query: A0A009HL96
@@ -128,26 +369,85 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.342           | 2.926      | 0.20                     
-BLAST (Ref)          | 0.447           | 2.237      | 1.00                     
+Euclidean LSH        | 0.332           | 3.011      | 0.20                     
+Hypercube            | 0.003           | 307.235    | 0.00                     
+IVF-Flat             | 0.130           | 7.721      | 0.20                     
+IVF-PQ               | 0.030           | 33.761     | 0.10                     
+Neural LSH           | 0.013           | 74.416     | 0.20                     
+BLAST (Ref)          | 0.434           | 2.305      | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
-[2] Top-N neighbors
---------------------------------------------------------------------------------------------------------------
+[2] Top-N neighbors per method
 
 Method: Euclidean LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | Q5HI09          | 0.02         | 26.13%            | No                | Possible false positive       
-2      | P33112          | 0.02         | 30.84%            | No                | Possible false positive       
-3      | Q99VW2          | 0.02         | 26.13%            | No                | Possible false positive       
-4      | Q8CQ37          | 0.02         | 27.93%            | No                | Possible false positive       
-5      | Q99RR6          | 0.02         | 31.28%            | No                | Possible false positive       
-6      | P28257          | 0.02         | 32.75%            | Yes               | Homolog                       
-7      | Q9AE24          | 0.02         | 27.63%            | No                | Possible false positive       
-8      | P0CAW8          | 0.02         | 31.44%            | No                | Possible false positive       
-9      | A6WZ81          | 0.03         | 33.19%            | No                | Possible false positive       
-10     | P45189          | 0.03         | 34.19%            | Yes               | Homolog                       
+1      | Q5HI09          | 0.02         | 26%               | No                | Possible false positive       
+2      | P33112          | 0.02         | 31%               | No                | Possible false positive       
+3      | Q99VW2          | 0.02         | 26%               | No                | Possible false positive       
+4      | Q8CQ37          | 0.02         | 28%               | No                | Possible false positive       
+5      | Q99RR6          | 0.02         | 31%               | No                | Possible false positive       
+6      | P28257          | 0.02         | 33%               | Yes               | Homolog                       
+7      | Q9AE24          | 0.02         | 28%               | No                | Possible false positive       
+8      | P0CAW8          | 0.02         | 31%               | No                | Possible false positive       
+9      | A6WZ81          | 0.03         | 33%               | No                | Possible false positive       
+10     | P45189          | 0.03         | 34%               | Yes               | Homolog                       
+
+Method: Hypercube
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q8D5Z6          | 0.12         | 35%               | No                | Possible false positive       
+2      | O34311          | 0.12         | undetected        | No                | Possible false positive       
+3      | Q56128          | 0.14         | 29%               | No                | Possible false positive       
+4      | Q13237          | 0.15         | undetected        | No                | Possible false positive       
+5      | Q9Z701          | 0.15         | undetected        | No                | Possible false positive       
+6      | W7JX98          | 0.17         | undetected        | No                | Possible false positive       
+7      | Q62915          | 0.18         | undetected        | No                | Possible false positive       
+8      | A0A0S1RUN4      | 0.18         | undetected        | No                | Possible false positive       
+9      | Q2QYY8          | 0.18         | undetected        | No                | Possible false positive       
+10     | Q12WZ6          | 0.18         | undetected        | No                | Possible false positive       
+
+Method: IVF-Flat
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q5HI09          | 0.02         | 26%               | No                | Possible false positive       
+2      | P33112          | 0.02         | 31%               | No                | Possible false positive       
+3      | Q99VW2          | 0.02         | 26%               | No                | Possible false positive       
+4      | Q8CQ37          | 0.02         | 28%               | No                | Possible false positive       
+5      | Q99RR6          | 0.02         | 31%               | No                | Possible false positive       
+6      | P28257          | 0.02         | 33%               | Yes               | Homolog                       
+7      | Q9AE24          | 0.02         | 28%               | No                | Possible false positive       
+8      | P0CAW8          | 0.02         | 31%               | No                | Possible false positive       
+9      | A6WZ81          | 0.03         | 33%               | No                | Possible false positive       
+10     | P45189          | 0.03         | 34%               | Yes               | Homolog                       
+
+Method: IVF-PQ
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P33112          | 0.64         | 31%               | No                | Possible false positive       
+2      | Q99RR6          | 0.75         | 31%               | No                | Possible false positive       
+3      | Q9AE24          | 0.78         | 28%               | No                | Possible false positive       
+4      | P45189          | 0.89         | 34%               | Yes               | Homolog                       
+5      | Q1XDE4          | 1.17         | 31%               | No                | Possible false positive       
+6      | P96686          | 1.27         | 31%               | No                | Possible false positive       
+7      | Q7A3U5          | 1.36         | undetected        | No                | Possible false positive       
+8      | Q5HEP0          | 1.37         | undetected        | No                | Possible false positive       
+9      | Q6G850          | 1.38         | 25%               | No                | Possible false positive       
+10     | Q6GFH3          | 1.38         | 25%               | No                | Possible false positive       
+
+Method: Neural LSH
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q5HI09          | 0.18         | 26%               | No                | Possible false positive       
+2      | P33112          | 0.18         | 31%               | No                | Possible false positive       
+3      | Q99VW2          | 0.19         | 26%               | No                | Possible false positive       
+4      | Q8CQ37          | 0.19         | 28%               | No                | Possible false positive       
+5      | Q99RR6          | 0.21         | 31%               | No                | Possible false positive       
+6      | P28257          | 0.22         | 33%               | Yes               | Homolog                       
+7      | Q9AE24          | 0.22         | 28%               | No                | Possible false positive       
+8      | P0CAW8          | 0.22         | 31%               | No                | Possible false positive       
+9      | A6WZ81          | 0.24         | 33%               | No                | Possible false positive       
+10     | P45189          | 0.25         | 34%               | Yes               | Homolog                       
 
 ==============================================================================================================
 Query: A0A009HLV9
@@ -158,26 +458,85 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.342           | 2.926      | 0.40                     
-BLAST (Ref)          | 0.447           | 2.237      | 1.00                     
+Euclidean LSH        | 0.332           | 3.011      | 0.40                     
+Hypercube            | 0.003           | 307.235    | 0.00                     
+IVF-Flat             | 0.130           | 7.721      | 0.40                     
+IVF-PQ               | 0.030           | 33.761     | 0.40                     
+Neural LSH           | 0.013           | 74.416     | 0.00                     
+BLAST (Ref)          | 0.434           | 2.305      | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
-[2] Top-N neighbors
---------------------------------------------------------------------------------------------------------------
+[2] Top-N neighbors per method
 
 Method: Euclidean LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | P28787          | 0.01         | 62.53%            | Yes               | Homolog                       
-2      | O87455          | 0.02         | 39.56%            | Yes               | Homolog                       
-3      | Q06065          | 0.02         | 41.34%            | Yes               | Homolog                       
-4      | Q5E3W8          | 0.03         | 44.12%            | No                | Possible false positive       
-5      | P36219          | 0.03         | 40.87%            | No                | Possible false positive       
-6      | Q3K999          | 0.03         | 37.68%            | No                | Possible false positive       
+1      | P28787          | 0.01         | 63%               | Yes               | Homolog                       
+2      | O87455          | 0.02         | 40%               | Yes               | Homolog                       
+3      | Q06065          | 0.02         | 41%               | Yes               | Homolog                       
+4      | Q5E3W8          | 0.03         | 44%               | No                | Possible false positive       
+5      | P36219          | 0.03         | 41%               | No                | Possible false positive       
+6      | Q3K999          | 0.03         | 38%               | No                | Possible false positive       
 7      | A1KU52          | 0.03         | undetected        | No                | Possible false positive       
-8      | P23747          | 0.03         | 40.00%            | Yes               | Homolog                       
-9      | P59402          | 0.03         | 40.33%            | No                | Possible false positive       
-10     | P37931          | 0.03         | 41.63%            | No                | Possible false positive       
+8      | P23747          | 0.03         | 40%               | Yes               | Homolog                       
+9      | P59402          | 0.03         | 40%               | No                | Possible false positive       
+10     | P37931          | 0.03         | 42%               | No                | Possible false positive       
+
+Method: Hypercube
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q8DEV2          | 0.04         | undetected        | No                | Possible false positive       
+2      | Q9KU18          | 0.04         | undetected        | No                | Possible false positive       
+3      | Q889C2          | 0.04         | undetected        | No                | Possible false positive       
+4      | P05444          | 0.04         | undetected        | No                | Possible false positive       
+5      | Q9PKA8          | 0.04         | undetected        | No                | Possible false positive       
+6      | Q5HRM8          | 0.05         | undetected        | No                | Possible false positive       
+7      | Q73BY1          | 0.05         | undetected        | No                | Possible false positive       
+8      | O83110          | 0.05         | undetected        | No                | Possible false positive       
+9      | Q7VYV6          | 0.05         | undetected        | No                | Possible false positive       
+10     | Q73T66          | 0.05         | undetected        | No                | Possible false positive       
+
+Method: IVF-Flat
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P28787          | 0.01         | 63%               | Yes               | Homolog                       
+2      | O87455          | 0.02         | 40%               | Yes               | Homolog                       
+3      | Q06065          | 0.02         | 41%               | Yes               | Homolog                       
+4      | Q5E3W8          | 0.03         | 44%               | No                | Possible false positive       
+5      | P36219          | 0.03         | 41%               | No                | Possible false positive       
+6      | Q3K999          | 0.03         | 38%               | No                | Possible false positive       
+7      | A1KU52          | 0.03         | undetected        | No                | Possible false positive       
+8      | P23747          | 0.03         | 40%               | Yes               | Homolog                       
+9      | P59402          | 0.03         | 40%               | No                | Possible false positive       
+10     | P37931          | 0.03         | 42%               | No                | Possible false positive       
+
+Method: IVF-PQ
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P28787          | 0.57         | 63%               | Yes               | Homolog                       
+2      | O87455          | 0.95         | 40%               | Yes               | Homolog                       
+3      | A1KU52          | 1.01         | undetected        | No                | Possible false positive       
+4      | B4T3B0          | 1.03         | 38%               | Yes               | Homolog                       
+5      | B4TT16          | 1.04         | 38%               | Yes               | Homolog                       
+6      | Q8EEF3          | 1.05         | undetected        | No                | Possible false positive       
+7      | B5F3J7          | 1.09         | undetected        | No                | Possible false positive       
+8      | P66756          | 1.09         | undetected        | No                | Possible false positive       
+9      | P0A812          | 1.09         | undetected        | No                | Possible false positive       
+10     | B7NBL1          | 1.10         | undetected        | No                | Possible false positive       
+
+Method: Neural LSH
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | A1KU52          | 0.24         | undetected        | No                | Possible false positive       
+2      | Q8EEF3          | 0.24         | undetected        | No                | Possible false positive       
+3      | A5FRK7          | 0.25         | undetected        | No                | Possible false positive       
+4      | Q03R36          | 0.25         | undetected        | No                | Possible false positive       
+5      | B5F3J7          | 0.25         | undetected        | No                | Possible false positive       
+6      | P66756          | 0.25         | undetected        | No                | Possible false positive       
+7      | P0A812          | 0.26         | undetected        | No                | Possible false positive       
+8      | B7NBL1          | 0.26         | undetected        | No                | Possible false positive       
+9      | B0JY77          | 0.26         | undetected        | No                | Possible false positive       
+10     | Q220I3          | 0.26         | undetected        | No                | Possible false positive       
 
 ==============================================================================================================
 Query: A0A009HN45
@@ -188,26 +547,85 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.342           | 2.926      | 0.20                     
-BLAST (Ref)          | 0.447           | 2.237      | 1.00                     
+Euclidean LSH        | 0.332           | 3.011      | 0.20                     
+Hypercube            | 0.003           | 307.235    | 0.30                     
+IVF-Flat             | 0.130           | 7.721      | 0.20                     
+IVF-PQ               | 0.030           | 33.761     | 0.30                     
+Neural LSH           | 0.013           | 74.416     | 0.00                     
+BLAST (Ref)          | 0.434           | 2.305      | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
-[2] Top-N neighbors
---------------------------------------------------------------------------------------------------------------
+[2] Top-N neighbors per method
 
 Method: Euclidean LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
 1      | A6QKD8          | 0.01         | undetected        | No                | Possible false positive       
-2      | A7MSB2          | 0.01         | 36.43%            | Yes               | Homolog                       
+2      | A7MSB2          | 0.01         | 36%               | Yes               | Homolog                       
 3      | Q3K063          | 0.01         | undetected        | No                | Possible false positive       
 4      | Q9ZDW2          | 0.01         | undetected        | No                | Possible false positive       
 5      | Q1MQP3          | 0.01         | undetected        | No                | Possible false positive       
 6      | Q7VJC6          | 0.01         | undetected        | No                | Possible false positive       
-7      | B0BT63          | 0.01         | 33.59%            | Yes               | Homolog                       
+7      | B0BT63          | 0.01         | 34%               | Yes               | Homolog                       
 8      | Q92H92          | 0.01         | undetected        | No                | Possible false positive       
 9      | P52126          | 0.01         | undetected        | No                | Possible false positive       
-10     | Q0HMR2          | 0.01         | 23.36%            | No                | Possible false positive       
+10     | Q0HMR2          | 0.01         | 23%               | No                | Possible false positive       
+
+Method: Hypercube
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | A6QKD8          | 0.01         | undetected        | No                | Possible false positive       
+2      | A7MSB2          | 0.01         | 36%               | Yes               | Homolog                       
+3      | Q3K063          | 0.01         | undetected        | No                | Possible false positive       
+4      | Q1MQP3          | 0.01         | undetected        | No                | Possible false positive       
+5      | Q7VJC6          | 0.01         | undetected        | No                | Possible false positive       
+6      | B0BT63          | 0.01         | 34%               | Yes               | Homolog                       
+7      | Q92H92          | 0.01         | undetected        | No                | Possible false positive       
+8      | Q0HMR2          | 0.01         | 23%               | No                | Possible false positive       
+9      | Q821L5          | 0.01         | undetected        | No                | Possible false positive       
+10     | Q0HR19          | 0.01         | 24%               | Yes               | Remote homolog                
+
+Method: IVF-Flat
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | A6QKD8          | 0.01         | undetected        | No                | Possible false positive       
+2      | A7MSB2          | 0.01         | 36%               | Yes               | Homolog                       
+3      | Q3K063          | 0.01         | undetected        | No                | Possible false positive       
+4      | Q9ZDW2          | 0.01         | undetected        | No                | Possible false positive       
+5      | Q1MQP3          | 0.01         | undetected        | No                | Possible false positive       
+6      | Q7VJC6          | 0.01         | undetected        | No                | Possible false positive       
+7      | B0BT63          | 0.01         | 34%               | Yes               | Homolog                       
+8      | Q92H92          | 0.01         | undetected        | No                | Possible false positive       
+9      | P52126          | 0.01         | undetected        | No                | Possible false positive       
+10     | Q0HMR2          | 0.01         | 23%               | No                | Possible false positive       
+
+Method: IVF-PQ
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | A7MSB2          | 0.68         | 36%               | Yes               | Homolog                       
+2      | Q9ZDW2          | 0.74         | undetected        | No                | Possible false positive       
+3      | B0BT63          | 0.76         | 34%               | Yes               | Homolog                       
+4      | P52126          | 0.79         | undetected        | No                | Possible false positive       
+5      | Q0HMR2          | 0.79         | 23%               | No                | Possible false positive       
+6      | Q0HR19          | 0.80         | 24%               | Yes               | Remote homolog                
+7      | Q5X0E6          | 0.83         | undetected        | No                | Possible false positive       
+8      | P0C9B2          | 0.85         | undetected        | No                | Possible false positive       
+9      | Q50939          | 0.87         | undetected        | No                | Possible false positive       
+10     | Q49VV6          | 0.90         | undetected        | No                | Possible false positive       
+
+Method: Neural LSH
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q9ZDW2          | 0.15         | undetected        | No                | Possible false positive       
+2      | Q99ZA5          | 0.17         | undetected        | No                | Possible false positive       
+3      | Q1JBD1          | 0.17         | undetected        | No                | Possible false positive       
+4      | Q5X0E6          | 0.17         | undetected        | No                | Possible false positive       
+5      | Q9ZKA0          | 0.18         | undetected        | No                | Possible false positive       
+6      | Q03AL7          | 0.18         | undetected        | No                | Possible false positive       
+7      | Q50939          | 0.18         | undetected        | No                | Possible false positive       
+8      | C0MBD7          | 0.18         | undetected        | No                | Possible false positive       
+9      | Q54986          | 0.18         | undetected        | No                | Possible false positive       
+10     | B1IC35          | 0.18         | undetected        | No                | Possible false positive       
 
 ==============================================================================================================
 Query: A0A009HQC9
@@ -218,26 +636,85 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.342           | 2.926      | 0.80                     
-BLAST (Ref)          | 0.447           | 2.237      | 1.00                     
+Euclidean LSH        | 0.332           | 3.011      | 0.80                     
+Hypercube            | 0.003           | 307.235    | 0.80                     
+IVF-Flat             | 0.130           | 7.721      | 0.80                     
+IVF-PQ               | 0.030           | 33.761     | 0.90                     
+Neural LSH           | 0.013           | 74.416     | 0.00                     
+BLAST (Ref)          | 0.434           | 2.305      | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
-[2] Top-N neighbors
---------------------------------------------------------------------------------------------------------------
+[2] Top-N neighbors per method
 
 Method: Euclidean LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | Q0HR19          | 0.01         | 44.55%            | Yes               | Homolog                       
-2      | Q0HMR2          | 0.01         | 44.34%            | Yes               | Homolog                       
-3      | A0KGL5          | 0.01         | 45.23%            | Yes               | Homolog                       
-4      | A1A7A6          | 0.01         | 42.16%            | Yes               | Homolog                       
-5      | A7ZW09          | 0.01         | 42.27%            | Yes               | Homolog                       
-6      | B0BT63          | 0.01         | 40.44%            | No                | Possible false positive       
-7      | A7MSB2          | 0.01         | 44.04%            | No                | Possible false positive       
-8      | Q48LP5          | 0.01         | 44.14%            | Yes               | Homolog                       
-9      | B5FI41          | 0.01         | 42.27%            | Yes               | Homolog                       
-10     | Q5PDF0          | 0.01         | 42.27%            | Yes               | Homolog                       
+1      | Q0HR19          | 0.01         | 45%               | Yes               | Homolog                       
+2      | Q0HMR2          | 0.01         | 44%               | Yes               | Homolog                       
+3      | A0KGL5          | 0.01         | 45%               | Yes               | Homolog                       
+4      | A1A7A6          | 0.01         | 42%               | Yes               | Homolog                       
+5      | A7ZW09          | 0.01         | 42%               | Yes               | Homolog                       
+6      | B0BT63          | 0.01         | 40%               | No                | Possible false positive       
+7      | A7MSB2          | 0.01         | 44%               | No                | Possible false positive       
+8      | Q48LP5          | 0.01         | 44%               | Yes               | Homolog                       
+9      | B5FI41          | 0.01         | 42%               | Yes               | Homolog                       
+10     | Q5PDF0          | 0.01         | 42%               | Yes               | Homolog                       
+
+Method: Hypercube
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q0HR19          | 0.01         | 45%               | Yes               | Homolog                       
+2      | Q0HMR2          | 0.01         | 44%               | Yes               | Homolog                       
+3      | A0KGL5          | 0.01         | 45%               | Yes               | Homolog                       
+4      | A1A7A6          | 0.01         | 42%               | Yes               | Homolog                       
+5      | A7ZW09          | 0.01         | 42%               | Yes               | Homolog                       
+6      | B0BT63          | 0.01         | 40%               | No                | Possible false positive       
+7      | A7MSB2          | 0.01         | 44%               | No                | Possible false positive       
+8      | Q48LP5          | 0.01         | 44%               | Yes               | Homolog                       
+9      | B5FI41          | 0.01         | 42%               | Yes               | Homolog                       
+10     | Q5PDF0          | 0.01         | 42%               | Yes               | Homolog                       
+
+Method: IVF-Flat
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q0HR19          | 0.01         | 45%               | Yes               | Homolog                       
+2      | Q0HMR2          | 0.01         | 44%               | Yes               | Homolog                       
+3      | A0KGL5          | 0.01         | 45%               | Yes               | Homolog                       
+4      | A1A7A6          | 0.01         | 42%               | Yes               | Homolog                       
+5      | A7ZW09          | 0.01         | 42%               | Yes               | Homolog                       
+6      | B0BT63          | 0.01         | 40%               | No                | Possible false positive       
+7      | A7MSB2          | 0.01         | 44%               | No                | Possible false positive       
+8      | Q48LP5          | 0.01         | 44%               | Yes               | Homolog                       
+9      | B5FI41          | 0.01         | 42%               | Yes               | Homolog                       
+10     | Q5PDF0          | 0.01         | 42%               | Yes               | Homolog                       
+
+Method: IVF-PQ
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q0HR19          | 0.52         | 45%               | Yes               | Homolog                       
+2      | Q0HMR2          | 0.52         | 44%               | Yes               | Homolog                       
+3      | A0KGL5          | 0.52         | 45%               | Yes               | Homolog                       
+4      | A1A7A6          | 0.57         | 42%               | Yes               | Homolog                       
+5      | A7ZW09          | 0.58         | 42%               | Yes               | Homolog                       
+6      | A7MSB2          | 0.59         | 44%               | No                | Possible false positive       
+7      | Q48LP5          | 0.61         | 44%               | Yes               | Homolog                       
+8      | B5FI41          | 0.61         | 42%               | Yes               | Homolog                       
+9      | Q5PDF0          | 0.61         | 42%               | Yes               | Homolog                       
+10     | Q3KGV8          | 0.67         | 45%               | Yes               | Homolog                       
+
+Method: Neural LSH
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | A7FKM4          | 0.20         | undetected        | No                | Possible false positive       
+2      | C5BEJ2          | 0.20         | undetected        | No                | Possible false positive       
+3      | B2UCW7          | 0.20         | undetected        | No                | Possible false positive       
+4      | Q57RF9          | 0.21         | undetected        | No                | Possible false positive       
+5      | B5F076          | 0.21         | undetected        | No                | Possible false positive       
+6      | A9MTI2          | 0.21         | undetected        | No                | Possible false positive       
+7      | Q9JYK8          | 0.21         | undetected        | No                | Possible false positive       
+8      | Q5X0E6          | 0.21         | undetected        | No                | Possible false positive       
+9      | B0V514          | 0.21         | undetected        | No                | Possible false positive       
+10     | B7I8J5          | 0.21         | undetected        | No                | Possible false positive       
 
 ==============================================================================================================
 Query: A0A009HPM0
@@ -248,18 +725,21 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.342           | 2.926      | 0.20                     
-BLAST (Ref)          | 0.447           | 2.237      | 1.00                     
+Euclidean LSH        | 0.332           | 3.011      | 0.20                     
+Hypercube            | 0.003           | 307.235    | 0.00                     
+IVF-Flat             | 0.130           | 7.721      | 0.20                     
+IVF-PQ               | 0.030           | 33.761     | 0.00                     
+Neural LSH           | 0.013           | 74.416     | 0.20                     
+BLAST (Ref)          | 0.434           | 2.305      | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
-[2] Top-N neighbors
---------------------------------------------------------------------------------------------------------------
+[2] Top-N neighbors per method
 
 Method: Euclidean LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | Q612F5          | 0.04         | 40.67%            | Yes               | Homolog                       
-2      | Q5I0C3          | 0.04         | 46.80%            | Yes               | Homolog                       
+1      | Q612F5          | 0.04         | 41%               | Yes               | Homolog                       
+2      | Q5I0C3          | 0.04         | 47%               | Yes               | Homolog                       
 3      | Q9CMJ8          | 0.04         | undetected        | No                | Possible false positive       
 4      | Q12KL2          | 0.04         | undetected        | No                | Possible false positive       
 5      | P44440          | 0.05         | undetected        | No                | Possible false positive       
@@ -268,6 +748,62 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 8      | A5F3L5          | 0.05         | undetected        | No                | Possible false positive       
 9      | P57029          | 0.05         | undetected        | No                | Possible false positive       
 10     | P07244          | 0.05         | undetected        | No                | Possible false positive       
+
+Method: Hypercube
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P07244          | 0.05         | undetected        | No                | Possible false positive       
+2      | P77439          | 0.05         | undetected        | No                | Possible false positive       
+3      | A5F4F5          | 0.05         | undetected        | No                | Possible false positive       
+4      | B7LYG7          | 0.06         | undetected        | No                | Possible false positive       
+5      | Q31WG4          | 0.06         | undetected        | No                | Possible false positive       
+6      | B2U0S0          | 0.06         | undetected        | No                | Possible false positive       
+7      | B7N7E6          | 0.06         | undetected        | No                | Possible false positive       
+8      | Q8DII3          | 0.06         | undetected        | No                | Possible false positive       
+9      | C0MEP5          | 0.06         | undetected        | No                | Possible false positive       
+10     | A3D085          | 0.06         | undetected        | No                | Possible false positive       
+
+Method: IVF-Flat
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q612F5          | 0.04         | 41%               | Yes               | Homolog                       
+2      | Q5I0C3          | 0.04         | 47%               | Yes               | Homolog                       
+3      | Q9CMJ8          | 0.04         | undetected        | No                | Possible false positive       
+4      | Q12KL2          | 0.04         | undetected        | No                | Possible false positive       
+5      | P44440          | 0.05         | undetected        | No                | Possible false positive       
+6      | Q9CP74          | 0.05         | undetected        | No                | Possible false positive       
+7      | Q8DXM9          | 0.05         | undetected        | No                | Possible false positive       
+8      | A5F3L5          | 0.05         | undetected        | No                | Possible false positive       
+9      | P57029          | 0.05         | undetected        | No                | Possible false positive       
+10     | P07244          | 0.05         | undetected        | No                | Possible false positive       
+
+Method: IVF-PQ
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q5E320          | 1.48         | undetected        | No                | Possible false positive       
+2      | B0VRJ4          | 1.48         | undetected        | No                | Possible false positive       
+3      | Q7MHY6          | 1.49         | undetected        | No                | Possible false positive       
+4      | Q7MAX6          | 1.50         | undetected        | No                | Possible false positive       
+5      | B0VKL3          | 1.51         | undetected        | No                | Possible false positive       
+6      | B6EL06          | 1.54         | undetected        | No                | Possible false positive       
+7      | B4ET17          | 1.56         | undetected        | No                | Possible false positive       
+8      | Q9CL07          | 1.57         | undetected        | No                | Possible false positive       
+9      | Q8EIL1          | 1.59         | undetected        | No                | Possible false positive       
+10     | B0V7R3          | 1.73         | undetected        | No                | Possible false positive       
+
+Method: Neural LSH
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q612F5          | 0.27         | 41%               | Yes               | Homolog                       
+2      | Q5I0C3          | 0.28         | 47%               | Yes               | Homolog                       
+3      | Q9CMJ8          | 0.29         | undetected        | No                | Possible false positive       
+4      | Q12KL2          | 0.29         | undetected        | No                | Possible false positive       
+5      | P44440          | 0.30         | undetected        | No                | Possible false positive       
+6      | Q9CP74          | 0.30         | undetected        | No                | Possible false positive       
+7      | Q8DXM9          | 0.31         | undetected        | No                | Possible false positive       
+8      | A5F3L5          | 0.31         | undetected        | No                | Possible false positive       
+9      | P57029          | 0.31         | undetected        | No                | Possible false positive       
+10     | P07244          | 0.31         | undetected        | No                | Possible false positive       
 
 ==============================================================================================================
 Query: A0A009IB02
@@ -278,26 +814,85 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.342           | 2.926      | 0.86                     
-BLAST (Ref)          | 0.447           | 2.237      | 1.00                     
+Euclidean LSH        | 0.332           | 3.011      | 0.86                     
+Hypercube            | 0.003           | 307.235    | 0.00                     
+IVF-Flat             | 0.130           | 7.721      | 0.86                     
+IVF-PQ               | 0.030           | 33.761     | 0.86                     
+Neural LSH           | 0.013           | 74.416     | 0.86                     
+BLAST (Ref)          | 0.434           | 2.305      | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
-[2] Top-N neighbors
---------------------------------------------------------------------------------------------------------------
+[2] Top-N neighbors per method
 
 Method: Euclidean LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | P10802          | 0.04         | 45.82%            | Yes               | Homolog                       
-2      | P11961          | 0.10         | 33.33%            | Yes               | Homolog                       
-3      | Q9SQI8          | 0.11         | 31.91%            | Yes               | Homolog                       
+1      | P10802          | 0.04         | 46%               | Yes               | Homolog                       
+2      | P11961          | 0.10         | 33%               | Yes               | Homolog                       
+3      | Q9SQI8          | 0.11         | 32%               | Yes               | Homolog                       
 4      | P49786          | 0.11         | undetected        | No                | Possible false positive       
-5      | P22439          | 0.12         | 26.26%            | Yes               | Remote homolog                
-6      | P43874          | 0.13         | 39.58%            | No                | Possible false positive       
-7      | P29337          | 0.14         | 34.48%            | Yes               | Homolog                       
-8      | P02904          | 0.15         | 36.67%            | No                | Possible false positive       
-9      | Q06881          | 0.15         | 30.36%            | Yes               | Homolog                       
-10     | P0ABE1          | 0.16         | 29.09%            | No                | Possible false positive       
+5      | P22439          | 0.12         | 26%               | Yes               | Remote homolog                
+6      | P43874          | 0.13         | 40%               | No                | Possible false positive       
+7      | P29337          | 0.14         | 34%               | Yes               | Homolog                       
+8      | P02904          | 0.15         | 37%               | No                | Possible false positive       
+9      | Q06881          | 0.15         | 30%               | Yes               | Homolog                       
+10     | P0ABE1          | 0.16         | 29%               | No                | Possible false positive       
+
+Method: Hypercube
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q6MMS6          | 0.17         | undetected        | No                | Possible false positive       
+2      | Q7WHG2          | 0.19         | undetected        | No                | Possible false positive       
+3      | B4RMZ3          | 0.19         | undetected        | No                | Possible false positive       
+4      | A9ITX6          | 0.19         | undetected        | No                | Possible false positive       
+5      | Q30WJ0          | 0.19         | undetected        | No                | Possible false positive       
+6      | Q140U6          | 0.20         | undetected        | No                | Possible false positive       
+7      | B8HG54          | 0.20         | undetected        | No                | Possible false positive       
+8      | C1CQ48          | 0.21         | undetected        | No                | Possible false positive       
+9      | Q5LIN1          | 0.21         | undetected        | No                | Possible false positive       
+10     | C1CJ39          | 0.21         | undetected        | No                | Possible false positive       
+
+Method: IVF-Flat
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P10802          | 0.04         | 46%               | Yes               | Homolog                       
+2      | P11961          | 0.10         | 33%               | Yes               | Homolog                       
+3      | Q9SQI8          | 0.11         | 32%               | Yes               | Homolog                       
+4      | P49786          | 0.11         | undetected        | No                | Possible false positive       
+5      | P22439          | 0.12         | 26%               | Yes               | Remote homolog                
+6      | P43874          | 0.13         | 40%               | No                | Possible false positive       
+7      | P29337          | 0.14         | 34%               | Yes               | Homolog                       
+8      | P02904          | 0.15         | 37%               | No                | Possible false positive       
+9      | Q06881          | 0.15         | 30%               | Yes               | Homolog                       
+10     | P0ABE1          | 0.16         | 29%               | No                | Possible false positive       
+
+Method: IVF-PQ
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P10802          | 1.19         | 46%               | Yes               | Homolog                       
+2      | P11961          | 1.98         | 33%               | Yes               | Homolog                       
+3      | Q9SQI8          | 2.01         | 32%               | Yes               | Homolog                       
+4      | P49786          | 2.01         | undetected        | No                | Possible false positive       
+5      | P22439          | 2.19         | 26%               | Yes               | Remote homolog                
+6      | P43874          | 2.22         | 40%               | No                | Possible false positive       
+7      | P29337          | 2.29         | 34%               | Yes               | Homolog                       
+8      | P02904          | 2.35         | 37%               | No                | Possible false positive       
+9      | P0ABE1          | 2.44         | 29%               | No                | Possible false positive       
+10     | Q06881          | 2.48         | 30%               | Yes               | Homolog                       
+
+Method: Neural LSH
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P10802          | 0.28         | 46%               | Yes               | Homolog                       
+2      | P11961          | 0.46         | 33%               | Yes               | Homolog                       
+3      | P22439          | 0.50         | 26%               | Yes               | Remote homolog                
+4      | P43874          | 0.51         | 40%               | No                | Possible false positive       
+5      | P29337          | 0.53         | 34%               | Yes               | Homolog                       
+6      | Q06881          | 0.56         | 30%               | Yes               | Homolog                       
+7      | P0ABE1          | 0.56         | 29%               | No                | Possible false positive       
+8      | Q68XI8          | 0.58         | 28%               | Yes               | Remote homolog                
+9      | Q6MMS6          | 0.58         | undetected        | No                | Possible false positive       
+10     | B5XWP9          | 0.58         | undetected        | No                | Possible false positive       
 
 ==============================================================================================================
 Query: A0A010Q3W2
@@ -308,26 +903,85 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.342           | 2.926      | 0.00                     
-BLAST (Ref)          | 0.447           | 2.237      | 1.00                     
+Euclidean LSH        | 0.332           | 3.011      | 0.00                     
+Hypercube            | 0.003           | 307.235    | 0.00                     
+IVF-Flat             | 0.130           | 7.721      | 0.00                     
+IVF-PQ               | 0.030           | 33.761     | 0.10                     
+Neural LSH           | 0.013           | 74.416     | 0.00                     
+BLAST (Ref)          | 0.434           | 2.305      | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
-[2] Top-N neighbors
---------------------------------------------------------------------------------------------------------------
+[2] Top-N neighbors per method
 
 Method: Euclidean LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | D1ZEM6          | 0.03         | 37.50%            | No                | Possible false positive       
+1      | D1ZEM6          | 0.03         | 38%               | No                | Possible false positive       
 2      | P0CS56          | 0.03         | undetected        | No                | Possible false positive       
 3      | Q2UUT4          | 0.03         | undetected        | No                | Possible false positive       
 4      | P0CS29          | 0.04         | undetected        | No                | Possible false positive       
-5      | A2QI22          | 0.04         | 25.42%            | No                | Possible false positive       
-6      | A1CXL0          | 0.04         | 33.33%            | No                | Possible false positive       
+5      | A2QI22          | 0.04         | 25%               | No                | Possible false positive       
+6      | A1CXL0          | 0.04         | 33%               | No                | Possible false positive       
 7      | A2RAG5          | 0.04         | undetected        | No                | Possible false positive       
-8      | O35828          | 0.04         | 26.32%            | No                | Possible false positive       
-9      | C1GB49          | 0.04         | 31.08%            | No                | Possible false positive       
-10     | Q9P7C0          | 0.04         | 37.93%            | No                | Possible false positive       
+8      | O35828          | 0.04         | 26%               | No                | Possible false positive       
+9      | C1GB49          | 0.04         | 31%               | No                | Possible false positive       
+10     | Q9P7C0          | 0.04         | 38%               | No                | Possible false positive       
+
+Method: Hypercube
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | O35828          | 0.04         | 26%               | No                | Possible false positive       
+2      | Q652L2          | 0.04         | 35%               | No                | Possible false positive       
+3      | Q8VYZ5          | 0.04         | 23%               | No                | Possible false positive       
+4      | Q8CFJ9          | 0.05         | 24%               | No                | Possible false positive       
+5      | Q9VKK2          | 0.05         | 23%               | No                | Possible false positive       
+6      | Q4R4I8          | 0.05         | 22%               | No                | Possible false positive       
+7      | Q9ERG2          | 0.06         | 22%               | No                | Possible false positive       
+8      | P91341          | 0.06         | 23%               | No                | Possible false positive       
+9      | Q5VQ78          | 0.06         | 28%               | No                | Possible false positive       
+10     | P54319          | 0.06         | 24%               | No                | Possible false positive       
+
+Method: IVF-Flat
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | D1ZEM6          | 0.03         | 38%               | No                | Possible false positive       
+2      | P0CS56          | 0.03         | undetected        | No                | Possible false positive       
+3      | Q2UUT4          | 0.03         | undetected        | No                | Possible false positive       
+4      | P0CS29          | 0.04         | undetected        | No                | Possible false positive       
+5      | A2QI22          | 0.04         | 25%               | No                | Possible false positive       
+6      | A1CXL0          | 0.04         | 33%               | No                | Possible false positive       
+7      | A2RAG5          | 0.04         | undetected        | No                | Possible false positive       
+8      | O35828          | 0.04         | 26%               | No                | Possible false positive       
+9      | C1GB49          | 0.04         | 31%               | No                | Possible false positive       
+10     | Q9P7C0          | 0.04         | 38%               | No                | Possible false positive       
+
+Method: IVF-PQ
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | D1ZEM6          | 1.15         | 38%               | No                | Possible false positive       
+2      | Q2UUT4          | 1.18         | undetected        | No                | Possible false positive       
+3      | A1CXL0          | 1.24         | 33%               | No                | Possible false positive       
+4      | Q9P7C0          | 1.32         | 38%               | No                | Possible false positive       
+5      | O35828          | 1.33         | 26%               | No                | Possible false positive       
+6      | O82266          | 1.36         | 27%               | Yes               | Remote homolog                
+7      | Q652L2          | 1.37         | 35%               | No                | Possible false positive       
+8      | Q8TEB1          | 1.39         | 22%               | No                | Possible false positive       
+9      | A4IGH4          | 1.40         | undetected        | No                | Possible false positive       
+10     | Q4P553          | 1.45         | 31%               | No                | Possible false positive       
+
+Method: Neural LSH
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | P0CS56          | 0.25         | undetected        | No                | Possible false positive       
+2      | Q2UUT4          | 0.25         | undetected        | No                | Possible false positive       
+3      | P0CS29          | 0.26         | undetected        | No                | Possible false positive       
+4      | A2RAG5          | 0.28         | undetected        | No                | Possible false positive       
+5      | Q9P7C0          | 0.28         | 38%               | No                | Possible false positive       
+6      | A1CBB8          | 0.29         | undetected        | No                | Possible false positive       
+7      | Q9NRL3          | 0.29         | 23%               | No                | Possible false positive       
+8      | Q652L2          | 0.29         | 35%               | No                | Possible false positive       
+9      | Q756D0          | 0.29         | 22%               | No                | Possible false positive       
+10     | A1DE24          | 0.29         | undetected        | No                | Possible false positive       
 
 ==============================================================================================================
 Query: A0A010Q8R4
@@ -338,12 +992,15 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.342           | 2.926      | 0.00                     
-BLAST (Ref)          | 0.447           | 2.237      | 1.00                     
+Euclidean LSH        | 0.332           | 3.011      | 0.00                     
+Hypercube            | 0.003           | 307.235    | 0.00                     
+IVF-Flat             | 0.130           | 7.721      | 0.00                     
+IVF-PQ               | 0.030           | 33.761     | 0.00                     
+Neural LSH           | 0.013           | 74.416     | 0.00                     
+BLAST (Ref)          | 0.434           | 2.305      | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
-[2] Top-N neighbors
---------------------------------------------------------------------------------------------------------------
+[2] Top-N neighbors per method
 
 Method: Euclidean LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
@@ -355,6 +1012,62 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 5      | A1DIN7          | 0.04         | undetected        | No                | Possible false positive       
 6      | Q5NVM2          | 0.04         | undetected        | No                | Possible false positive       
 7      | A2QGF0          | 0.04         | undetected        | No                | Possible false positive       
-8      | Q6CXX3          | 0.04         | 26.09%            | No                | Possible false positive       
+8      | Q6CXX3          | 0.04         | 26%               | No                | Possible false positive       
 9      | Q2UUT4          | 0.04         | undetected        | No                | Possible false positive       
 10     | C3VEQ3          | 0.04         | undetected        | No                | Possible false positive       
+
+Method: Hypercube
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q652L2          | 0.03         | undetected        | No                | Possible false positive       
+2      | Q6CXX3          | 0.04         | 26%               | No                | Possible false positive       
+3      | A0A348AXX6      | 0.04         | undetected        | No                | Possible false positive       
+4      | Q9VKK2          | 0.04         | undetected        | No                | Possible false positive       
+5      | Q4PAR1          | 0.04         | undetected        | No                | Possible false positive       
+6      | Q6C1B1          | 0.04         | undetected        | No                | Possible false positive       
+7      | A1D3A0          | 0.04         | undetected        | No                | Possible false positive       
+8      | A2QNQ8          | 0.05         | undetected        | No                | Possible false positive       
+9      | P38419          | 0.05         | undetected        | No                | Possible false positive       
+10     | B2AY28          | 0.05         | undetected        | No                | Possible false positive       
+
+Method: IVF-Flat
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q9P4R5          | 0.03         | undetected        | No                | Possible false positive       
+2      | Q652L2          | 0.03         | undetected        | No                | Possible false positive       
+3      | P0CS56          | 0.03         | undetected        | No                | Possible false positive       
+4      | P0CS29          | 0.03         | undetected        | No                | Possible false positive       
+5      | A1DIN7          | 0.04         | undetected        | No                | Possible false positive       
+6      | Q5NVM2          | 0.04         | undetected        | No                | Possible false positive       
+7      | A2QGF0          | 0.04         | undetected        | No                | Possible false positive       
+8      | Q6CXX3          | 0.04         | 26%               | No                | Possible false positive       
+9      | Q2UUT4          | 0.04         | undetected        | No                | Possible false positive       
+10     | C3VEQ3          | 0.04         | undetected        | No                | Possible false positive       
+
+Method: IVF-PQ
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q9P4R5          | 1.22         | undetected        | No                | Possible false positive       
+2      | Q652L2          | 1.23         | undetected        | No                | Possible false positive       
+3      | P0CS56          | 1.24         | undetected        | No                | Possible false positive       
+4      | P0CS29          | 1.27         | undetected        | No                | Possible false positive       
+5      | Q2UUT4          | 1.34         | undetected        | No                | Possible false positive       
+6      | A1CBB8          | 1.37         | undetected        | No                | Possible false positive       
+7      | Q9P7C0          | 1.38         | undetected        | No                | Possible false positive       
+8      | A2RAG5          | 1.39         | undetected        | No                | Possible false positive       
+9      | A1DE24          | 1.43         | undetected        | No                | Possible false positive       
+10     | Q8W4D0          | 1.55         | undetected        | No                | Possible false positive       
+
+Method: Neural LSH
+Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
+--------------------------------------------------------------------------------------------------------------
+1      | Q9P4R5          | 0.25         | undetected        | No                | Possible false positive       
+2      | Q652L2          | 0.25         | undetected        | No                | Possible false positive       
+3      | P0CS56          | 0.26         | undetected        | No                | Possible false positive       
+4      | P0CS29          | 0.26         | undetected        | No                | Possible false positive       
+5      | A1DIN7          | 0.27         | undetected        | No                | Possible false positive       
+6      | Q5NVM2          | 0.28         | undetected        | No                | Possible false positive       
+7      | A2QGF0          | 0.28         | undetected        | No                | Possible false positive       
+8      | Q6CXX3          | 0.28         | 26%               | No                | Possible false positive       
+9      | Q2UUT4          | 0.28         | undetected        | No                | Possible false positive       
+10     | C3VEQ3          | 0.28         | undetected        | No                | Possible false positive       

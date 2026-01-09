@@ -825,7 +825,7 @@ def main():
 	parser.add_argument("-d", required=True, help="Path to base protein vectors .dat (float32 N x 320)")
 	parser.add_argument("-q", required=True, help="Path to FASTA with query sequences")
 	parser.add_argument("-o", "--output", required=True, help="Output neighbors file (text)")
-	parser.add_argument("-method", type=str, default="ivfflat", choices=["lsh", "hypercube", "ivfflat", "ivfpq", "nlsh", "all"],
+	parser.add_argument("-method", type=str, default="ivfflat", choices=["lsh", "hypercube", "ivfflat", "ivfpq", "neural", "all"],
 						help="ANN algorithm to use (or 'all' to run all methods)")
 	parser.add_argument("-N", type=int, default=10, help="Number of nearest neighbors")
 	parser.add_argument("-R", type=float, default=0.5, help="Range search radius (for range search mode)")
@@ -864,6 +864,16 @@ def main():
 	args = parser.parse_args()
 
 	method_lower = args.method.lower()
+
+	# The user will depict Neural LSH as neural
+	# But we, throughout the code, we call it nlsh
+	# For simplicity across the many programs
+	# So let's change it!
+	if method_lower == "neural":
+		method_lower = "nlsh"
+
+	print(method_lower)
+
 	all_qps = run_protein_search(
 		base_dat=args.d,
 		query_fasta=args.q,
