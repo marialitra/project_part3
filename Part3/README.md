@@ -101,3 +101,6 @@ we chose to take the results being shown from the best match of the protein in b
 the one with the grater blast identity.
 |-> “When multiple BLAST HSPs map to the same target protein, we retain the maximum percent 
     identity to represent the strongest local similarity.”
+
+
+11.) we hardcoded the dimension of the data! as we will only take these as the assignment states
