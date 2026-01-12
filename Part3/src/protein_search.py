@@ -236,11 +236,11 @@ def generate_per_query_report(
 
 			if qps is not None and qps > 0:
 				time_per_query = 1.0 / qps
-				f.write(f"{method_name:<20} | {time_per_query:<15.3f} | {qps:<10.3f} | {recall:<25.2f}\n")
+				f.write(f"{method_name:<20} | {time_per_query:<15.3f} | {qps:<10.2f} | {recall:<25.2f}\n")
 			else:
 				f.write(f"{method_name:<20} | {'N/A':<15s} | {'N/A':<10s} | {recall:<25.2f}\n")
 
-			f.write(f"{'BLAST (Ref)':<20} | {blast_time_per_query:<15.3f} | {blast_qps:<10.3f} | {1.00:<25.2f}\n")
+			f.write(f"{'BLAST (Ref)':<20} | {blast_time_per_query:<15.3f} | {blast_qps:<10.2f} | {1.00:<25.2f}\n")
 			f.write("-" * 110 + "\n\n")
 
 			# [2] Top-N neighbors
@@ -331,12 +331,12 @@ def generate_all_methods_report(
 
 				if qps_val is not None and qps_val > 0:
 					time_per_query = 1.0 / qps_val
-					f.write(f"{name:<20} | {time_per_query:<15.3f} | {qps_val:<10.3f} | {recall_q:<25.2f}\n")
+					f.write(f"{name:<20} | {time_per_query:<15.3f} | {qps_val:<10.2f} | {recall_q:<25.2f}\n")
 				else:
 					f.write(f"{name:<20} | {'N/A':<14s} | {'N/A':<10s} | {recall_q:<25.2f}\n")
 
 			# BLAST reference row
-			f.write(f"{'BLAST (Ref)':<20} | {blast_time_per_query:<15.3f} | {blast_qps:<10.3f} | {1.00:<25.2f}\n")
+			f.write(f"{'BLAST (Ref)':<20} | {blast_time_per_query:<15.3f} | {blast_qps:<10.2f} | {1.00:<25.2f}\n")
 			f.write("-" * 110 + "\n\n")
 
 			# [2] Top-N neighbors per method
