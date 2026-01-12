@@ -870,7 +870,7 @@ def main():
 	# IVFPQ params
 	parser.add_argument("--pq-kclusters", type=int, default=500, help="Number of clusters (IVFPQ)")
 	parser.add_argument("--pq-nprobe", type=int, default=100, help="Number of probes (IVFPQ)")
-	parser.add_argument("--pq-M", type=int, default=15, help="Number of subvectors (IVFPQ, must divide dimension)")
+	parser.add_argument("--pq-M", type=int, default=16, help="Number of subvectors (IVFPQ, must divide dimension)")
 	parser.add_argument("-nbits", type=int, default=8, help="Bits per subspace (IVFPQ)")
 
 	# NLSH specific - search phase
