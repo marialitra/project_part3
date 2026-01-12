@@ -71,8 +71,28 @@ def write_top_hits(hits_by_query: Dict[str, List[Hit]], output_path: Path, top_n
         for query_id, hits in hits_by_query.items():
             # Sort by descending bitscore, then ascending evalue, then subject id for determinism.
             hits.sort(key=lambda h: (-h[0], h[1], h[2][1] if len(h[2]) > 1 else ""))
-            for _, _, row in hits[:top_n]:
+            
+            # Track seen proteins to avoid duplicates
+            seen_proteins = set()
+            unique_count = 0
+            for _, _, row in hits:
+                if unique_count >= top_n:
+                    break
+                
+                # Extract protein ID from subject field (sp|ID|...)
+                subject_field = row[1] if len(row) > 1 else ""
+                if subject_field.startswith("sp|"):
+                    protein_id = subject_field.split("|")[1]
+                else:
+                    protein_id = subject_field
+                
+                # Skip if we've already seen this protein
+                if protein_id in seen_proteins:
+                    continue
+                
+                seen_proteins.add(protein_id)
                 writer.writerow(row)
+                unique_count += 1
 
 
 def main() -> None:
