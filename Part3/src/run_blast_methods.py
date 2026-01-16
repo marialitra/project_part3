@@ -1,5 +1,6 @@
 from libraries import os, time, subprocess, Dict, defaultdict
 
+
 def blast_executable(neighbors: int, output: str):
     """
         Runs 'make blast' to run the BLAST method and its filtering.
@@ -25,7 +26,6 @@ def blast_executable(neighbors: int, output: str):
          print("\n\n--- ERROR: 'make' command not found. Is it installed? ---")
 
          return False
-
 
 def parse_blast_results_with_identity(blast_tsv_path: str) -> Dict[str, Dict[str, float]]:
     blast_data = defaultdict(dict)
@@ -60,10 +60,6 @@ def parse_blast_results_with_identity(blast_tsv_path: str) -> Dict[str, Dict[str
 
     return blast_data
 
-
-
-
-
 def running_blast(args):
 	# Running BLAST command
 	blast_results = f"output/blast/topN/blast_results_top{args.N}.tsv"
@@ -87,5 +83,3 @@ def running_blast(args):
 	blast_identity = parse_blast_results_with_identity(blast_results_path) if os.path.exists(blast_results_path) else {}
      
 	return query_ids, blast_results, blast_identity, blast_time_per_query, blast_qps
-
-

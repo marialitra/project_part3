@@ -1,6 +1,7 @@
 import libraries
 from libraries import os, subprocess
 
+
 # Local imports from the second prt of the project
 libraries.sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "Algorithms", "src"))
 from runSearchExe import build_executable, run_algorithm
@@ -437,8 +438,6 @@ def run_protein_search(
 		return None
 
 
-
-
 def run_method(args, method, current_methods):
 	# -------------------------------------
 	# Run the method specified by the user
@@ -502,10 +501,3 @@ def run_method(args, method, current_methods):
 		libraries.print_QPS(all_qps, method)
 
 	return all_qps, answer
-		
-
-
-        
-
-
-

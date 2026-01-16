@@ -1,5 +1,6 @@
 from libraries import argparse, List, Tuple, Dict, defaultdict, re, Optional
 
+
 def parse_args_embed() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate protein embeddings using ESM2")
     parser.add_argument('-i', '--input', type=str, required=True, help='Input FASTA file')
@@ -73,9 +74,6 @@ def parse_args_search() -> argparse.Namespace:
     return parser.parse_args()
 
 
-
-
-
 def parse_neighbor_results(results_txt: str, topN: int) -> Dict[str, List[Tuple[str, float]]]:
 	results = defaultdict(list)
 	current_query = None
@@ -98,7 +96,6 @@ def parse_neighbor_results(results_txt: str, topN: int) -> Dict[str, List[Tuple[
 					results[current_query].append((neighbor_id, distance))
 
 	return results
-
 
 def parse_blast_tsv(blast_tsv_path, topN):
     gt = defaultdict(list)
@@ -123,7 +120,6 @@ def parse_blast_tsv(blast_tsv_path, topN):
 
     # Convert lists to sets
     return {q: set(v) for q, v in gt.items()}
-
 
 
 def _extract_neighbor_id(line: str) -> Optional[str]:
@@ -155,4 +151,3 @@ def parse_ann_txt(ann_txt_path, topN):
 					results[current_query].append(neighbor_id)
 
 	return results
-

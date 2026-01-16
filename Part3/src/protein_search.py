@@ -1,6 +1,7 @@
 import libraries
 from libraries import Optional, Dict, List, Tuple, defaultdict
 
+
 # -----------------------------
 # Main
 # -----------------------------
@@ -60,8 +61,6 @@ def main():
 	# Delete uneccessary files
 	# -----------------------------
 	libraries.delete_files(args, method, all_methods)
-	
-
 
 if __name__ == "__main__":
 	main()

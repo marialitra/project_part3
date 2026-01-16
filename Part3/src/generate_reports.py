@@ -1,5 +1,6 @@
 from libraries import Optional, List, Tuple, Dict
 
+
 def generate_per_query_report(
 	output_report: str,
 	query_ids: list,
@@ -88,7 +89,6 @@ def generate_per_query_report(
 	print(f"\n{'='*75}")
 	print(f"[protein_search] Per-query report written to {output_report}")
 	print(f"{'='*75}")
-
 
 def generate_all_methods_report(
 	output_report: str,
@@ -190,4 +190,3 @@ def generate_all_methods_report(
 	print(f"\n{'='*75}")
 	print(f"[protein_search] Consolidated all-methods report written to {output_report}")
 	print(f"{'='*75}")
-
