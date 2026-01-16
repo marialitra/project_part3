@@ -40,11 +40,11 @@ EVALUE = 1e-2 # Hardcoded it is the filter we choose to reduce noise
 blast: blast_search
 	python3 src/filter_blast.py -i output/blast/search/blast_results.tsv -o ${out} -n ${N} --max-evalue ${EVALUE}
 
-.PHONY: blast_filter
+.PHONY: blast
 
 # Grid search for hyperparameter tuning
 # Usage: make grid_search [method=<all|lsh|hypercube|ivfflat|ivfpq|neural>]
-method = neural
+method = all
 grid_search:
 	python3 src/grid_search.py \
 	-d output/embeddings/vectors_50k.dat \

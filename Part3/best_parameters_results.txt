@@ -1,6 +1,33 @@
+Algorithm: IVFPQ
+----------------------------------------
+Best Recall: 0.3296
+N                   50.000000
+seed                42.000000
+pq_kclusters      1000.000000
+pq_nprobe          500.000000
+pq_M                16.000000
+nbits                8.000000
+recall               0.329646
+qps                 15.846877
+time_per_query       0.063104
+========================================
+
+Algorithm: LSH
+----------------------------------------
+Best Recall: 0.2971
+N                 50.000000
+seed              42.000000
+k                  2.000000
+L                  5.000000
+lsh_w             20.000000
+recall             0.297108
+qps                9.944625
+time_per_query     0.100557
+========================================
+
 Algorithm: NLSH
 ----------------------------------------
-Best Recall: 0.3056
+Best Recall: 0.3004
 N                    50.000000
 seed                 42.000000
 nlsh_T             1000.000000
@@ -10,61 +37,34 @@ nlsh_nodes          128.000000
 nlsh_epochs           8.000000
 nlsh_batch_size     512.000000
 nlsh_lr               0.001000
-recall                0.305596
-qps                  28.190017
-time_per_query        0.035474
-========================================
-
-Algorithm: HYPERCUBE
-----------------------------------------
-Best Recall: 0.2349
-N                    50.000000
-seed                 42.000000
-kproj                12.000000
-w                    20.000000
-M                 10000.000000
-probes              100.000000
-recall                0.234863
-qps                  10.649060
-time_per_query        0.093905
-========================================
-
-Algorithm: IVFPQ
-----------------------------------------
-Best Recall: 0.3512
-N                  50.000000
-seed               42.000000
-kclusters         500.000000
-nprobe            100.000000
-ivfpq_M            16.000000
-nbits               8.000000
-recall              0.351202
-qps                25.075226
-time_per_query      0.039880
+recall                0.300441
+qps                  58.770762
+time_per_query        0.017015
 ========================================
 
 Algorithm: IVFFLAT
 ----------------------------------------
-Best Recall: 0.3056
+Best Recall: 0.2971
 N                  50.000000
 seed               42.000000
-kclusters         200.000000
-nprobe            100.000000
-recall              0.305596
-qps                 2.227523
-time_per_query      0.448929
+flat_kclusters    200.000000
+flat_nprobe       100.000000
+recall              0.297108
+qps                 6.563876
+time_per_query      0.152349
 ========================================
 
-Algorithm: LSH
+Algorithm: HYPERCUBE
 ----------------------------------------
-Best Recall: 0.3056
-N                 50.000000
-seed              42.000000
-k                  2.000000
-L                  5.000000
-w                 20.000000
-recall             0.305596
-qps                1.906456
-time_per_query     0.524533
+Best Recall: 0.2142
+N                    50.000000
+seed                 42.000000
+kproj                12.000000
+hyper_w              20.000000
+hyper_M           10000.000000
+probes              100.000000
+recall                0.214211
+qps                  60.162740
+time_per_query        0.016622
 ========================================
 

@@ -1,0 +1,147 @@
+Hypercube
+
+Query: A0A009I3Y5
+Nearest neighbor-1: B2K7I7, Distance: 0.078
+Nearest neighbor-2: B4F0D4, Distance: 0.083
+Nearest neighbor-3: A1SW96, Distance: 0.083
+Nearest neighbor-4: Q8EJX6, Distance: 0.085
+Nearest neighbor-5: A1RPL0, Distance: 0.087
+Nearest neighbor-6: P47448, Distance: 0.087
+Nearest neighbor-7: A0L1Z0, Distance: 0.089
+Nearest neighbor-8: Q9CP74, Distance: 0.092
+Nearest neighbor-9: A9KYL6, Distance: 0.093
+Nearest neighbor-10: O74738, Distance: 0.093
+
+Query: A0A010Q8R4
+Nearest neighbor-1: Q9P4R5, Distance: 0.031
+Nearest neighbor-2: Q652L2, Distance: 0.032
+Nearest neighbor-3: P0CS56, Distance: 0.033
+Nearest neighbor-4: A1DIN7, Distance: 0.036
+Nearest neighbor-5: Q5NVM2, Distance: 0.038
+Nearest neighbor-6: A2QGF0, Distance: 0.038
+Nearest neighbor-7: Q6CXX3, Distance: 0.039
+Nearest neighbor-8: Q2UUT4, Distance: 0.039
+Nearest neighbor-9: C3VEQ3, Distance: 0.039
+Nearest neighbor-10: A0A348AXX6, Distance: 0.039
+
+Query: A0A009PCK4
+Nearest neighbor-1: B2K7I7, Distance: 0.079
+Nearest neighbor-2: A1SW96, Distance: 0.083
+Nearest neighbor-3: B4F0D4, Distance: 0.083
+Nearest neighbor-4: Q8EJX6, Distance: 0.085
+Nearest neighbor-5: A1RPL0, Distance: 0.087
+Nearest neighbor-6: P47448, Distance: 0.087
+Nearest neighbor-7: A0L1Z0, Distance: 0.089
+Nearest neighbor-8: Q9CP74, Distance: 0.092
+Nearest neighbor-9: A9KYL6, Distance: 0.092
+Nearest neighbor-10: O74738, Distance: 0.093
+
+Query: A0A009HPM0
+Nearest neighbor-1: Q612F5, Distance: 0.038
+Nearest neighbor-2: Q5I0C3, Distance: 0.040
+Nearest neighbor-3: Q12KL2, Distance: 0.043
+Nearest neighbor-4: P44440, Distance: 0.046
+Nearest neighbor-5: Q9CP74, Distance: 0.047
+Nearest neighbor-6: Q8DXM9, Distance: 0.047
+Nearest neighbor-7: A5F3L5, Distance: 0.047
+Nearest neighbor-8: P57029, Distance: 0.047
+Nearest neighbor-9: P07244, Distance: 0.047
+Nearest neighbor-10: A8GKD1, Distance: 0.050
+
+Query: A0A001
+Nearest neighbor-1: P9WQJ3, Distance: 0.045
+Nearest neighbor-2: Q13BH6, Distance: 0.051
+Nearest neighbor-3: Q03024, Distance: 0.054
+Nearest neighbor-4: Q20Z38, Distance: 0.059
+Nearest neighbor-5: Q9ZEP3, Distance: 0.077
+Nearest neighbor-6: Q8P8W4, Distance: 0.081
+Nearest neighbor-7: P23886, Distance: 0.084
+Nearest neighbor-8: O70595, Distance: 0.087
+Nearest neighbor-9: Q9NP58, Distance: 0.088
+Nearest neighbor-10: Q28433, Distance: 0.091
+
+Query: A0A009IB02
+Nearest neighbor-1: P10802, Distance: 0.038
+Nearest neighbor-2: Q9SQI8, Distance: 0.106
+Nearest neighbor-3: P22439, Distance: 0.123
+Nearest neighbor-4: Q6MMS6, Distance: 0.169
+Nearest neighbor-5: B5XWP9, Distance: 0.171
+Nearest neighbor-6: A9N025, Distance: 0.179
+Nearest neighbor-7: A8AH10, Distance: 0.180
+Nearest neighbor-8: C6DH15, Distance: 0.181
+Nearest neighbor-9: Q56WK6, Distance: 0.187
+Nearest neighbor-10: Q56ZI2, Distance: 0.189
+
+Query: A0A002
+Nearest neighbor-1: P9WQJ3, Distance: 0.048
+Nearest neighbor-2: Q13BH6, Distance: 0.056
+Nearest neighbor-3: Q03024, Distance: 0.060
+Nearest neighbor-4: Q20Z38, Distance: 0.064
+Nearest neighbor-5: P23886, Distance: 0.083
+Nearest neighbor-6: Q8P8W4, Distance: 0.084
+Nearest neighbor-7: Q28433, Distance: 0.089
+Nearest neighbor-8: O70595, Distance: 0.094
+Nearest neighbor-9: Q9NP58, Distance: 0.095
+Nearest neighbor-10: P9WQJ4, Distance: 0.099
+
+Query: A0A010Q3W2
+Nearest neighbor-1: D1ZEM6, Distance: 0.030
+Nearest neighbor-2: P0CS56, Distance: 0.032
+Nearest neighbor-3: Q2UUT4, Distance: 0.032
+Nearest neighbor-4: A2QI22, Distance: 0.036
+Nearest neighbor-5: A1CXL0, Distance: 0.037
+Nearest neighbor-6: O35828, Distance: 0.039
+Nearest neighbor-7: C1GB49, Distance: 0.040
+Nearest neighbor-8: Q9P7C0, Distance: 0.041
+Nearest neighbor-9: Q9SU78, Distance: 0.041
+Nearest neighbor-10: Q9NRL3, Distance: 0.041
+
+Query: A0A009HLV9
+Nearest neighbor-1: O87455, Distance: 0.023
+Nearest neighbor-2: Q5E3W8, Distance: 0.025
+Nearest neighbor-3: P59402, Distance: 0.029
+Nearest neighbor-4: A8A3I6, Distance: 0.030
+Nearest neighbor-5: B6I695, Distance: 0.030
+Nearest neighbor-6: B7N6T9, Distance: 0.031
+Nearest neighbor-7: Q0TEH1, Distance: 0.031
+Nearest neighbor-8: B4T3B0, Distance: 0.031
+Nearest neighbor-9: B4TT16, Distance: 0.032
+Nearest neighbor-10: P71229, Distance: 0.033
+
+Query: A0A009HL96
+Nearest neighbor-1: Q92HC2, Distance: 0.114
+Nearest neighbor-2: Q8D5Z6, Distance: 0.116
+Nearest neighbor-3: O34311, Distance: 0.121
+Nearest neighbor-4: O48929, Distance: 0.124
+Nearest neighbor-5: Q881J7, Distance: 0.129
+Nearest neighbor-6: Q2FY80, Distance: 0.137
+Nearest neighbor-7: Q56128, Distance: 0.144
+Nearest neighbor-8: P0AA93, Distance: 0.145
+Nearest neighbor-9: Q6GK52, Distance: 0.145
+Nearest neighbor-10: Q13237, Distance: 0.147
+
+Query: A0A009HQC9
+Nearest neighbor-1: Q0HR19, Distance: 0.006
+Nearest neighbor-2: Q0HMR2, Distance: 0.006
+Nearest neighbor-3: A0KGL5, Distance: 0.006
+Nearest neighbor-4: A1A7A6, Distance: 0.007
+Nearest neighbor-5: A7ZW09, Distance: 0.007
+Nearest neighbor-6: B0BT63, Distance: 0.007
+Nearest neighbor-7: A7MSB2, Distance: 0.008
+Nearest neighbor-8: Q48LP5, Distance: 0.008
+Nearest neighbor-9: B5FI41, Distance: 0.008
+Nearest neighbor-10: Q5PDF0, Distance: 0.008
+
+Query: A0A009HN45
+Nearest neighbor-1: A6QKD8, Distance: 0.010
+Nearest neighbor-2: A7MSB2, Distance: 0.010
+Nearest neighbor-3: Q3K063, Distance: 0.011
+Nearest neighbor-4: Q9ZDW2, Distance: 0.012
+Nearest neighbor-5: Q1MQP3, Distance: 0.012
+Nearest neighbor-6: Q7VJC6, Distance: 0.013
+Nearest neighbor-7: B0BT63, Distance: 0.013
+Nearest neighbor-8: Q92H92, Distance: 0.013
+Nearest neighbor-9: P52126, Distance: 0.013
+Nearest neighbor-10: Q0HMR2, Distance: 0.014
+
+

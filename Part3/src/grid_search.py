@@ -13,14 +13,11 @@ import argparse
 from itertools import product
 from typing import Dict, List, Tuple, Optional, Set
 
+
 # Local imports
 sys.path.append(os.path.dirname(__file__))
-from protein_search import (
-	run_protein_search,
-	compute_recall,
-	parse_blast_tsv,
-	parse_neighbor_results,
-)
+from libraries import run_protein_search, calculate_recall
+
 
 
 def ensure_blast_results(N_vals: List[int]):
@@ -276,7 +273,7 @@ def run_grid_search(
 					# Compute recall
 					blast_tsv = os.path.join(blast_results_path, f"blast_results_top{N}.tsv")
 					if os.path.exists(blast_tsv) and os.path.exists(output_txt):
-						mean_recall, _ = compute_recall(blast_tsv, output_txt, N)
+						mean_recall, _ = calculate_recall(blast_tsv, output_txt, N)
 						
 						result = {
 							"N": N,
@@ -289,7 +286,12 @@ def run_grid_search(
 							"time_per_query": 1.0/qps if qps and qps > 0 else float('inf'),
 						}
 						all_results["lsh"].append(result)
-						print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps:.2f if qps else 0}")
+						
+						#print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps:.2f if qps else 0}")
+						# Chnged the baove line with the 2 above this sentence due to:
+						# ERROR: Invalid Format Specifier
+						qps_val = qps if qps else 0.0
+						print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps_val:.2f}")
 					
 					# Clean up
 					if os.path.exists(output_txt):
@@ -375,7 +377,7 @@ def run_grid_search(
 					# Compute recall
 					blast_tsv = os.path.join(blast_results_path, f"blast_results_top{N}.tsv")
 					if os.path.exists(blast_tsv) and os.path.exists(output_txt):
-						mean_recall, _ = compute_recall(blast_tsv, output_txt, N)
+						mean_recall, _ = calculate_recall(blast_tsv, output_txt, N)
 						
 						result = {
 							"N": N,
@@ -389,7 +391,12 @@ def run_grid_search(
 							"time_per_query": 1.0/qps if qps and qps > 0 else float('inf'),
 						}
 						all_results["hypercube"].append(result)
-						print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps:.2f if qps else 0}")
+						
+						#print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps:.2f if qps else 0}")
+						# Chnged the baove line with the 2 above this sentence due to:
+						# ERROR: Invalid Format Specifier
+						qps_val = qps if qps else 0.0
+						print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps_val:.2f}")
 					
 					# Clean up
 					if os.path.exists(output_txt):
@@ -473,7 +480,7 @@ def run_grid_search(
 					# Compute recall
 					blast_tsv = os.path.join(blast_results_path, f"blast_results_top{N}.tsv")
 					if os.path.exists(blast_tsv) and os.path.exists(output_txt):
-						mean_recall, _ = compute_recall(blast_tsv, output_txt, N)
+						mean_recall, _ = calculate_recall(blast_tsv, output_txt, N)
 						
 						result = {
 							"N": N,
@@ -485,7 +492,12 @@ def run_grid_search(
 							"time_per_query": 1.0/qps if qps and qps > 0 else float('inf'),
 						}
 						all_results["ivfflat"].append(result)
-						print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps:.2f if qps else 0}")
+						
+						#print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps:.2f if qps else 0}")
+						# Chnged the baove line with the 2 above this sentence due to:
+						# ERROR: Invalid Format Specifier
+						qps_val = qps if qps else 0.0
+						print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps_val:.2f}")
 					
 					# Clean up
 					if os.path.exists(output_txt):
@@ -570,7 +582,7 @@ def run_grid_search(
 					# Compute recall
 					blast_tsv = os.path.join(blast_results_path, f"blast_results_top{N}.tsv")
 					if os.path.exists(blast_tsv) and os.path.exists(output_txt):
-						mean_recall, _ = compute_recall(blast_tsv, output_txt, N)
+						mean_recall, _ = calculate_recall(blast_tsv, output_txt, N)
 						
 						result = {
 							"N": N,
@@ -584,7 +596,12 @@ def run_grid_search(
 							"time_per_query": 1.0/qps if qps and qps > 0 else float('inf'),
 						}
 						all_results["ivfpq"].append(result)
-						print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps:.2f if qps else 0}")
+						
+						#print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps:.2f if qps else 0}")
+						# Chnged the baove line with the 2 above this sentence due to:
+						# ERROR: Invalid Format Specifier
+						qps_val = qps if qps else 0.0
+						print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps_val:.2f}")
 					
 					# Clean up
 					if os.path.exists(output_txt):
@@ -670,7 +687,7 @@ def run_grid_search(
 					# Compute recall
 					blast_tsv = os.path.join(blast_results_path, f"blast_results_top{N}.tsv")
 					if os.path.exists(blast_tsv) and os.path.exists(output_txt):
-						mean_recall, _ = compute_recall(blast_tsv, output_txt, N)
+						mean_recall, _ = calculate_recall(blast_tsv, output_txt, N)
 						
 						result = {
 							"N": N,
@@ -687,7 +704,10 @@ def run_grid_search(
 							"time_per_query": 1.0/qps if qps and qps > 0 else float('inf'),
 						}
 						all_results["nlsh"].append(result)
-
+						
+						#print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps:.2f if qps else 0}")
+						# Chnged the baove line with the 2 above this sentence due to:
+						# ERROR: Invalid Format Specifier
 						qps_val = qps if qps else 0.0
 						print(f"  Recall@{N}: {mean_recall:.4f}, QPS: {qps_val:.2f}")
 
@@ -725,7 +745,7 @@ def run_grid_search(
 			print(f"Saved {len(results)} results to {csv_path}")
 
 
-def main():
+def main():#
 	parser = argparse.ArgumentParser("Grid search for ANN hyperparameter tuning - V2 with append support")
 	parser.add_argument("-d", required=True, help="Path to base protein vectors .dat")
 	parser.add_argument("-q", required=True, help="Path to query FASTA")

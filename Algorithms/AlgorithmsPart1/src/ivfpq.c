@@ -343,7 +343,6 @@ IVFPQIndex* ivfpq_init(Dataset* dataset, int k_clusters, int M, int nbits, bool 
     if (!ivf_temp)
     {
         free(index);
-        
         exit(EXIT_FAILURE);
     }
     

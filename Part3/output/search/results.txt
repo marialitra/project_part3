@@ -12,12 +12,12 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.090           | 11.09      | 0.00                     
-Hypercube            | 0.014           | 70.81      | 0.00                     
-IVF-Flat             | 0.141           | 7.07       | 0.00                     
-IVF-PQ               | 0.029           | 34.30      | 0.00                     
-Neural LSH           | 0.016           | 62.93      | 0.00                     
-BLAST (Ref)          | 0.468           | 2.14       | 1.00                     
+Euclidean LSH        | 0.065           | 15.41      | 0.00                     
+Hypercube            | 0.014           | 69.10      | 0.00                     
+IVF-Flat             | 0.138           | 7.26       | 0.00                     
+IVF-PQ               | 0.033           | 30.55      | 0.00                     
+Neural LSH           | 0.015           | 66.95      | 0.00                     
+BLAST (Ref)          | 0.438           | 2.28       | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
 [2] Top-N neighbors per method
@@ -70,13 +70,13 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 1      | P14181          | 1.69         | undetected        | No                | Possible false positive       
 2      | A5UG81          | 1.75         | undetected        | No                | Possible false positive       
 3      | Q4QLU9          | 1.91         | undetected        | No                | Possible false positive       
-4      | A9KYL6          | 1.99         | undetected        | No                | Possible false positive       
-5      | Q8EKA0          | 1.99         | undetected        | No                | Possible false positive       
-6      | B2J946          | 2.01         | undetected        | No                | Possible false positive       
-7      | Q8E9R5          | 2.01         | undetected        | No                | Possible false positive       
-8      | A1SW96          | 2.02         | undetected        | No                | Possible false positive       
+4      | Q8E9R5          | 2.01         | undetected        | No                | Possible false positive       
+5      | A1SW96          | 2.02         | undetected        | No                | Possible false positive       
+6      | A3DA85          | 2.05         | undetected        | No                | Possible false positive       
+7      | P75612          | 2.06         | undetected        | No                | Possible false positive       
+8      | Q5WWF9          | 2.11         | undetected        | No                | Possible false positive       
 9      | Q9CPH1          | 2.12         | undetected        | No                | Possible false positive       
-10     | P54504          | 2.13         | undetected        | No                | Possible false positive       
+10     | Q5E320          | 2.23         | undetected        | No                | Possible false positive       
 
 Method: Neural LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
@@ -101,12 +101,12 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.090           | 11.09      | 0.00                     
-Hypercube            | 0.014           | 70.81      | 0.00                     
-IVF-Flat             | 0.141           | 7.07       | 0.00                     
-IVF-PQ               | 0.029           | 34.30      | 0.00                     
-Neural LSH           | 0.016           | 62.93      | 0.00                     
-BLAST (Ref)          | 0.468           | 2.14       | 1.00                     
+Euclidean LSH        | 0.065           | 15.41      | 0.00                     
+Hypercube            | 0.014           | 69.10      | 0.00                     
+IVF-Flat             | 0.138           | 7.26       | 0.00                     
+IVF-PQ               | 0.033           | 30.55      | 0.00                     
+Neural LSH           | 0.015           | 66.95      | 0.00                     
+BLAST (Ref)          | 0.438           | 2.28       | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
 [2] Top-N neighbors per method
@@ -159,13 +159,13 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 1      | P14181          | 1.67         | undetected        | No                | Possible false positive       
 2      | A5UG81          | 1.72         | undetected        | No                | Possible false positive       
 3      | Q4QLU9          | 1.91         | undetected        | No                | Possible false positive       
-4      | A9KYL6          | 1.98         | undetected        | No                | Possible false positive       
-5      | Q8EKA0          | 1.99         | undetected        | No                | Possible false positive       
-6      | B2J946          | 2.00         | undetected        | No                | Possible false positive       
-7      | Q8E9R5          | 2.01         | undetected        | No                | Possible false positive       
-8      | A1SW96          | 2.02         | undetected        | No                | Possible false positive       
-9      | Q9CPH1          | 2.13         | undetected        | No                | Possible false positive       
-10     | P54504          | 2.13         | undetected        | No                | Possible false positive       
+4      | Q8E9R5          | 2.01         | undetected        | No                | Possible false positive       
+5      | A1SW96          | 2.02         | undetected        | No                | Possible false positive       
+6      | Q1Q8I2          | 2.03         | undetected        | No                | Possible false positive       
+7      | A3DA85          | 2.05         | undetected        | No                | Possible false positive       
+8      | P75612          | 2.06         | undetected        | No                | Possible false positive       
+9      | Q5WWF9          | 2.10         | undetected        | No                | Possible false positive       
+10     | Q9CPH1          | 2.13         | undetected        | No                | Possible false positive       
 
 Method: Neural LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
@@ -190,12 +190,12 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.090           | 11.09      | 0.10                     
-Hypercube            | 0.014           | 70.81      | 0.10                     
-IVF-Flat             | 0.141           | 7.07       | 0.10                     
-IVF-PQ               | 0.029           | 34.30      | 0.00                     
-Neural LSH           | 0.016           | 62.93      | 0.10                     
-BLAST (Ref)          | 0.468           | 2.14       | 1.00                     
+Euclidean LSH        | 0.065           | 15.41      | 0.10                     
+Hypercube            | 0.014           | 69.10      | 0.10                     
+IVF-Flat             | 0.138           | 7.26       | 0.10                     
+IVF-PQ               | 0.033           | 30.55      | 0.00                     
+Neural LSH           | 0.015           | 66.95      | 0.10                     
+BLAST (Ref)          | 0.438           | 2.28       | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
 [2] Top-N neighbors per method
@@ -245,16 +245,16 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 Method: IVF-PQ
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | P9WQJ3          | 1.34         | 25%               | No                | Possible false positive       
-2      | Q13BH6          | 1.42         | 33%               | No                | Possible false positive       
-3      | Q9ZEP3          | 1.76         | undetected        | No                | Possible false positive       
-4      | Q3JSR6          | 1.79         | 37%               | No                | Possible false positive       
-5      | A5WJJ8          | 2.08         | undetected        | No                | Possible false positive       
+1      | Q03024          | 1.47         | 38%               | No                | Possible false positive       
+2      | A0K739          | 1.76         | 36%               | No                | Possible false positive       
+3      | Q51719          | 1.77         | 30%               | No                | Possible false positive       
+4      | Q21BF6          | 1.83         | 33%               | No                | Possible false positive       
+5      | Q7WGW1          | 1.92         | 33%               | No                | Possible false positive       
 6      | P64708          | 2.08         | undetected        | No                | Possible false positive       
-7      | A1UKA3          | 2.14         | undetected        | No                | Possible false positive       
-8      | A8LVF4          | 2.17         | undetected        | No                | Possible false positive       
-9      | A1V2C2          | 2.38         | undetected        | No                | Possible false positive       
-10     | B2FTB9          | 2.45         | undetected        | No                | Possible false positive       
+7      | A5WJJ8          | 2.08         | undetected        | No                | Possible false positive       
+8      | D3KU66          | 2.08         | undetected        | No                | Possible false positive       
+9      | A4X1R6          | 2.12         | undetected        | No                | Possible false positive       
+10     | Q82G92          | 2.16         | undetected        | No                | Possible false positive       
 
 Method: Neural LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
@@ -279,12 +279,12 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.090           | 11.09      | 0.10                     
-Hypercube            | 0.014           | 70.81      | 0.10                     
-IVF-Flat             | 0.141           | 7.07       | 0.10                     
-IVF-PQ               | 0.029           | 34.30      | 0.10                     
-Neural LSH           | 0.016           | 62.93      | 0.10                     
-BLAST (Ref)          | 0.468           | 2.14       | 1.00                     
+Euclidean LSH        | 0.065           | 15.41      | 0.10                     
+Hypercube            | 0.014           | 69.10      | 0.10                     
+IVF-Flat             | 0.138           | 7.26       | 0.10                     
+IVF-PQ               | 0.033           | 30.55      | 0.00                     
+Neural LSH           | 0.015           | 66.95      | 0.10                     
+BLAST (Ref)          | 0.438           | 2.28       | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
 [2] Top-N neighbors per method
@@ -334,15 +334,15 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 Method: IVF-PQ
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | P9WQJ3          | 1.33         | 28%               | Yes               | Remote homolog                
-2      | Q03024          | 1.50         | 31%               | No                | Possible false positive       
-3      | A0K739          | 1.83         | 33%               | No                | Possible false positive       
-4      | Q7VZE5          | 1.90         | 30%               | No                | Possible false positive       
-5      | Q7WGW1          | 1.90         | 29%               | No                | Possible false positive       
-6      | Q4ZZK0          | 2.15         | 28%               | No                | Possible false positive       
-7      | Q9PF03          | 2.25         | 28%               | No                | Possible false positive       
-8      | Q3KJS6          | 2.26         | 28%               | No                | Possible false positive       
-9      | Q66D71          | 2.28         | 32%               | No                | Possible false positive       
+1      | Q03024          | 1.50         | 31%               | No                | Possible false positive       
+2      | Q8P8W4          | 1.75         | 28%               | No                | Possible false positive       
+3      | Q51719          | 1.78         | 31%               | No                | Possible false positive       
+4      | A0K739          | 1.83         | 33%               | No                | Possible false positive       
+5      | Q7VZE5          | 1.90         | 30%               | No                | Possible false positive       
+6      | Q7WGW1          | 1.90         | 29%               | No                | Possible false positive       
+7      | Q21BF6          | 1.94         | 30%               | No                | Possible false positive       
+8      | Q4ZZK0          | 2.15         | 28%               | No                | Possible false positive       
+9      | Q665B6          | 2.18         | 29%               | No                | Possible false positive       
 10     | B4TGI0          | 2.35         | 31%               | No                | Possible false positive       
 
 Method: Neural LSH
@@ -368,12 +368,12 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.090           | 11.09      | 0.20                     
-Hypercube            | 0.014           | 70.81      | 0.00                     
-IVF-Flat             | 0.141           | 7.07       | 0.20                     
-IVF-PQ               | 0.029           | 34.30      | 0.30                     
-Neural LSH           | 0.016           | 62.93      | 0.20                     
-BLAST (Ref)          | 0.468           | 2.14       | 1.00                     
+Euclidean LSH        | 0.065           | 15.41      | 0.20                     
+Hypercube            | 0.014           | 69.10      | 0.00                     
+IVF-Flat             | 0.138           | 7.26       | 0.20                     
+IVF-PQ               | 0.033           | 30.55      | 0.20                     
+Neural LSH           | 0.015           | 66.95      | 0.20                     
+BLAST (Ref)          | 0.438           | 2.28       | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
 [2] Top-N neighbors per method
@@ -426,13 +426,13 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 1      | P33112          | 0.64         | 31%               | No                | Possible false positive       
 2      | Q99RR6          | 0.75         | 31%               | No                | Possible false positive       
 3      | Q9AE24          | 0.78         | 28%               | No                | Possible false positive       
-4      | P45189          | 0.89         | 34%               | Yes               | Homolog                       
-5      | P0C000          | 1.05         | 35%               | Yes               | Homolog                       
-6      | Q2FH23          | 1.05         | 35%               | Yes               | Homolog                       
-7      | Q5HPC3          | 1.10         | 37%               | No                | Possible false positive       
-8      | P96686          | 1.27         | 31%               | No                | Possible false positive       
-9      | Q7A3U5          | 1.36         | undetected        | No                | Possible false positive       
-10     | Q6GFH3          | 1.38         | 25%               | No                | Possible false positive       
+4      | P0C000          | 1.05         | 35%               | Yes               | Homolog                       
+5      | Q2FH23          | 1.05         | 35%               | Yes               | Homolog                       
+6      | Q5HPC3          | 1.10         | 37%               | No                | Possible false positive       
+7      | Q1XDE4          | 1.17         | 31%               | No                | Possible false positive       
+8      | Q5HEP0          | 1.37         | undetected        | No                | Possible false positive       
+9      | Q6GFH3          | 1.38         | 25%               | No                | Possible false positive       
+10     | Q6G850          | 1.38         | 25%               | No                | Possible false positive       
 
 Method: Neural LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
@@ -457,12 +457,12 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.090           | 11.09      | 0.40                     
-Hypercube            | 0.014           | 70.81      | 0.40                     
-IVF-Flat             | 0.141           | 7.07       | 0.40                     
-IVF-PQ               | 0.029           | 34.30      | 0.10                     
-Neural LSH           | 0.016           | 62.93      | 0.40                     
-BLAST (Ref)          | 0.468           | 2.14       | 1.00                     
+Euclidean LSH        | 0.065           | 15.41      | 0.40                     
+Hypercube            | 0.014           | 69.10      | 0.40                     
+IVF-Flat             | 0.138           | 7.26       | 0.40                     
+IVF-PQ               | 0.033           | 30.55      | 0.00                     
+Neural LSH           | 0.015           | 66.95      | 0.40                     
+BLAST (Ref)          | 0.438           | 2.28       | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
 [2] Top-N neighbors per method
@@ -512,16 +512,16 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 Method: IVF-PQ
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | P28787          | 0.57         | 63%               | Yes               | Homolog                       
-2      | P36219          | 1.03         | 41%               | No                | Possible false positive       
-3      | P37931          | 1.07         | 42%               | No                | Possible false positive       
-4      | Q220I3          | 1.14         | undetected        | No                | Possible false positive       
-5      | P37930          | 1.14         | 39%               | No                | Possible false positive       
-6      | Q3BQF5          | 1.19         | undetected        | No                | Possible false positive       
-7      | Q7WGB3          | 1.21         | undetected        | No                | Possible false positive       
+1      | Q03YJ6          | 1.10         | undetected        | No                | Possible false positive       
+2      | A1U1B9          | 1.18         | undetected        | No                | Possible false positive       
+3      | Q13UC0          | 1.19         | undetected        | No                | Possible false positive       
+4      | Q7WGB3          | 1.21         | undetected        | No                | Possible false positive       
+5      | P0DF50          | 1.22         | undetected        | No                | Possible false positive       
+6      | Q88V03          | 1.23         | undetected        | No                | Possible false positive       
+7      | Q9KDI8          | 1.24         | undetected        | No                | Possible false positive       
 8      | Q6HDA6          | 1.28         | undetected        | No                | Possible false positive       
-9      | Q4FTT9          | 1.31         | undetected        | No                | Possible false positive       
-10     | B9KKV4          | 1.47         | undetected        | No                | Possible false positive       
+9      | Q634C4          | 1.28         | undetected        | No                | Possible false positive       
+10     | A1R724          | 1.51         | undetected        | No                | Possible false positive       
 
 Method: Neural LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
@@ -546,12 +546,12 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.090           | 11.09      | 0.20                     
-Hypercube            | 0.014           | 70.81      | 0.20                     
-IVF-Flat             | 0.141           | 7.07       | 0.20                     
-IVF-PQ               | 0.029           | 34.30      | 0.50                     
-Neural LSH           | 0.016           | 62.93      | 0.20                     
-BLAST (Ref)          | 0.468           | 2.14       | 1.00                     
+Euclidean LSH        | 0.065           | 15.41      | 0.20                     
+Hypercube            | 0.014           | 69.10      | 0.20                     
+IVF-Flat             | 0.138           | 7.26       | 0.20                     
+IVF-PQ               | 0.033           | 30.55      | 0.40                     
+Neural LSH           | 0.015           | 66.95      | 0.20                     
+BLAST (Ref)          | 0.438           | 2.28       | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
 [2] Top-N neighbors per method
@@ -607,10 +607,10 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 4      | P52126          | 0.79         | undetected        | No                | Possible false positive       
 5      | Q0HMR2          | 0.79         | 30%               | No                | Possible false positive       
 6      | Q0HR19          | 0.80         | 30%               | Yes               | Homolog                       
-7      | A1A7A6          | 0.84         | 38%               | Yes               | Homolog                       
-8      | A7ZW09          | 0.84         | 38%               | Yes               | Homolog                       
-9      | Q03AL7          | 0.86         | undetected        | No                | Possible false positive       
-10     | Q9ZKA0          | 0.87         | undetected        | No                | Possible false positive       
+7      | Q1JBD1          | 0.81         | undetected        | No                | Possible false positive       
+8      | A1A7A6          | 0.84         | 38%               | Yes               | Homolog                       
+9      | P0C9B2          | 0.85         | undetected        | No                | Possible false positive       
+10     | C0MBD7          | 0.88         | undetected        | No                | Possible false positive       
 
 Method: Neural LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
@@ -635,12 +635,12 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.090           | 11.09      | 0.80                     
-Hypercube            | 0.014           | 70.81      | 0.80                     
-IVF-Flat             | 0.141           | 7.07       | 0.80                     
-IVF-PQ               | 0.029           | 34.30      | 0.80                     
-Neural LSH           | 0.016           | 62.93      | 0.80                     
-BLAST (Ref)          | 0.468           | 2.14       | 1.00                     
+Euclidean LSH        | 0.065           | 15.41      | 0.80                     
+Hypercube            | 0.014           | 69.10      | 0.80                     
+IVF-Flat             | 0.138           | 7.26       | 0.80                     
+IVF-PQ               | 0.033           | 30.55      | 0.80                     
+Neural LSH           | 0.015           | 66.95      | 0.80                     
+BLAST (Ref)          | 0.438           | 2.28       | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
 [2] Top-N neighbors per method
@@ -724,12 +724,12 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.090           | 11.09      | 0.20                     
-Hypercube            | 0.014           | 70.81      | 0.20                     
-IVF-Flat             | 0.141           | 7.07       | 0.20                     
-IVF-PQ               | 0.029           | 34.30      | 0.00                     
-Neural LSH           | 0.016           | 62.93      | 0.20                     
-BLAST (Ref)          | 0.468           | 2.14       | 1.00                     
+Euclidean LSH        | 0.065           | 15.41      | 0.20                     
+Hypercube            | 0.014           | 69.10      | 0.20                     
+IVF-Flat             | 0.138           | 7.26       | 0.20                     
+IVF-PQ               | 0.033           | 30.55      | 0.00                     
+Neural LSH           | 0.015           | 66.95      | 0.20                     
+BLAST (Ref)          | 0.438           | 2.28       | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
 [2] Top-N neighbors per method
@@ -779,16 +779,16 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 Method: IVF-PQ
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
 --------------------------------------------------------------------------------------------------------------
-1      | B0VRJ4          | 1.48         | undetected        | No                | Possible false positive       
-2      | Q7MHY6          | 1.49         | undetected        | No                | Possible false positive       
-3      | A6VLF9          | 1.49         | undetected        | No                | Possible false positive       
-4      | A3D8E4          | 1.52         | undetected        | No                | Possible false positive       
-5      | B4ET17          | 1.56         | undetected        | No                | Possible false positive       
-6      | Q6D3S2          | 1.62         | undetected        | No                | Possible false positive       
-7      | Q1CGA8          | 1.69         | undetected        | No                | Possible false positive       
-8      | Q57R80          | 1.73         | undetected        | No                | Possible false positive       
-9      | B0V7R3          | 1.73         | undetected        | No                | Possible false positive       
-10     | Q5PGN2          | 1.76         | undetected        | No                | Possible false positive       
+1      | Q88XP4          | 1.45         | undetected        | No                | Possible false positive       
+2      | Q5E320          | 1.48         | undetected        | No                | Possible false positive       
+3      | Q7MHY6          | 1.49         | undetected        | No                | Possible false positive       
+4      | Q7MAX6          | 1.50         | undetected        | No                | Possible false positive       
+5      | B1IRN3          | 1.54         | undetected        | No                | Possible false positive       
+6      | Q8EIL1          | 1.59         | undetected        | No                | Possible false positive       
+7      | Q38YR4          | 1.64         | undetected        | No                | Possible false positive       
+8      | B0BTC2          | 1.66         | undetected        | No                | Possible false positive       
+9      | P54504          | 1.66         | undetected        | No                | Possible false positive       
+10     | A6VW36          | 1.69         | undetected        | No                | Possible false positive       
 
 Method: Neural LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
@@ -813,12 +813,12 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.090           | 11.09      | 0.80                     
-Hypercube            | 0.014           | 70.81      | 0.30                     
-IVF-Flat             | 0.141           | 7.07       | 0.80                     
-IVF-PQ               | 0.029           | 34.30      | 0.80                     
-Neural LSH           | 0.016           | 62.93      | 0.80                     
-BLAST (Ref)          | 0.468           | 2.14       | 1.00                     
+Euclidean LSH        | 0.065           | 15.41      | 0.80                     
+Hypercube            | 0.014           | 69.10      | 0.30                     
+IVF-Flat             | 0.138           | 7.26       | 0.80                     
+IVF-PQ               | 0.033           | 30.55      | 0.60                     
+Neural LSH           | 0.015           | 66.95      | 0.80                     
+BLAST (Ref)          | 0.438           | 2.28       | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
 [2] Top-N neighbors per method
@@ -872,11 +872,11 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 2      | P11961          | 1.98         | 38%               | Yes               | Homolog                       
 3      | Q9SQI8          | 2.01         | 42%               | Yes               | Homolog                       
 4      | P49786          | 2.01         | undetected        | No                | Possible false positive       
-5      | P22439          | 2.19         | 26%               | Yes               | Remote homolog                
-6      | P43874          | 2.22         | 41%               | Yes               | Homolog                       
-7      | P29337          | 2.29         | 41%               | Yes               | Homolog                       
-8      | P02904          | 2.35         | 40%               | Yes               | Homolog                       
-9      | Q06881          | 2.48         | 32%               | Yes               | Homolog                       
+5      | P43874          | 2.22         | 41%               | Yes               | Homolog                       
+6      | P29337          | 2.29         | 41%               | Yes               | Homolog                       
+7      | P02904          | 2.35         | 40%               | Yes               | Homolog                       
+8      | P0ABE1          | 2.44         | 36%               | No                | Possible false positive       
+9      | O06432          | 2.77         | undetected        | No                | Possible false positive       
 10     | Q4R4J7          | 2.81         | undetected        | No                | Possible false positive       
 
 Method: Neural LSH
@@ -902,12 +902,12 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.090           | 11.09      | 0.00                     
-Hypercube            | 0.014           | 70.81      | 0.00                     
-IVF-Flat             | 0.141           | 7.07       | 0.00                     
-IVF-PQ               | 0.029           | 34.30      | 0.10                     
-Neural LSH           | 0.016           | 62.93      | 0.00                     
-BLAST (Ref)          | 0.468           | 2.14       | 1.00                     
+Euclidean LSH        | 0.065           | 15.41      | 0.00                     
+Hypercube            | 0.014           | 69.10      | 0.00                     
+IVF-Flat             | 0.138           | 7.26       | 0.00                     
+IVF-PQ               | 0.033           | 30.55      | 0.10                     
+Neural LSH           | 0.015           | 66.95      | 0.00                     
+BLAST (Ref)          | 0.438           | 2.28       | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
 [2] Top-N neighbors per method
@@ -962,11 +962,11 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 3      | A2QI22          | 1.24         | 31%               | No                | Possible false positive       
 4      | P0CS56          | 1.24         | undetected        | No                | Possible false positive       
 5      | A1CXL0          | 1.24         | 33%               | No                | Possible false positive       
-6      | Q756D0          | 1.32         | 23%               | No                | Possible false positive       
+6      | Q9SU78          | 1.31         | 28%               | No                | Possible false positive       
 7      | Q9P7C0          | 1.32         | 38%               | No                | Possible false positive       
 8      | O82266          | 1.36         | 27%               | Yes               | Remote homolog                
-9      | Q8TEB1          | 1.39         | 22%               | No                | Possible false positive       
-10     | P93107          | 1.52         | 28%               | No                | Possible false positive       
+9      | A8NZM5          | 1.38         | 22%               | No                | Possible false positive       
+10     | Q9WUC8          | 1.47         | 23%               | No                | Possible false positive       
 
 Method: Neural LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   
@@ -991,12 +991,12 @@ N = 10
 --------------------------------------------------------------------------------------------------------------
 Method               | Time/query (s)  | QPS        | Recall@N vs BLAST Top-N  
 --------------------------------------------------------------------------------------------------------------
-Euclidean LSH        | 0.090           | 11.09      | 0.00                     
-Hypercube            | 0.014           | 70.81      | 0.00                     
-IVF-Flat             | 0.141           | 7.07       | 0.00                     
-IVF-PQ               | 0.029           | 34.30      | 0.00                     
-Neural LSH           | 0.016           | 62.93      | 0.00                     
-BLAST (Ref)          | 0.468           | 2.14       | 1.00                     
+Euclidean LSH        | 0.065           | 15.41      | 0.00                     
+Hypercube            | 0.014           | 69.10      | 0.00                     
+IVF-Flat             | 0.138           | 7.26       | 0.00                     
+IVF-PQ               | 0.033           | 30.55      | 0.00                     
+Neural LSH           | 0.015           | 66.95      | 0.00                     
+BLAST (Ref)          | 0.438           | 2.28       | 1.00                     
 --------------------------------------------------------------------------------------------------------------
 
 [2] Top-N neighbors per method
@@ -1055,7 +1055,7 @@ Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   
 7      | Q6CXX3          | 1.35         | 26%               | No                | Possible false positive       
 8      | Q9P7C0          | 1.38         | undetected        | No                | Possible false positive       
 9      | Q24246          | 1.39         | undetected        | No                | Possible false positive       
-10     | Q8W4D0          | 1.55         | undetected        | No                | Possible false positive       
+10     | Q8BX09          | 1.44         | 21%               | No                | Possible false positive       
 
 Method: Neural LSH
 Rank   | Neighbor ID     | Distance     | BLAST Identity    | In BLAST Top-N?   | Bio Comment                   

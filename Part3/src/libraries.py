@@ -24,3 +24,9 @@ from utils import remap_output_ids, print_recall, compute_recall, print_QPS_dict
 from run_methods import run_method
 from run_blast_methods import running_blast
 from generate_reports import generate_per_query_report, generate_all_methods_report
+
+
+# For grid search we insert this and we will delete it later
+
+from run_methods import run_protein_search
+from utils import calculate_recall

@@ -1,0 +1,39 @@
+IVFPQ
+
+Query: A0A009HPM0
+Nearest neighbor-1: A9NAQ7, Distance: 1.829
+
+Query: A0A009HLV9
+Nearest neighbor-1: Q3K999, Distance: 1.069
+
+Query: A0A009I3Y5
+Nearest neighbor-1: Q1R5L6, Distance: 2.164
+
+Query: A0A009HN45
+Nearest neighbor-1: P0C9B2, Distance: 0.846
+
+Query: A0A009HQC9
+Nearest neighbor-1: A0KGL5, Distance: 0.521
+
+Query: A0A009HL96
+Nearest neighbor-1: Q9AE24, Distance: 0.779
+
+Query: A0A002
+Nearest neighbor-1: Q51719, Distance: 1.778
+
+Query: A0A001
+Nearest neighbor-1: P9WGX2, Distance: 2.154
+
+Query: A0A010Q8R4
+Nearest neighbor-1: P0CS56, Distance: 1.244
+
+Query: A0A009IB02
+Nearest neighbor-1: Q4R4J7, Distance: 2.806
+
+Query: A0A009PCK4
+Nearest neighbor-1: Q1R5L6, Distance: 2.168
+
+Query: A0A010Q3W2
+Nearest neighbor-1: A2QPW4, Distance: 1.587
+
+
