@@ -1,4 +1,5 @@
-from libraries import torch, os, np, esm, SeqIO, parse_args_embed, load_model, load_sequences, save_output
+import libraries
+from libraries import torch, os, np
 
 # -----------------------------
 # CPU optimization
@@ -19,9 +20,9 @@ def run_embedding_pipeline(args) -> None:
 
     os.makedirs(os.path.dirname(VECTORS_FILE), exist_ok=True)
 
-    model, alphabet, batch_converter = load_model(DEVICE)
+    model, alphabet, batch_converter = libraries.load_model(DEVICE)
 
-    data, N = load_sequences(FASTA, MAX_LEN)
+    data, N = libraries.load_sequences(FASTA, MAX_LEN)
 
     # Prepare and save the output
     vectors = np.memmap(
@@ -31,14 +32,14 @@ def run_embedding_pipeline(args) -> None:
         shape=(N, EMBED_DIM)
     )
 
-    save_output(VECTORS_FILE, N, EMBED_DIM, IDS_FILE, BATCH_SIZE, data, batch_converter, DEVICE, model, alphabet, vectors)
+    libraries.save_output(VECTORS_FILE, N, EMBED_DIM, IDS_FILE, BATCH_SIZE, data, batch_converter, DEVICE, model, alphabet, vectors)
 
 # -----------------------------
 # Main
 # -----------------------------
 def main() -> None:
 
-    args = parse_args_embed()
+    args = libraries.parse_args_embed()
 
     run_embedding_pipeline(args)
 

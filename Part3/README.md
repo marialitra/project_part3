@@ -114,3 +114,6 @@ the one with the grater blast identity.
 14.) normalization is happening inside of cosine, if you do normalization before cosine then you must only do the dot product, no need for cosine
     cos(a,b) = a dot b / norm(a) * norm(b)\
 
+15.) if not method - all then if the algorithm did not run delete the results.txt if there was any
+if it is method = all and one algorithm did not run then just skip it from the results .txt!!!
+and if none of them runs when the method is all then we delete the requirements.txt
