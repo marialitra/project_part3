@@ -1,4 +1,4 @@
-emb:
+emb_1k:
 	python3 src/protein_embed.py \
 	-i Data/subset_1k.fasta \
 	-o output/embeddings/vectors.dat \
@@ -7,16 +7,16 @@ emb:
 emb_50k:
 	python3 src/protein_embed.py \
 	-i Data/swissprot_50k.fasta \
-	-o output/embeddings/vectors_50k_opt.dat \
+	-o output/embeddings/vectors_50k.dat \
 	--batch-size 64 \
 	-model esm2_t6_8M_UR50D
 
 search:
 	python3 src/protein_search.py \
-	-d output/embeddings/vectors_50k_opt.dat -q Data/targets.fasta \
+	-d output/embeddings/vectors_50k.dat -q Data/targets.fasta \
 	-o output/search/results.txt \
 	-method all
-# Possible Inputs:
+# Possible Inputs for method option:
 # -method <all|lsh|hypercube|ivfflat|ivfpq|neural>
 
 # BLAST: build SwissProt DB and run blastp on targets
@@ -47,7 +47,7 @@ blast: blast_search
 method = neural
 grid_search:
 	python3 src/grid_search.py \
-	-d output/embeddings/vectors_50k_opt.dat \
+	-d output/embeddings/vectors_50k.dat \
 	-q Data/targets.fasta \
 	--output-dir output/grid_search \
 	--method ${method}

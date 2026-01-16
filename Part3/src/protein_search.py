@@ -1,7 +1,7 @@
 import libraries
 from libraries import os, subprocess, Optional, Dict, List, Tuple, defaultdict
 
-# Local imports
+# Local imports from the second prt of the project
 libraries.sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "Algorithms", "src"))
 from runSearchExe import build_executable, run_algorithm
 
