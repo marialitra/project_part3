@@ -1,0 +1,16 @@
+##########################################################################
+# IMPORTANT, TO USE BLAST YOU NEED TO RUN THESE COMMANDS
+# ALSO STATED IN READ ME, IN System Dependencies SECTION
+#  sudo apt update
+#  sudo apt install -y ncbi-blast+
+##########################################################################
+
+# Dependencies for Part 2 of the project:
+numpy==2.0.2
+scipy==1.15.3
+pandas==2.3.3
+torch==2.9.1
+kahip==3.22
+
+# Dependencies for Part 3 of the project:
+fair-esm==2.0.0

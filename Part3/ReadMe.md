@@ -65,8 +65,10 @@ C implementation for core ANN algorithms.
 - **`objectFiles/`**: Compiled .o files.
 - **`src/`**: C source files (see below).
 - **`Makefile`**: Builds the C executable.
-- **`mnistfullivfflat.txt`**: Sample IVFFlat output on full MNIST (for testing).
-- **`search`**: Compiled executable (used in Part3 for ANN calls).
+- **`search`**: Compiled executable.
+  - Used in Part 3 for ANN calls.
+  - If it does not exist, it is automatically created by this project  
+    (→ **no manual creation or changes are needed**)
 
 #### Source Files in `Algorithms/AlgorithmsPart1/src/`
 
@@ -122,7 +124,7 @@ Organized results from pipeline steps.
 
 - **`blast/`**: BLAST raw/processed outputs (e.g., tabular results, logs).
 - **`embeddings/`**: Protein embeddings (.dat vectors, _ids.txt mappings).
-- **`evaluation/`**: Metrics, tables, figures for biology report.
+- **`evaluation/`**: Mardkown for biology report.
 - **`search/`**: ANN results, final reports (e.g., per-query summaries).
 
 #### Source Files in `Part3/src/`
@@ -139,6 +141,17 @@ ESM-2 integration and ANN adaptation for proteins.
 - **`run_methods.py`**: Orchestrates ANN (LSH etc.); embeddings, C calls, remapping.
 - **`utils.py`**: BLAST filtering; ESM loading/embedding; ID remap; recall; bio comments.
 
+## System Dependencies
+
+This project requires NCBI BLAST+.
+
+On Ubuntu / Debian-based systems, BLAST+ can be installed using:
+```bash
+sudo apt update
+sudo apt install -y ncbi-blast+
+```
+Please ensure that the blastp, blastn, and related executables are available in your system PATH after installation.
+
 ## Installation Instructions
 
 To install all required Python dependencies, run the following command inside the
@@ -148,12 +161,6 @@ Python environment you will use for this project:
 pip install -r requirements.txt
 ```
 
-OR
-
-1. Install dependencies: `pip install -r Part3/requirements.txt` (includes torch, esm, biopython, etc.).
-2. Build C binaries: Navigate to `Algorithms/` and run `make` (for Assignment 2). Then to `Algorithms/AlgorithmsPart1/` and run `make`.
-3. For BLAST: Ensure NCBI BLAST+ is installed and in PATH.
-
 ## Usage
 
 Use the `Part3/Makefile` for common workflows. It supports embedding generation on subsets, search benchmarks, BLAST runs, and grid search.
@@ -162,12 +169,11 @@ Use the `Part3/Makefile` for common workflows. It supports embedding generation 
 
 ```bash
 # 1. Generate embeddings (only needed once, or when changing dataset)
-make emb_50k
+make emb
 
 # 2. Run full benchmark (ANN + BLAST + evaluation + reports)
 make search
 ```
-
 → **`make search`** is the **main entry point** you should normally use.  
 It calls `protein_search.py` with `-method all` by default and internally handles everything:
 
@@ -181,14 +187,12 @@ It calls `protein_search.py` with `-method all` by default and internally handle
 This guarantees perfect consistency between ANN's top-N neighbors and BLAST's ground-truth top-N — you don't need to run `make blast` separately or worry about matching N values manually.
 
 ### Makefile Targets
-
-- **`make emb_1k`**: Generate embeddings for small subset (Data/subset_1k.fasta) → output/embeddings/vectors.dat.
-- **`make emb_50k`**: Generate embeddings for larger subset (Data/swissprot_50k.fasta) → output/embeddings/vectors_50k.dat (uses batch-size 64).
+- **`make emb`**: Generate embeddings for protein subset → output/embeddings/vectors.dat.
 - **`make search`**: Run ANN search on vectors_50k.dat with queries (targets.fasta); method="all" → output/search/results.txt.
 - **`make blast_db`**: Build BLAST database from swissprot_50k.fasta.
 - **`make blast_search`**: Run blastp on targets.fasta → output/blast/search/blast_results.tsv.
 - **`make blast`**: Full BLAST pipeline (db + search + filter top-N); outputs filtered TSV at output/blast/topN/blast_results_top${N}.tsv.
-  - **Customize N**: Override via `make blast N=100` (default: 50). This changes top-N for filtering (used as ground truth for Recall@N).
+  - **Customize N**: Override via `make blast N=10` (default: 50). This changes top-N for filtering (used as ground truth for Recall@N).
   - E-value is hardcoded to 1e-2 for noise reduction; edit Makefile if needed.
 - **`make grid_search`**: Run hyperparameter tuning; method="all" (override via `make grid_search method=lsh`).
   - Outputs per-config results in output/grid_search/.

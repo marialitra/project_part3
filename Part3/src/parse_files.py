@@ -31,7 +31,7 @@ def parse_args_search() -> argparse.Namespace:
 						help="ANN algorithm to use (or 'all' to run all methods)")
 	
 	# Global Parameters
-    parser.add_argument("-N", type=int, default=10, help="Number of nearest neighbors")
+    parser.add_argument("-N", type=int, default=50, help="Number of nearest neighbors")
     parser.add_argument("-R", type=float, default=0.5, help="Range search radius (for range search mode)")
     parser.add_argument("-range", type=bool, default=False, help="Flag to enable Range Search")
     parser.add_argument("-seed", type=int, default=42, help="Random seed")
@@ -52,9 +52,9 @@ def parse_args_search() -> argparse.Namespace:
     parser.add_argument("--flat-nprobe", type=int, default=100, help="Number of probes (IVF-Flat)")
 	
 	# IVFPQ params
-    parser.add_argument("--pq-kclusters", type=int, default=500, help="Number of clusters (IVFPQ)")
-    parser.add_argument("--pq-nprobe", type=int, default=100, help="Number of probes (IVFPQ)")
-    parser.add_argument("--pq-M", type=int, default=16, help="Number of subvectors (IVFPQ, must divide dimension)")
+    parser.add_argument("--pq-kclusters", type=int, default=1000, help="Number of clusters (IVFPQ)")
+    parser.add_argument("--pq-nprobe", type=int, default=500, help="Number of probes (IVFPQ)")
+    parser.add_argument("--pq-M", type=int, default=15, help="Number of subvectors (IVFPQ, must divide dimension)")
     parser.add_argument("-nbits", type=int, default=8, help="Bits per subspace (IVFPQ)")
 
 	# NLSH specific - search phase

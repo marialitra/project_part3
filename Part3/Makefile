@@ -1,23 +1,17 @@
-emb_1k:
+emb:
 	python3 src/protein_embed.py \
-	-i Data/subset_1k.fasta \
+	-i Data/swissprot_50k.fasta \
 	-o output/embeddings/vectors.dat \
 	-model esm2_t6_8M_UR50D
 
-emb_50k:
-	python3 src/protein_embed.py \
-	-i Data/swissprot_50k.fasta \
-	-o output/embeddings/vectors_50k.dat \
-	--batch-size 64 \
-	-model esm2_t6_8M_UR50D
-
-search:
-	python3 src/protein_search.py \
-	-d output/embeddings/vectors_50k.dat -q Data/targets.fasta \
-	-o output/search/results.txt \
-	-method all
 # Possible Inputs for method option:
 # -method <all|lsh|hypercube|ivfflat|ivfpq|neural>
+search:
+	python3 src/protein_search.py \
+	-d output/embeddings/fffff.dat -q Data/targets.fasta \
+	-o output/search/results.txt \
+	-method all
+
 
 # BLAST: build SwissProt DB and run blastp on targets
 blast_db:
@@ -35,12 +29,13 @@ blast_search: blast_db
 # Filter BLAST results (outfmt 6) to top N per query by bit score with E <= max-evalue
 N = 50
 out = output/blast/topN/blast_results_top${N}.tsv
-EVALUE = 1e-2 # Hardcoded it is the filter we choose to reduce noise
+EVALUE = 1e-2 # Hardcoded, it is the filter we choose to reduce noise
 
 blast: blast_search
 	python3 src/filter_blast.py -i output/blast/search/blast_results.tsv -o ${out} -n ${N} --max-evalue ${EVALUE}
 
 .PHONY: blast
+
 
 # Grid search for hyperparameter tuning
 # Usage: make grid_search [method=<all|lsh|hypercube|ivfflat|ivfpq|neural>]

@@ -1,5 +1,5 @@
 import libraries
-from libraries import Optional, Dict, List, Tuple, defaultdict
+from libraries import os
 
 
 # -----------------------------
@@ -31,6 +31,10 @@ def main():
 	all_qps, answer = libraries.run_method(args, method, current_methods)
 
 	# If method did not run we end the execution here!
+	all_qps_all_none = (
+		isinstance(all_qps, dict) and
+		all(value is None for value in all_qps.values())
+	)
 
 	# But first if it is not all, we have already deleted uneccessary files
 	if method != "all" and all_qps == None:
@@ -38,9 +42,13 @@ def main():
 		libraries.print_recall(method, 0)
 		return
 	# If it is all, so we have NOT already deleted uneccessary file, we must do so, NOW
-	elif method == "all" and all_qps == None:
+	elif method == "all" and (all_qps is None or all_qps_all_none):
 		# Delete uneccessary files
 		libraries.delete_files(args, method, all_methods)
+
+		# Delete the output file
+		if os.path.exists(f"{args.output}"):
+			os.remove(f"{args.output}")
 
 		print("\nRecall result (average):")
 		libraries.print_recall(method, 0)

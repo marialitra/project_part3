@@ -476,8 +476,7 @@ def run_method(args, method, current_methods):
 		nlsh_lr=args.nlsh_lr,
 	)
 
-	# If results.txt exist, keep the old verion
-	# As the algorithm did not run, delete it!
+	# As the algorithm did not run, delete the output file!
 	if all_qps == None:
 		base_output = os.path.splitext(args.output)[0]
 
