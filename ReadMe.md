@@ -30,6 +30,12 @@ The project is implemented in Python 3.10+ on Linux, integrating C binaries from
 
 For more details about the dataset structure, see [datasets.md](datasets.md).
 
+## Datasets
+
+This repository already includes the protein datasets required for Part 3.
+
+The dataset formats used by the reused ANN components from Parts 1 and 2 (MNIST and SIFT) are documented in [datasets.md](datasets.md). Please note that, while the MNIST files are included in the repository, the SIFT dataset must still be downloaded manually due to its size.
+
 ## Project Structure
 
 - **`Algorithms/`**: ANN implementations from Assignments 1 & 2.
