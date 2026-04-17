@@ -208,7 +208,7 @@ This guarantees perfect consistency between ANN's top-N neighbors and BLAST's gr
 - **`make grid_search`**: Run hyperparameter tuning; method="all" (override via `make grid_search method=lsh`).
   - Outputs per-config results in output/grid_search/.
 
-### Direct Script Usage (As per Assignment)Note: We chose "neural" as the keyword for Neural LSH to align with the assignment's terminology ("Neural LSH")
+### Direct Script Usage (As per Assignment)
 
 - **Generate Embeddings**: `python Part3/src/protein_embed.py -i Data/swissprot.fasta -o output/embeddings/protein_vectors.dat`
 - **Search Benchmark**: `python Part3/src/protein_search.py -d output/embeddings/protein_vectors.dat -q Data/targets.fasta -o output/search/results.txt -method <all|lsh|hypercube|neural|ivfflat|ivfpq>`
